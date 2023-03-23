@@ -1,4 +1,12 @@
 {
+  "options_page_home_title": {
+    "message": "Home",
+    "description": "Options page title"
+  },
+  "options_page_options_title": {
+    "message": "Options",
+    "description": "Options page title"
+  },
   "tags_logicommerce": {
     "message": "Logicommerce",
     "description": "Tag text"
