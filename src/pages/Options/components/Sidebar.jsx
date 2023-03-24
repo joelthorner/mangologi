@@ -106,7 +106,11 @@ const Sidebar = () => {
 
       <ul className="footer list-inline">
         <li className="list-inline-item">
-          <a href="http://" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://github.com/joelthorner/mangologi/graphs/contributors"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Contributors
           </a>
         </li>

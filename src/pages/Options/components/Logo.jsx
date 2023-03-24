@@ -18,11 +18,11 @@ const DefaultLogo = () => {
           gradientTransform="matrix(1 .00262 -.00215 .82 .56 45.87)"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stop-color="#fd2d64" />
-          <stop offset=".26" stop-color="#f72085" />
-          <stop offset=".52" stop-color="#cb0188" />
-          <stop offset=".74" stop-color="#9807a0" />
-          <stop offset=".98" stop-color="#a9119c" />
+          <stop offset="0" stopColor="#fd2d64" />
+          <stop offset=".26" stopColor="#f72085" />
+          <stop offset=".52" stopColor="#cb0188" />
+          <stop offset=".74" stopColor="#9807a0" />
+          <stop offset=".98" stopColor="#a9119c" />
         </radialGradient>
       </defs>
       <path fill="url(#a)" d="M0 0h512v512H0z" />
@@ -52,11 +52,11 @@ const InverseLogo = () => {
           gradientTransform="matrix(1 .00262 -.00215 .82 .63 51.83)"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stop-color="#fd2d64" />
-          <stop offset=".26" stop-color="#f72085" />
-          <stop offset=".52" stop-color="#cb0188" />
-          <stop offset=".74" stop-color="#9807a0" />
-          <stop offset=".98" stop-color="#a9119c" />
+          <stop offset="0" stopColor="#fd2d64" />
+          <stop offset=".26" stopColor="#f72085" />
+          <stop offset=".52" stopColor="#cb0188" />
+          <stop offset=".74" stopColor="#9807a0" />
+          <stop offset=".98" stopColor="#a9119c" />
         </radialGradient>
       </defs>
       <path

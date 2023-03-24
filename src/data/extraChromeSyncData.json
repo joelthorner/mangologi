@@ -1,0 +1,64 @@
+{
+  "autoDeployVersion": {
+    "tags": [
+      "logicommerce",
+      "logicommerce8x",
+      "logicommerceBeyond"
+    ]
+  },
+  "linkedGitIssues": {
+    "tags": [
+      "logicommerce",
+      "logicommerce8x",
+      "logicommerceBeyond"
+    ]
+  },
+  "trackersCodeEditor": {
+    "tags": [
+      "logicommerce",
+      "logicommerce8x",
+      "logicommerceBeyond"
+    ]
+  },
+  "lcBackground": {
+    "tags": [
+      "logicommerce",
+      "logicommerce8x",
+      "logicommerceBeyond"
+    ]
+  },
+  "lcDeveloperBar": {
+    "tags": [
+      "logicommerce",
+      "logicommerce8x",
+      "logicommerceBeyond"
+    ]
+  },
+  "sandboxSelectorBtns": {
+    "tags": [
+      "logicommerce",
+      "logicommerce8x",
+      "logicommerceBeyond"
+    ]
+  },
+  "lcRichPages": {
+    "tags": [
+      "logicommerce",
+      "logicommerce8x",
+      "logicommerceBeyond"
+    ]
+  },
+  "forcedForceView": {
+    "tags": [
+      "production",
+      "fluid"
+    ]
+  },
+  "scrollToDump": {
+    "tags": [
+      "development",
+      "fluid",
+      "php"
+    ]
+  }
+}
