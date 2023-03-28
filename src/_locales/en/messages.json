@@ -4,11 +4,11 @@
     "description": "Tag text"
   },
   "tags_logicommerce8x": {
-    "message": "Logicommerce 8x",
+    "message": "LC 8x",
     "description": "Tag text"
   },
   "tags_logicommerceBeyond": {
-    "message": "Logicommerce Beyond",
+    "message": "LC Beyond",
     "description": "Tag text"
   },
   "tags_production": {
@@ -31,10 +31,6 @@
     "message": "A cada deploy a producció la versió es calcula automaticament.",
     "description": "Description of main option"
   },
-  "autoDeployVersion_props_active": {
-    "message": "Activar",
-    "description": "Label"
-  },
   "autoDeployVersion_props_defaultFormat": {
     "message": "Formato por defecto",
     "description": "Label"
@@ -47,10 +43,6 @@
     "message": "Les referencies a issues de Jira o Zendesk es mostren com a links a tot l'entorn de git de Logicommerce.",
     "description": "Description of main option"
   },
-  "linkedGitIssues_props_active": {
-    "message": "Activar",
-    "description": "Label"
-  },
   "trackersCodeEditor_language_name": {
     "message": "Trackers code editor",
     "description": "Name of main option"
@@ -58,10 +50,6 @@
   "trackersCodeEditor_language_description": {
     "message": "Els inputs de trackers es mostren en mode editor de codi enriquit.",
     "description": "Description of main option"
-  },
-  "trackersCodeEditor_props_active": {
-    "message": "Activar",
-    "description": "Label"
   },
   "lcBackground_language_name": {
     "message": "Logicommerce background",
@@ -71,10 +59,6 @@
     "message": "Personalització del background de Logicommerce amb una foto d'Unsplash",
     "description": "Description of main option"
   },
-  "lcBackground_props_active": {
-    "message": "Activar",
-    "description": "Label"
-  },
   "sandboxSelectorBtns_language_name": {
     "message": "Sandbox selector buttons",
     "description": "Name of main option"
@@ -83,10 +67,6 @@
     "message": "Al tenir més d'un sandbox a escollir es mostren en botóns. S'els pot fer doble click com a shortcut.",
     "description": "Description of main option"
   },
-  "sandboxSelectorBtns_props_active": {
-    "message": "Activar",
-    "description": "Label"
-  },
   "lcRichPages_language_name": {
     "message": "Logicommerce rich pages window",
     "description": "Name of main option"
@@ -94,10 +74,6 @@
   "lcRichPages_language_description": {
     "message": "Millores de la finestra de págines, com: Vista en grid, headers amb colors tags i icones, i nivells més clars.",
     "description": "Description of main option"
-  },
-  "lcRichPages_props_active": {
-    "message": "Activar",
-    "description": "Label"
   },
   "lcRichPages_props_gridView": {
     "message": "Grid view",
@@ -119,10 +95,6 @@
     "message": "Afegeix el param GET forceview=1 automaticament si estem a una url 00.logicommerce.net",
     "description": "Description of main option"
   },
-  "forcedForceView_props_active": {
-    "message": "Activar",
-    "description": "Label"
-  },
   "scrollToDump_language_name": {
     "message": "Scroll to dump",
     "description": "Name of main option"
@@ -131,8 +103,16 @@
     "message": "Fa scroll automaticament al DOM al primer dump que es trobi. A php requereix xdebug.",
     "description": "Description of main option"
   },
-  "scrollToDump_props_active": {
-    "message": "Activar",
-    "description": "Label"
+  "disable": {
+    "message": "Disable",
+    "description": "Label de desactivar"
+  },
+  "enable": {
+    "message": "Enable",
+    "description": "Label de activar"
+  },
+  "editSettings": {
+    "message": "Edit settings",
+    "description": "Options card label"
   }
 }

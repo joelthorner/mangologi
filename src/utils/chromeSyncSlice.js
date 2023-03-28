@@ -15,6 +15,15 @@ export const chromeSyncSlice = createSlice({
     //   // immutable state based off those changes
     //   state.value += 1
     // },
+
+    modifyProp: (state, action) => {
+      const [key, prop, newValue] = action.payload;
+      state[key].props[prop] = newValue;
+      console.log(state[key].props, action);
+      chrome.storage.sync.set(state).then(() => {
+        console.log("Value is set to ");
+      });
+    },
     // decrement: (state) => {
     //   state.value -= 1
     // },
@@ -28,7 +37,7 @@ export const chromeSyncSlice = createSlice({
 })
 
 // export const { increment, decrement, incrementByAmount } = chromeSyncSlice.actions
-export const { setChromeSyncAsync } = chromeSyncSlice.actions
+export const { setChromeSyncAsync, modifyProp } = chromeSyncSlice.actions
 
 // The function below is called a thunk and allows us to perform async logic. It
 // can be dispatched like a regular action: `dispatch(getChromeSyncDataAsync(10))`. This

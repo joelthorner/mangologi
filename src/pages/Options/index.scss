@@ -1,7 +1,7 @@
 $primary: #f72085;
 
 @import '~bootstrap/scss/bootstrap';
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap');
 
 // @import '~bootstrap-icons/font/bootstrap-icons.css';
 
@@ -12,13 +12,8 @@ body,
   height: 100%;
 }
 body {
-  font-family: 'Montserrat', sans-serif;
-  // background: linear-gradient(
-  //   90deg,
-  //   rgba(241, 228, 237, 0.75) 0%,
-  //   rgba(238, 234, 249, 0.75) 100%
-  // );
   background-color: #f6f7fb;
+  // font-size: 14px;
 }
 
 .react-ripples s {
@@ -34,11 +29,11 @@ body {
   width: 100%;
   display: flex;
   align-items: center;
+  font-family: 'Montserrat', sans-serif;
 
   .react-ripples {
-    height: 3.75rem;
-    padding: 0 0.75rem;
     width: 100%;
+    padding: 1.5rem 0.8rem 1rem;
   }
 
   a {
@@ -75,7 +70,7 @@ body {
   .links {
     display: flex;
     flex-direction: column;
-    margin-top: 1rem;
+    margin-top: 0;
 
     .react-ripples {
       width: 100%;
@@ -93,6 +88,7 @@ body {
       align-items: center;
       gap: 0.75em;
       width: 100%;
+      font-size: small;
     }
   }
 
@@ -123,10 +119,105 @@ main {
 
 .content {
   padding: 2rem;
+
+  .content-header + & {
+    padding-top: 0;
+  }
 }
 
 .grid {
   display: grid;
   gap: 2rem;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.content-header {
+  padding: 2rem;
+
+  .h2 {
+    font-size: 20px;
+    margin-bottom: 0;
+    color: #515365;
+    font-weight: 400;
+
+    // position: relative;
+    // &::after {
+    //   content: '';
+    //   display: block;
+    //   position: absolute;
+    //   width: 10000px;
+    //   height: 1px;
+    //   background-color: red;
+    //   bottom: 0;
+    //   right: 0;
+    // }
+  }
+}
+
+.card {
+  border-color: rgba(0, 0, 0, 0.1);
+  border: 0;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.03), 0 3px 6px rgba(0, 0, 0, 0.075);
+
+  .card-title {
+    font-size: 1.25rem;
+    color: $primary;
+  }
+  .card-text {
+    font-size: 14px;
+    color: #6e7881;
+  }
+  .card-body {
+    display: flex;
+    flex-direction: column;
+  }
+  .card-footer {
+    background-color: transparent;
+    padding: 1rem;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    // border-top: 0;
+    border-color: rgba(0, 0, 0, 0.05);
+
+    .form-check {
+      margin-bottom: 0;
+      min-height: 1.25rem;
+    }
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: auto;
+
+    .badge {
+      font-weight: normal;
+      font-size: 10px;
+      background-color: $gray-200 !important;
+      color: $gray-900;
+      &.tag-logicommerce {
+        display: none;
+      }
+      &.tag-logicommerce8x {
+        background-color: #d9e61a !important;
+        color: $gray-900;
+      }
+      &.tag-logicommerceBeyond {
+        background-color: #003a3e !important;
+        color: #fff;
+      }
+      &.tag-fluid {
+        background-color: #5f8dd3 !important;
+        color: #fff;
+      }
+      &.tag-php {
+        background-color: #8993be !important;
+        color: #fff;
+      }
+    }
+  }
 }

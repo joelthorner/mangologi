@@ -1,5 +1,6 @@
 {
   "autoDeployVersion": {
+    "image": "options_background.jpg",
     "tags": [
       "logicommerce",
       "logicommerce8x",
@@ -7,6 +8,7 @@
     ]
   },
   "linkedGitIssues": {
+    "image": "options_background.jpg",
     "tags": [
       "logicommerce",
       "logicommerce8x",
@@ -14,6 +16,7 @@
     ]
   },
   "trackersCodeEditor": {
+    "image": "options_background.jpg",
     "tags": [
       "logicommerce",
       "logicommerce8x",
@@ -21,6 +24,7 @@
     ]
   },
   "lcBackground": {
+    "image": "options_background.jpg",
     "tags": [
       "logicommerce",
       "logicommerce8x",
@@ -28,6 +32,7 @@
     ]
   },
   "lcDeveloperBar": {
+    "image": "options_background.jpg",
     "tags": [
       "logicommerce",
       "logicommerce8x",
@@ -35,6 +40,7 @@
     ]
   },
   "sandboxSelectorBtns": {
+    "image": "options_background.jpg",
     "tags": [
       "logicommerce",
       "logicommerce8x",
@@ -42,6 +48,7 @@
     ]
   },
   "lcRichPages": {
+    "image": "options_background.jpg",
     "tags": [
       "logicommerce",
       "logicommerce8x",
@@ -49,12 +56,14 @@
     ]
   },
   "forcedForceView": {
+    "image": "options_background.jpg",
     "tags": [
       "production",
       "fluid"
     ]
   },
   "scrollToDump": {
+    "image": "options_background.jpg",
     "tags": [
       "development",
       "fluid",
