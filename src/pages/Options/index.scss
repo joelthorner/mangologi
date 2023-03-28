@@ -13,11 +13,12 @@ body,
 }
 body {
   font-family: 'Montserrat', sans-serif;
-  background: linear-gradient(
-    90deg,
-    rgba(241, 228, 237, 0.75) 0%,
-    rgba(238, 234, 249, 0.75) 100%
-  );
+  // background: linear-gradient(
+  //   90deg,
+  //   rgba(241, 228, 237, 0.75) 0%,
+  //   rgba(238, 234, 249, 0.75) 100%
+  // );
+  background-color: #f6f7fb;
 }
 
 .react-ripples s {
