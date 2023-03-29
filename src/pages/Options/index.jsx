@@ -11,10 +11,6 @@ import './index.scss';
 const container = document.getElementById('app-container');
 const root = createRoot(container); // createRoot(container!) if you use TypeScript
 
-// chrome.storage.sync.get(["key"]).then((result) => {
-//   console.log("Value currently is " + result.key);
-// });
-
 store.dispatch(getChromeSyncDataAsync());
 
 root.render(

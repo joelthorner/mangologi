@@ -1,4 +1,5 @@
 $primary: #f72085;
+$link-decoration: none;
 
 @import '~bootstrap/scss/bootstrap';
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap');
@@ -42,7 +43,6 @@ body {
     align-items: center;
     gap: 0.75rem;
     width: 100%;
-    text-decoration: none;
     font-size: 1.25rem;
     color: $primary;
     background: linear-gradient(90deg, #{$primary}, #a9119c);
@@ -81,7 +81,6 @@ body {
         color: #6e7881;
       }
 
-      text-decoration: none;
       height: 3.5rem;
       padding: 0.5rem 1.5rem;
       display: flex;
@@ -104,10 +103,6 @@ body {
 
     li {
       margin: 0;
-
-      a {
-        text-decoration: none;
-      }
     }
   }
 }
@@ -154,6 +149,13 @@ main {
   }
 }
 
+.toast {
+  border: 0;
+  color: #fff;
+  margin-bottom: 0.75rem;
+  --bs-toast-max-width: 300px;
+}
+
 .card {
   border-color: rgba(0, 0, 0, 0.1);
   border: 0;
@@ -164,7 +166,6 @@ main {
 
   .card-title {
     font-size: 1.25rem;
-    color: $primary;
   }
   .card-text {
     font-size: 14px;

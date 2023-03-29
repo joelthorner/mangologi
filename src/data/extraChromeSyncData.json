@@ -1,5 +1,6 @@
 {
   "autoDeployVersion": {
+    "priority": 700,
     "image": "options_background.jpg",
     "tags": [
       "logicommerce",
@@ -8,6 +9,7 @@
     ]
   },
   "linkedGitIssues": {
+    "priority": 600,
     "image": "options_background.jpg",
     "tags": [
       "logicommerce",
@@ -16,6 +18,7 @@
     ]
   },
   "trackersCodeEditor": {
+    "priority": 900,
     "image": "options_background.jpg",
     "tags": [
       "logicommerce",
@@ -24,6 +27,7 @@
     ]
   },
   "lcBackground": {
+    "priority": 100,
     "image": "options_background.jpg",
     "tags": [
       "logicommerce",
@@ -32,6 +36,7 @@
     ]
   },
   "lcDeveloperBar": {
+    "priority": 200,
     "image": "options_background.jpg",
     "tags": [
       "logicommerce",
@@ -40,6 +45,7 @@
     ]
   },
   "sandboxSelectorBtns": {
+    "priority": 400,
     "image": "options_background.jpg",
     "tags": [
       "logicommerce",
@@ -48,6 +54,7 @@
     ]
   },
   "lcRichPages": {
+    "priority": 300,
     "image": "options_background.jpg",
     "tags": [
       "logicommerce",
@@ -56,6 +63,7 @@
     ]
   },
   "forcedForceView": {
+    "priority": 800,
     "image": "options_background.jpg",
     "tags": [
       "production",
@@ -63,6 +71,7 @@
     ]
   },
   "scrollToDump": {
+    "priority": 500,
     "image": "options_background.jpg",
     "tags": [
       "development",

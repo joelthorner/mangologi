@@ -2,6 +2,7 @@ import React from 'react';
 import { useRoutes } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import PageHome from './pages/Home/PageHome';
+
 import PageOptions from './pages/Options/PageOptions';
 import AutoDeployVersion from './options/AutoDeployVersion';
 import LinkedGitIssues from './options/LinkedGitIssues';
@@ -12,6 +13,7 @@ import SandboxSelectorBtns from './options/SandboxSelectorBtns';
 import LcRichPages from './options/LcRichPages';
 import ForcedForceView from './options/ForcedForceView';
 import ScrollToDump from './options/ScrollToDump';
+import Notify from './components/Notify';
 
 const AppOptions = () => {
   let routes = [
@@ -72,6 +74,7 @@ const AppOptions = () => {
         <Sidebar />
         <main>{element}</main>
       </div>
+      <Notify />
     </div>
   );
 };

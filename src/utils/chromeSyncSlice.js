@@ -23,10 +23,7 @@ export const chromeSyncSlice = createSlice({
       state.storage[key].props[prop] = newValue;
 
       const newKeyData = JSON.parse(JSON.stringify(state.storage));
-
-      chrome.storage.sync.set(newKeyData).then(() => {
-        console.log("Value is set to ");
-      });
+      chrome.storage.sync.set(newKeyData);
     },
     // decrement: (state) => {
     //   state.value -= 1

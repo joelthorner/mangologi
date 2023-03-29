@@ -59,6 +59,14 @@
     "message": "Personalització del background de Logicommerce amb una foto d'Unsplash",
     "description": "Description of main option"
   },
+  "lcDeveloperBar_language_name": {
+    "message": "Lc developer bar",
+    "description": "Name of main option"
+  },
+  "lcDeveloperBar_language_description": {
+    "message": "Afegeix una barra dalt del Logicommerce amb shortcuts utils per a developers.",
+    "description": "Description of main option"
+  },
   "sandboxSelectorBtns_language_name": {
     "message": "Sandbox selector buttons",
     "description": "Name of main option"
@@ -114,5 +122,9 @@
   "editSettings": {
     "message": "Edit settings",
     "description": "Options card label"
+  },
+  "savedSettings": {
+    "message": "Saved settings",
+    "description": "Toast label"
   }
 }
