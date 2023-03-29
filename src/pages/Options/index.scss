@@ -127,11 +127,21 @@ main {
 }
 
 .content-header {
-  padding: 2rem;
+  padding: 2rem 4rem 2rem 2rem;
+  position: relative;
 
   .nav {
     margin-left: calc(var(--bs-nav-link-padding-x) * -1);
     margin-bottom: calc(var(--bs-nav-link-padding-y) * -1);
+  }
+
+  p {
+    margin-top: 1em;
+    margin-bottom: 0;
+    color: $gray-600;
+  }
+  .tags {
+    margin-top: 1em;
   }
 
   .h2 {
@@ -141,7 +151,7 @@ main {
     font-weight: 400;
 
     & + .nav {
-      margin-top: 0.75rem;
+      margin-top: 0.5rem;
     }
 
     // position: relative;
@@ -155,6 +165,12 @@ main {
     //   bottom: 0;
     //   right: 0;
     // }
+  }
+
+  .close-button-link {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
   }
 }
 
@@ -208,36 +224,37 @@ main {
       min-height: 1.25rem;
     }
   }
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: auto;
+}
 
-    .badge {
-      font-weight: normal;
-      font-size: 10px;
-      background-color: $gray-200 !important;
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: auto;
+
+  .badge {
+    font-weight: normal;
+    font-size: 10px;
+    background-color: $gray-200 !important;
+    color: $gray-900;
+    &.tag-logicommerce {
+      display: none;
+    }
+    &.tag-logicommerce8x {
+      background-color: #d9e61a !important;
       color: $gray-900;
-      &.tag-logicommerce {
-        display: none;
-      }
-      &.tag-logicommerce8x {
-        background-color: #d9e61a !important;
-        color: $gray-900;
-      }
-      &.tag-logicommerceBeyond {
-        background-color: #003a3e !important;
-        color: #fff;
-      }
-      &.tag-fluid {
-        background-color: #5f8dd3 !important;
-        color: #fff;
-      }
-      &.tag-php {
-        background-color: #8993be !important;
-        color: #fff;
-      }
+    }
+    &.tag-logicommerceBeyond {
+      background-color: #003a3e !important;
+      color: #fff;
+    }
+    &.tag-fluid {
+      background-color: #5f8dd3 !important;
+      color: #fff;
+    }
+    &.tag-php {
+      background-color: #8993be !important;
+      color: #fff;
     }
   }
 }
