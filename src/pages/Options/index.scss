@@ -123,17 +123,26 @@ main {
 .grid {
   display: grid;
   gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
 
 .content-header {
   padding: 2rem;
 
+  .nav {
+    margin-left: calc(var(--bs-nav-link-padding-x) * -1);
+    margin-bottom: calc(var(--bs-nav-link-padding-y) * -1);
+  }
+
   .h2 {
     font-size: 20px;
     margin-bottom: 0;
-    color: #515365;
+    // color: #515365;
     font-weight: 400;
+
+    & + .nav {
+      margin-top: 0.75rem;
+    }
 
     // position: relative;
     // &::after {
@@ -154,6 +163,16 @@ main {
   color: #fff;
   margin-bottom: 0.75rem;
   --bs-toast-max-width: 300px;
+}
+
+.tooltip {
+  font-size: 12px;
+}
+
+.nav-link {
+  &:not(.active) {
+    color: #6e7881;
+  }
 }
 
 .card {

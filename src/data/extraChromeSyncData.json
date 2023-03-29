@@ -6,7 +6,8 @@
       "logicommerce",
       "logicommerce8x",
       "logicommerceBeyond"
-    ]
+    ],
+    "category": "LOGICOMMERCE"
   },
   "linkedGitIssues": {
     "priority": 600,
@@ -15,7 +16,8 @@
       "logicommerce",
       "logicommerce8x",
       "logicommerceBeyond"
-    ]
+    ],
+    "category": "LOGICOMMERCE"
   },
   "trackersCodeEditor": {
     "priority": 900,
@@ -24,7 +26,8 @@
       "logicommerce",
       "logicommerce8x",
       "logicommerceBeyond"
-    ]
+    ],
+    "category": "LOGICOMMERCE"
   },
   "lcBackground": {
     "priority": 100,
@@ -33,7 +36,8 @@
       "logicommerce",
       "logicommerce8x",
       "logicommerceBeyond"
-    ]
+    ],
+    "category": "LOGICOMMERCE"
   },
   "lcDeveloperBar": {
     "priority": 200,
@@ -42,7 +46,8 @@
       "logicommerce",
       "logicommerce8x",
       "logicommerceBeyond"
-    ]
+    ],
+    "category": "LOGICOMMERCE"
   },
   "sandboxSelectorBtns": {
     "priority": 400,
@@ -51,7 +56,8 @@
       "logicommerce",
       "logicommerce8x",
       "logicommerceBeyond"
-    ]
+    ],
+    "category": "LOGICOMMERCE"
   },
   "lcRichPages": {
     "priority": 300,
@@ -60,7 +66,8 @@
       "logicommerce",
       "logicommerce8x",
       "logicommerceBeyond"
-    ]
+    ],
+    "category": "LOGICOMMERCE"
   },
   "forcedForceView": {
     "priority": 800,
@@ -68,7 +75,8 @@
     "tags": [
       "production",
       "fluid"
-    ]
+    ],
+    "category": "DEVTOOLS"
   },
   "scrollToDump": {
     "priority": 500,
@@ -77,6 +85,7 @@
       "development",
       "fluid",
       "php"
-    ]
+    ],
+    "category": "DEVTOOLS"
   }
 }

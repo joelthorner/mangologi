@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 import initialChromeSyncData from "../data/initialChromeSyncData.json";
-import extraChromeSyncData from "../data/extraChromeSyncData.json";
 import _ from "lodash";
 
 

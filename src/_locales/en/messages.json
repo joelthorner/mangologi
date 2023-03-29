@@ -3,25 +3,57 @@
     "message": "Logicommerce",
     "description": "Tag text"
   },
+  "tags_logicommerce_desc": {
+    "message": "Logicommerce",
+    "description": "Tag desc"
+  },
   "tags_logicommerce8x": {
     "message": "LC 8x",
     "description": "Tag text"
+  },
+  "tags_logicommerce8x_desc": {
+    "message": "Logicommerce 8x",
+    "description": "Tag desc"
   },
   "tags_logicommerceBeyond": {
     "message": "LC Beyond",
     "description": "Tag text"
   },
+  "tags_logicommerceBeyond_desc": {
+    "message": "Logicommerce Beyond",
+    "description": "Tag desc"
+  },
   "tags_production": {
     "message": "Production",
     "description": "Tag text"
+  },
+  "tags_production_desc": {
+    "message": "Production environment",
+    "description": "Tag desc"
   },
   "tags_fluid": {
     "message": "Fluid",
     "description": "Tag text"
   },
+  "tags_fluid_desc": {
+    "message": "Fluid",
+    "description": "Tag desc"
+  },
+  "tags_development": {
+    "message": "Development",
+    "description": "Tag text"
+  },
+  "tags_development_desc": {
+    "message": "Development environment",
+    "description": "Tag desc"
+  },
   "tags_php": {
     "message": "Php",
     "description": "Tag text"
+  },
+  "tags_php_desc": {
+    "message": "Php",
+    "description": "Tag desc"
   },
   "autoDeployVersion_language_name": {
     "message": "Auto deploy version",
@@ -126,5 +158,17 @@
   "savedSettings": {
     "message": "Saved settings",
     "description": "Toast label"
+  },
+  "option_filter_ALL": {
+    "message": "All",
+    "description": "Options page filter label"
+  },
+  "option_filter_LOGICOMMERCE": {
+    "message": "Logicommerce",
+    "description": "Options page filter label"
+  },
+  "option_filter_DEVTOOLS": {
+    "message": "Devtools",
+    "description": "Options page filter label"
   }
 }

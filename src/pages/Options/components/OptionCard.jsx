@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import Badge from 'react-bootstrap/Badge';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
 import { useDispatch } from 'react-redux';
 import { modifyProp } from '../../../utils/chromeSyncSlice';
 
@@ -25,9 +27,21 @@ const OptionCard = ({ keyData, data, extraData }) => {
         </Card.Text>
         <div className="tags">
           {extraData.tags.map((tag) => (
-            <Badge key={keyData + tag} pill className={`tag-${tag}`}>
-              {chrome.i18n.getMessage(`tags_${tag}`)}
-            </Badge>
+            <OverlayTrigger
+              key={keyData + tag + 'tooltip'}
+              placement="top"
+              overlay={
+                <Tooltip>{chrome.i18n.getMessage(`tags_${tag}_desc`)}</Tooltip>
+              }
+            >
+              <Badge
+                key={keyData + tag + 'badge'}
+                pill
+                className={`tag-${tag}`}
+              >
+                {chrome.i18n.getMessage(`tags_${tag}`)}
+              </Badge>
+            </OverlayTrigger>
           ))}
         </div>
       </Card.Body>
