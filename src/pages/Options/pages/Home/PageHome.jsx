@@ -6,7 +6,6 @@ import Card from 'react-bootstrap/Card';
 import Content from '../../components/Content';
 
 const PageHome = () => {
-  // const chromeSyncData = useSelector(getChromeSync);
   const dispatch = useDispatch();
   const chromeSync = useSelector((state) => state.chromeSync);
   // const [autoDeployVersion, setAutoDeployVersion] = useState('2');
@@ -17,11 +16,17 @@ const PageHome = () => {
   return (
     <Content>
       <div className="grid">
-        chromeSync.autoDeployVersion.props.active:{' '}
-        {chromeSync.autoDeployVersion.props.active ? '1' : '0'}
+        chromeSync.storage.autoDeployVersion.props.active:{' '}
+        {chromeSync.storage.autoDeployVersion.props.active ? '1' : '0'}
         <button
           onClick={() =>
-            dispatch(modifyProp(['autoDeployVersion', 'active', false]))
+            dispatch(
+              modifyProp([
+                'autoDeployVersion',
+                'active',
+                !chromeSync.storage.autoDeployVersion.props.active,
+              ])
+            )
           }
         ></button>
         <Card>

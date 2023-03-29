@@ -24,7 +24,7 @@ const PageOptions = () => {
 
   const cards = Object.keys(ExtraChromeSyncData).map((key) => {
     const extraData = ExtraChromeSyncData[key];
-    const data = chromeSync[key];
+    const data = chromeSync.storage[key];
 
     return (
       <Card key={key}>
