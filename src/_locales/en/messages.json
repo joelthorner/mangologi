@@ -170,5 +170,11 @@
   "option_filter_DEVTOOLS": {
     "message": "Devtools",
     "description": "Options page filter label"
+  },
+  "searchPlaceholder": {
+    "message": "Enter your search"
+  },
+  "collectionsTitle": {
+    "message": "Collections"
   }
 }

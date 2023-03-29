@@ -258,3 +258,19 @@ main {
     }
   }
 }
+
+.lc-background-content {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+
+  .col {
+    width: 200px;
+    flex: 0 0 200px;
+  }
+  .col-content {
+    width: calc(100% - 200px - 2rem);
+    flex: 0 0 calc(100% - 200px - 2rem);
+  }
+}
