@@ -1,0 +1,91 @@
+{
+  "autoDeployVersion": {
+    "priority": 700,
+    "image": "options_background.jpg",
+    "tags": [
+      "logicommerce",
+      "logicommerce8x",
+      "logicommerceBeyond"
+    ],
+    "category": "LOGICOMMERCE"
+  },
+  "linkedGitIssues": {
+    "priority": 600,
+    "image": "options_background.jpg",
+    "tags": [
+      "logicommerce",
+      "logicommerce8x",
+      "logicommerceBeyond"
+    ],
+    "category": "LOGICOMMERCE"
+  },
+  "trackersCodeEditor": {
+    "priority": 900,
+    "image": "options_background.jpg",
+    "tags": [
+      "logicommerce",
+      "logicommerce8x",
+      "logicommerceBeyond"
+    ],
+    "category": "LOGICOMMERCE"
+  },
+  "lcBackground": {
+    "priority": 100,
+    "image": "options_background.jpg",
+    "tags": [
+      "logicommerce",
+      "logicommerce8x",
+      "logicommerceBeyond"
+    ],
+    "category": "LOGICOMMERCE"
+  },
+  "lcDeveloperBar": {
+    "priority": 200,
+    "image": "options_background.jpg",
+    "tags": [
+      "logicommerce",
+      "logicommerce8x",
+      "logicommerceBeyond"
+    ],
+    "category": "LOGICOMMERCE"
+  },
+  "sandboxSelectorBtns": {
+    "priority": 400,
+    "image": "options_background.jpg",
+    "tags": [
+      "logicommerce",
+      "logicommerce8x",
+      "logicommerceBeyond"
+    ],
+    "category": "LOGICOMMERCE"
+  },
+  "lcRichPages": {
+    "priority": 300,
+    "image": "options_background.jpg",
+    "tags": [
+      "logicommerce",
+      "logicommerce8x",
+      "logicommerceBeyond"
+    ],
+    "category": "LOGICOMMERCE"
+  },
+  "forcedForceView": {
+    "priority": 800,
+    "image": "options_background.jpg",
+    "tags": [
+      "production",
+      "fluid"
+    ],
+    "category": "DEVTOOLS"
+  },
+  "scrollToDump": {
+    "priority": 500,
+    "image": "options_background.jpg",
+    "tags": [
+      "development",
+      "fluid",
+      "php"
+    ],
+    "category": "DEVTOOLS"
+  }
+}
