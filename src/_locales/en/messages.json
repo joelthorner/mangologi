@@ -176,5 +176,14 @@
   },
   "collectionsTitle": {
     "message": "Collections"
+  },
+  "previewZoomImg": {
+    "message": "Preview"
+  },
+  "undo": {
+    "message": "Undo"
+  },
+  "currentSelected": {
+    "message": "Current selected"
   }
 }

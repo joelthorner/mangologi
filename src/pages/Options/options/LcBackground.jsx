@@ -6,6 +6,7 @@ import ExtraChromeSyncData from '../../../data/extraChromeSyncData.json';
 import OptionContentHeader from './common/OptionContentHeader';
 import ActiveSwitch from './common/ActiveSwitch';
 import Collections from './lcBackground/Collections';
+import SelectedBg from './lcBackground/SelectedBg';
 
 const KEY = 'lcBackground';
 
@@ -26,9 +27,12 @@ const LcBackground = () => {
               type="search"
               placeholder={chrome.i18n.getMessage(`searchPlaceholder`)}
             />
+            <SelectedBg keyData={KEY} data={data} />
             <Collections />
           </div>
-          <div className="col-content">cont</div>
+          <div className="col-content">
+            <div className="grid-background-items"></div>
+          </div>
         </div>
       </Content>
     </>
