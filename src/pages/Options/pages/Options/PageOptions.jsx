@@ -37,7 +37,7 @@ const PageOptions = () => {
           onSelect={(eventKey, event) => setFilter(eventKey)}
         >
           {FILTERS.map((filter) => (
-            <Nav.Item as="li">
+            <Nav.Item as="li" key={filter}>
               <Nav.Link eventKey={filter}>
                 {chrome.i18n.getMessage(`option_filter_${filter}`)}
               </Nav.Link>

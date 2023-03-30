@@ -127,11 +127,21 @@ main {
 }
 
 .content-header {
-  padding: 2rem;
+  padding: 2rem 4rem 2rem 2rem;
+  position: relative;
 
   .nav {
     margin-left: calc(var(--bs-nav-link-padding-x) * -1);
     margin-bottom: calc(var(--bs-nav-link-padding-y) * -1);
+  }
+
+  p {
+    margin-top: 1em;
+    margin-bottom: 0;
+    color: $gray-600;
+  }
+  .tags {
+    margin-top: 1em;
   }
 
   .h2 {
@@ -141,7 +151,7 @@ main {
     font-weight: 400;
 
     & + .nav {
-      margin-top: 0.75rem;
+      margin-top: 0.5rem;
     }
 
     // position: relative;
@@ -155,6 +165,12 @@ main {
     //   bottom: 0;
     //   right: 0;
     // }
+  }
+
+  .close-button-link {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
   }
 }
 
@@ -208,35 +224,127 @@ main {
       min-height: 1.25rem;
     }
   }
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: auto;
+}
 
-    .badge {
-      font-weight: normal;
-      font-size: 10px;
-      background-color: $gray-200 !important;
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: auto;
+
+  .badge {
+    font-weight: normal;
+    font-size: 12px;
+    background-color: $gray-200 !important;
+    color: $gray-900;
+    &.tag-logicommerce {
+      display: none;
+    }
+    &.tag-logicommerce8x {
+      background-color: #d9e61a !important;
       color: $gray-900;
-      &.tag-logicommerce {
-        display: none;
+    }
+    &.tag-logicommerceBeyond {
+      background-color: #003a3e !important;
+      color: #fff;
+    }
+    &.tag-fluid {
+      background-color: #5f8dd3 !important;
+      color: #fff;
+    }
+    &.tag-php {
+      background-color: #8993be !important;
+      color: #fff;
+    }
+  }
+}
+
+.lc-background-content {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+
+  .col {
+    width: 200px;
+    flex: 0 0 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem 0;
+  }
+  .col-content {
+    width: calc(100% - 200px - 2rem);
+    flex: 0 0 calc(100% - 200px - 2rem);
+  }
+
+  .selected-bg {
+    .title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .btn {
+        margin-right: calc(var(--bs-btn-padding-x) * -1);
       }
-      &.tag-logicommerce8x {
-        background-color: #d9e61a !important;
-        color: $gray-900;
+    }
+  }
+
+  .bg-item {
+    position: relative;
+    overflow: hidden;
+
+    .zoom-btn {
+      position: absolute;
+      top: 0.5rem;
+      left: 0.5rem;
+      padding: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 300ms ease;
+      background-color: rgba(#000, 0.25);
+      border-radius: 0.5rem;
+      z-index: 10;
+      color: #fff;
+      height: 2rem;
+      width: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: scale(0.5);
+    }
+
+    .bg {
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .author {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 0.5rem 0.75rem;
+      text-decoration: none;
+      color: #fff;
+      background-color: rgba(#000, 0.25);
+      font-size: small;
+      opacity: 0;
+      line-height: 1;
+      visibility: hidden;
+      transform: translateY(100%);
+      transition: all 350ms ease;
+    }
+
+    &:hover {
+      .zoom-btn {
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1);
       }
-      &.tag-logicommerceBeyond {
-        background-color: #003a3e !important;
-        color: #fff;
-      }
-      &.tag-fluid {
-        background-color: #5f8dd3 !important;
-        color: #fff;
-      }
-      &.tag-php {
-        background-color: #8993be !important;
-        color: #fff;
+      .author {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
       }
     }
   }
