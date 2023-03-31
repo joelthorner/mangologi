@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { modifyProp } from '../../../../utils/chromeSyncSlice';
+import { modifyProp } from '../../../../slices/chromeSyncSlice';
 
 import Card from 'react-bootstrap/Card';
 import Content from '../../components/Content';

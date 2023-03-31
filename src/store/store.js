@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import chromeSyncReducer from '../utils/chromeSyncSlice';
+import chromeSyncReducer from '../slices/chromeSyncSlice';
 
 export default configureStore({
   reducer: {
