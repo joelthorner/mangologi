@@ -6,7 +6,7 @@ import Badge from 'react-bootstrap/Badge';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import { useDispatch } from 'react-redux';
-import { modifyProp } from '../../../utils/chromeSyncSlice';
+import { modifyProp } from '../../../slices/chromeSyncSlice';
 
 const OptionCard = ({ keyData, data, extraData }) => {
   const dispatch = useDispatch();

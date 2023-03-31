@@ -4,7 +4,7 @@ import { HashRouter } from 'react-router-dom';
 import store from '../../store/store';
 import { Provider } from 'react-redux';
 import AppOptions from './AppOptions';
-import { getChromeSyncDataAsync } from '../../utils/chromeSyncSlice';
+import { getChromeSyncDataAsync } from '../../slices/chromeSyncSlice';
 
 import './index.scss';
 

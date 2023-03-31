@@ -1,7 +1,7 @@
 import React from 'react';
 import Form from 'react-bootstrap/Form';
 import { useDispatch } from 'react-redux';
-import { modifyProp } from '../../../../utils/chromeSyncSlice';
+import { modifyProp } from '../../../../slices/chromeSyncSlice';
 
 const ActiveSwitch = ({ keyData, data }) => {
   const dispatch = useDispatch();
