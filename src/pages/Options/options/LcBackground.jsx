@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Form from 'react-bootstrap/Form';
+import Spinner from 'react-bootstrap/Spinner';
 import Content from '../components/Content';
 import ExtraChromeSyncData from '../../../data/extraChromeSyncData.json';
 import { fetchRandomImages } from '../../../slices/unsplashSlice';
@@ -8,6 +9,7 @@ import OptionContentHeader from './common/OptionContentHeader';
 import ActiveSwitch from './common/ActiveSwitch';
 import Collections from './lcBackground/Collections';
 import SelectedBg from './lcBackground/SelectedBg';
+import Bg from './lcBackground/Bg';
 
 const KEY = 'lcBackground';
 
@@ -19,27 +21,10 @@ const LcBackground = () => {
   const { randomImages, loading } = useSelector((state) => state.unsplash);
 
   useEffect(() => {
-    dispatch(fetchRandomImages());
-  }, [dispatch]);
-
-  // const dispatch = useDispatch();
-  // const { loading, error, randomImages } = useSelector(randomImagesSelector);
-
-  // useEffect(() => {
-  //   dispatch(fetchRandomImages());
-  // }, [dispatch]);
-
-  // // render the items
-  // const renderItems = () => {
-  //   // loading state
-  //   if (loading) return <strong>Loading please wait...</strong>;
-
-  //   // error state
-  //   if (error) return <strong>Items not available at this time</strong>;
-
-  //   // regular data workflow
-  //   return randomImages.map((i) => console.log(i));
-  // };
+    if (randomImages.length === 0) {
+      dispatch(fetchRandomImages());
+    }
+  }, [randomImages, dispatch]);
 
   return (
     <>
@@ -58,14 +43,21 @@ const LcBackground = () => {
           </div>
           <div className="col-content">
             <div className="grid-background-items">
-              {!loading ? console.log(randomImages) : <div>Loading...</div>}
-              {/* <button
-                onClick={() => {
-                  // dispatch(getRandomUnsplash());
-                }}
-              >
-                ljkahsdkjlashdhas
-              </button> */}
+              {!loading ? (
+                randomImages.map((image) => (
+                  <Bg
+                    key={image.id}
+                    className="bg-item-selected-main"
+                    bgUrl={image.urls.small}
+                    userLink={image.user.links.html}
+                    userName={image.user.name}
+                  />
+                ))
+              ) : (
+                <div className="spinner-border-wrap">
+                  <Spinner animation="border" variant="primary" />
+                </div>
+              )}
             </div>
           </div>
         </div>

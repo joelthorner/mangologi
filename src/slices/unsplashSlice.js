@@ -44,7 +44,9 @@ const { randomImagesSuccess, startLoading, hasError } = unsplashSlice.actions;
 export const fetchRandomImages = (perPage = 20) => async dispatch => {
   dispatch(startLoading());
   try {
-    await unsplashApi.get(`/photos/random?query=wallpaper&count=${perPage}&orientation=landscape&client_id=${secrets.UNSPLASH_ACCESS_KEY}`)
+    console.log('ajax');
+    await unsplashApi
+      .get(`/photos/random?query=wallpaper&count=${perPage}&orientation=landscape&client_id=${secrets.UNSPLASH_ACCESS_KEY}`)
       .then((response) => dispatch(randomImagesSuccess(response.data)))
   }
   catch (e) {
