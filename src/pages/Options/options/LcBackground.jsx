@@ -30,10 +30,9 @@ const LcBackground = () => {
     <>
       <OptionContentHeader keyData={KEY} extraData={extraData} />
       <Content>
-        <ActiveSwitch keyData={KEY} data={data} />
-
         <div className="lc-background-content">
           <div className="col">
+            <ActiveSwitch keyData={KEY} data={data} />
             <Form.Control
               type="search"
               placeholder={chrome.i18n.getMessage(`searchPlaceholder`)}
@@ -51,6 +50,7 @@ const LcBackground = () => {
                     bgUrl={image.urls.small}
                     userLink={image.user.links.html}
                     userName={image.user.name}
+                    previewSrc={image.urls.regular}
                   />
                 ))
               ) : (

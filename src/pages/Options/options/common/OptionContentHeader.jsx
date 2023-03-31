@@ -8,7 +8,10 @@ import Tooltip from 'react-bootstrap/Tooltip';
 
 const OptionContentHeader = ({ keyData, extraData }) => {
   return (
-    <ContentHeader title={chrome.i18n.getMessage(`${keyData}_language_name`)}>
+    <ContentHeader
+      title={chrome.i18n.getMessage(`${keyData}_language_name`)}
+      className="option-content"
+    >
       <p>{chrome.i18n.getMessage(`${keyData}_language_description`)}</p>
       <div className="tags">
         {extraData.tags.map((tag) => (

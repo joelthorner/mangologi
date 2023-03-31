@@ -6,7 +6,7 @@ import Tooltip from 'react-bootstrap/Tooltip';
 import Button from 'react-bootstrap/Button';
 import PreviewModal from './PreviewModal';
 
-const Bg = ({ className, bgUrl, userLink, userName }) => {
+const Bg = ({ className, bgUrl, userLink, userName, previewSrc }) => {
   const [modalShow, setModalShow] = useState(false);
   const styles = {
     backgroundImage: `url(${bgUrl})`,
@@ -45,7 +45,13 @@ const Bg = ({ className, bgUrl, userLink, userName }) => {
       </OverlayTrigger>
 
       <Ratio aspectRatio="16x9">
-        <div className="bg" style={styles}></div>
+        <button
+          onClick={() => {
+            alert();
+          }}
+          className="bg"
+          style={styles}
+        ></button>
       </Ratio>
 
       <a
@@ -56,7 +62,13 @@ const Bg = ({ className, bgUrl, userLink, userName }) => {
       >
         {userName}
       </a>
-      <PreviewModal show={modalShow} onHide={() => setModalShow(false)} />
+      <PreviewModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+        imgSrc={previewSrc}
+        userName={userName}
+        userLink={userLink}
+      />
     </div>
   );
 };

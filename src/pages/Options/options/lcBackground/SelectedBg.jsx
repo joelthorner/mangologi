@@ -25,6 +25,7 @@ const SelectedBg = ({ keyData }) => {
         bgUrl={chromeSync.storage[keyData].props.thumb}
         userLink={chromeSync.storage[keyData].props.userLink}
         userName={chromeSync.storage[keyData].props.userName}
+        previewSrc={chromeSync.storage[keyData].props.regular}
       />
     </div>
   );

@@ -130,6 +130,10 @@ main {
   padding: 2rem 4rem 2rem 2rem;
   position: relative;
 
+  &.option-content {
+    background-color: #edeff4;
+  }
+
   .nav {
     margin-left: calc(var(--bs-nav-link-padding-x) * -1);
     margin-bottom: calc(var(--bs-nav-link-padding-y) * -1);
@@ -216,7 +220,6 @@ main {
     font-size: 14px;
     display: flex;
     justify-content: space-between;
-    // border-top: 0;
     border-color: rgba(0, 0, 0, 0.05);
 
     .form-check {
@@ -260,7 +263,7 @@ main {
 }
 
 .lc-background-content {
-  margin-top: 4rem;
+  margin-top: 3rem;
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
@@ -317,6 +320,8 @@ main {
       background-position: center;
       background-size: cover;
       background-repeat: no-repeat;
+      border: 0;
+      padding: 0;
     }
 
     .author {
@@ -362,6 +367,26 @@ main {
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+    }
+  }
+}
+
+.preview-modal {
+  .modal-body {
+    padding: 0;
+    a {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 1.25rem;
+      color: #fff;
+      font-size: 12px;
+      z-index: 1;
+      text-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+    }
+    img {
+      width: 100%;
+      display: block;
     }
   }
 }
