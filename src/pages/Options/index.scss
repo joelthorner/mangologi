@@ -360,7 +360,13 @@ main {
     grid-template-columns: repeat(4, 1fr);
     gap: 0.25rem;
     position: relative;
-    height: 100%;
+    &.loading {
+      height: 100%;
+    }
+    &:not(.loading) .placeholder {
+      opacity: 0;
+      visibility: hidden;
+    }
 
     .spinner-border-wrap {
       position: absolute;

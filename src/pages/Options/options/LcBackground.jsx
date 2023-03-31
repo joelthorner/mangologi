@@ -2,29 +2,110 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Form from 'react-bootstrap/Form';
 import Spinner from 'react-bootstrap/Spinner';
+import Placeholder from 'react-bootstrap/Placeholder';
+import { PaginationControl } from 'react-bootstrap-pagination-control';
 import Content from '../components/Content';
-import ExtraChromeSyncData from '../../../data/extraChromeSyncData.json';
-import { fetchRandomImages } from '../../../slices/unsplashSlice';
 import OptionContentHeader from './common/OptionContentHeader';
 import ActiveSwitch from './common/ActiveSwitch';
 import Collections from './lcBackground/Collections';
 import SelectedBg from './lcBackground/SelectedBg';
 import Bg from './lcBackground/Bg';
+import ExtraChromeSyncData from '../../../data/extraChromeSyncData.json';
+import {
+  fetchRandomImages,
+  fetchCollection,
+  setCurrentPage,
+} from '../../../slices/unsplashSlice';
 
 const KEY = 'lcBackground';
+
+const getImagesSource = (images, randomImages) => {
+  return images.length ? images : randomImages;
+};
 
 const LcBackground = () => {
   const dispatch = useDispatch();
   const chromeSync = useSelector((state) => state.chromeSync);
   const extraData = ExtraChromeSyncData[KEY];
   const data = chromeSync.storage[KEY];
-  const { randomImages, loading } = useSelector((state) => state.unsplash);
+
+  const {
+    images,
+    randomImages,
+    loading,
+    selectedCollection,
+    currentPage,
+    perPage,
+    totalRows,
+  } = useSelector((state) => state.unsplash);
 
   useEffect(() => {
     if (randomImages.length === 0) {
       dispatch(fetchRandomImages());
     }
   }, [randomImages, dispatch]);
+
+  useEffect(() => {
+    if (selectedCollection !== 0) {
+      dispatch(fetchCollection(selectedCollection, currentPage));
+    }
+  }, [currentPage, selectedCollection, dispatch]);
+
+  const gridBgs = () => {
+    if (loading)
+      return (
+        <>
+          {Array.from(Array(perPage).keys()).map((pl, index) => (
+            <div className="bg-item">
+              <Placeholder
+                className="ratio ratio-16x9"
+                key={'bg-pl-empty-' + index}
+                as="div"
+                animation="glow"
+              >
+                <Placeholder xs={12} />
+              </Placeholder>
+            </div>
+          ))}
+        </>
+      );
+
+    const imagesArr = getImagesSource(images, randomImages);
+    let placeholders = 0;
+    if (imagesArr.length < perPage) {
+      placeholders = perPage - imagesArr.length;
+    }
+    const items = imagesArr.map((image) => (
+      <Bg
+        key={image.id}
+        bgUrl={image.urls.small}
+        userLink={image.user.links.html}
+        userName={image.user.name}
+        previewSrc={image.urls.regular}
+      />
+    ));
+
+    const placeholderItems = Array.from(Array(placeholders).keys()).map(
+      (pl, index) => (
+        <div className="bg-item">
+          <Placeholder
+            className="ratio ratio-16x9"
+            key={'bg-pl-' + index}
+            as="div"
+            animation="glow"
+          >
+            <Placeholder xs={12} />
+          </Placeholder>
+        </div>
+      )
+    );
+    return (
+      <>
+        {items}
+        {placeholderItems}
+      </>
+    );
+  };
 
   return (
     <>
@@ -41,24 +122,21 @@ const LcBackground = () => {
             <Collections />
           </div>
           <div className="col-content">
-            <div className="grid-background-items">
-              {!loading ? (
-                randomImages.map((image) => (
-                  <Bg
-                    key={image.id}
-                    className="bg-item-selected-main"
-                    bgUrl={image.urls.small}
-                    userLink={image.user.links.html}
-                    userName={image.user.name}
-                    previewSrc={image.urls.regular}
-                  />
-                ))
-              ) : (
-                <div className="spinner-border-wrap">
-                  <Spinner animation="border" variant="primary" />
-                </div>
-              )}
+            <div
+              className={'grid-background-items' + (loading ? ' loading' : '')}
+            >
+              {gridBgs()}
             </div>
+            <PaginationControl
+              page={currentPage}
+              between={4}
+              total={totalRows}
+              limit={perPage}
+              changePage={(page) => {
+                dispatch(setCurrentPage(page));
+              }}
+              ellipsis={1}
+            />
           </div>
         </div>
       </Content>
