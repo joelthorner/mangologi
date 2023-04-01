@@ -1,7 +1,11 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
+import { useDispatch } from 'react-redux';
+import { setSelectedCollection } from '../../../../slices/unsplashSlice';
 
 const Collections = () => {
+  const dispatch = useDispatch();
+
   const collections = [
     {
       id: 223661,
@@ -35,7 +39,12 @@ const Collections = () => {
       <ul className="list-unstyled">
         {collections.map((collection) => (
           <li key={collection.id}>
-            <Button variant="link" onClick={() => console.log('TODO')}>
+            <Button
+              variant="link"
+              onClick={() => {
+                dispatch(setSelectedCollection(collection.id));
+              }}
+            >
               {collection.name}
             </Button>
           </li>

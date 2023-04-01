@@ -19,8 +19,6 @@ const unsplashSlice = createSlice({
     totalRows: 0,
     mode: null,
     selectedCollection: 0,
-    imageZoom: "",
-    imageZoomAuthor: "",
   },
   reducers: {
     startLoading: state => {
@@ -34,20 +32,63 @@ const unsplashSlice = createSlice({
       state.randomImages = action.payload;
       state.loading = false;
     },
+    imagesSuccess: (state, action) => {
+      console.log(action.payload);
+      state.images = action.payload;
+      state.loading = false;
+    },
+    collectionSuccess: (state, action) => {
+      state.images = action.payload.data;
+      state.totalRows = action.payload.totalRows;
+      state.loading = false;
+    },
+    setSelectedCollection: (state, action) => {
+      state.selectedCollection = action.payload;
+      state.currentPage = 1;
+    },
+    setCurrentPage: (state, action) => {
+      state.currentPage = action.payload;
+    },
   },
 });
 
 export default unsplashSlice.reducer
 
-const { randomImagesSuccess, startLoading, hasError } = unsplashSlice.actions;
+export const {
+  randomImagesSuccess,
+  imagesSuccess,
+  collectionSuccess,
+  startLoading,
+  hasError,
+  setSelectedCollection,
+  setCurrentPage,
+} = unsplashSlice.actions;
 
 export const fetchRandomImages = (perPage = 20) => async dispatch => {
   dispatch(startLoading());
   try {
-    console.log('ajax');
+    console.log('fetchRandomImages');
     await unsplashApi
       .get(`/photos/random?query=wallpaper&count=${perPage}&orientation=landscape&client_id=${secrets.UNSPLASH_ACCESS_KEY}`)
       .then((response) => dispatch(randomImagesSuccess(response.data)))
+  }
+  catch (e) {
+    dispatch(hasError(e.message))
+  }
+}
+
+export const fetchCollection = (collectionId, currentPage, perPage = 20) => async dispatch => {
+  dispatch(startLoading());
+  try {
+    console.log('fetchCollection');
+    await unsplashApi
+      .get(`/collections/${collectionId}/photos?id=${collectionId}&page=${currentPage}&per_page=${perPage}&client_id=${secrets.UNSPLASH_ACCESS_KEY}`)
+      .then((response) => {
+        return dispatch(collectionSuccess({
+          data: response.data,
+          totalRows: parseInt(response.headers["x-total"]),
+        }))
+      })
   }
   catch (e) {
     dispatch(hasError(e.message))
