@@ -2,6 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 import { unsplashApi } from '../api/unsplashApi';
 import secrets from 'secrets';
 
+const MODE_COLLECTION = "collection";
+const MODE_SEARCH = "search";
+
 const unsplashSlice = createSlice({
   name: "unsplash",
   initialState: {
@@ -47,7 +50,6 @@ const unsplashSlice = createSlice({
     },
 
     imagesSuccess: (state, action) => {
-      console.log(action.payload);
       state.images = action.payload;
       state.loading = false;
     },
@@ -56,6 +58,14 @@ const unsplashSlice = createSlice({
       state.images = action.payload.data;
       state.totalRows = action.payload.totalRows;
       state.loading = false;
+      state.mode = MODE_COLLECTION;
+    },
+
+    searchSuccess: (state, action) => {
+      state.images = action.payload.data;
+      state.totalRows = action.payload.totalRows;
+      state.loading = false;
+      state.mode = MODE_SEARCH;
     },
 
     setSelectedCollection: (state, action) => {
@@ -64,6 +74,10 @@ const unsplashSlice = createSlice({
     },
 
     setCurrentPage: (state, action) => {
+      state.currentPage = action.payload;
+    },
+
+    setSearchCriteria: (state, action) => {
       state.currentPage = action.payload;
     },
   },
@@ -75,8 +89,10 @@ export const {
   randomImagesSuccess,
   imagesSuccess,
   collectionSuccess,
+  searchSuccess,
   startLoading,
   hasError,
+  setSearchCriteria,
   setSelectedCollection,
   setCurrentPage,
   setBackImage,
@@ -106,6 +122,27 @@ export const fetchCollection = (collectionId, currentPage, perPage = 20) => asyn
         return dispatch(collectionSuccess({
           data: response.data,
           totalRows: parseInt(response.headers["x-total"]),
+        }))
+      })
+  }
+  catch (e) {
+    dispatch(hasError(e.message))
+  }
+}
+
+export const fetchSearch = (searchCriteria, currentPage, perPage = 20) => async dispatch => {
+  dispatch(startLoading());
+  try {
+    console.log('fetchSearch');
+    const _searchCriteria = encodeURI(searchCriteria.trim());
+    dispatch(setSearchCriteria(_searchCriteria));
+
+    await unsplashApi
+      .get(`/search/photos?query=${_searchCriteria}&page=${currentPage}&per_page=${perPage}&orientation=landscape&client_id=${secrets.UNSPLASH_ACCESS_KEY}`)
+      .then((response) => {
+        return dispatch(searchSuccess({
+          data: response.data.results,
+          totalRows: response.data.total,
         }))
       })
   }

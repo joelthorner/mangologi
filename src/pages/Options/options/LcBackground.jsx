@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Form from 'react-bootstrap/Form';
 import Placeholder from 'react-bootstrap/Placeholder';
@@ -13,8 +13,10 @@ import ExtraChromeSyncData from '../../../data/extraChromeSyncData.json';
 import {
   fetchRandomImages,
   fetchCollection,
+  fetchSearch,
   setCurrentPage,
 } from '../../../slices/unsplashSlice';
+import debounce from 'lodash/debounce';
 
 const KEY = 'lcBackground';
 
@@ -25,6 +27,7 @@ const getImagesSource = (images, randomImages) => {
 const LcBackground = () => {
   const dispatch = useDispatch();
   const chromeSync = useSelector((state) => state.chromeSync);
+  const [isValidSearch, setIsValidSearch] = useState(null);
   const extraData = ExtraChromeSyncData[KEY];
   const data = chromeSync.storage[KEY];
 
@@ -35,19 +38,15 @@ const LcBackground = () => {
     currentPage,
     perPage,
     totalRows,
+    mode,
+    searchCriteria,
+    error,
   } = useSelector((state) => state.unsplash);
 
-  useEffect(() => {
-    if (randomImages.length === 0) {
-      dispatch(fetchRandomImages());
-    }
-  }, [randomImages, dispatch]);
-
-  useEffect(() => {
-    if (selectedCollection !== 0) {
-      dispatch(fetchCollection(selectedCollection, currentPage));
-    }
-  }, [currentPage, selectedCollection, dispatch]);
+  const onChange = (event) => {
+    dispatch(fetchSearch(event.target.value, currentPage));
+  };
+  const debouncedOnChange = debounce(onChange, 500);
 
   const gridBgs = () => {
     const imagesArr = getImagesSource(images, randomImages);
@@ -85,6 +84,22 @@ const LcBackground = () => {
     );
   };
 
+  // useEffect(() => {
+  //   let isValid = null;
+  //   if (mode !== 'search') isValid = null;
+  //   else isValid = searchCriteria.length > 0 && images.length > 0;
+  //   setIsValidSearch(isValid);
+  // }, [images, mode, searchCriteria]);
+
+  useEffect(() => {
+    if (randomImages.length === 0) dispatch(fetchRandomImages());
+  }, [randomImages, dispatch]);
+
+  useEffect(() => {
+    if (selectedCollection !== 0)
+      dispatch(fetchCollection(selectedCollection, currentPage));
+  }, [currentPage, selectedCollection, dispatch]);
+
   return (
     <>
       <OptionContentHeader keyData={KEY} extraData={extraData} />
@@ -95,12 +110,24 @@ const LcBackground = () => {
             <Form.Control
               type="search"
               placeholder={chrome.i18n.getMessage(`searchPlaceholder`)}
+              onChange={debouncedOnChange}
+              isValid={
+                mode === 'search' &&
+                searchCriteria.length > 0 &&
+                images.length > 0
+              }
             />
             <SelectedBg data={data} />
             <Collections />
           </div>
           <div className="col-content">
-            <div className="grid-background-items">{gridBgs()}</div>
+            <div className="grid-background-items">
+              {!error ? (
+                gridBgs()
+              ) : (
+                <div className="unsplash-error-api">{error}</div>
+              )}
+            </div>
             <PaginationControl
               page={currentPage}
               between={4}

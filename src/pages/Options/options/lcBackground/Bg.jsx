@@ -23,6 +23,32 @@ const Bg = (props) => {
   const styles = {
     backgroundImage: `url(${props.bgUrl})`,
   };
+  const selectBg = (event) => {
+    dispatch(
+      modifyProps([
+        ['lcBackground', 'image', props.unsplashData.urls.full],
+        ['lcBackground', 'thumb', props.unsplashData.urls.small],
+        ['lcBackground', 'regular', props.unsplashData.urls.regular],
+        ['lcBackground', 'userName', props.unsplashData.user.name],
+        ['lcBackground', 'userLink', props.unsplashData.user.links.html],
+        [
+          'lcBackground',
+          'downloadLocation',
+          `${props.unsplashData.links.download_location}?client_id=${secrets.UNSPLASH_ACCESS_KEY}`,
+        ],
+      ])
+    );
+    dispatch(setShowBackImage(true));
+    dispatch(
+      setBackImage({
+        image: chromeSync.storage.lcBackground.props.image,
+        thumb: chromeSync.storage.lcBackground.props.thumb,
+        regular: chromeSync.storage.lcBackground.props.regular,
+        userName: chromeSync.storage.lcBackground.props.userName,
+        userLink: chromeSync.storage.lcBackground.props.userLink,
+      })
+    );
+  };
 
   return (
     <div className={'bg-item' + (props.className ? ' ' + props.className : '')}>
@@ -47,34 +73,7 @@ const Bg = (props) => {
         >
           <button
             onClick={() => {
-              dispatch(
-                modifyProps([
-                  ['lcBackground', 'image', props.unsplashData.urls.full],
-                  ['lcBackground', 'thumb', props.unsplashData.urls.small],
-                  ['lcBackground', 'regular', props.unsplashData.urls.regular],
-                  ['lcBackground', 'userName', props.unsplashData.user.name],
-                  [
-                    'lcBackground',
-                    'userLink',
-                    props.unsplashData.user.links.html,
-                  ],
-                  [
-                    'lcBackground',
-                    'downloadLocation',
-                    `${props.unsplashData.links.download_location}?client_id=${secrets.UNSPLASH_ACCESS_KEY}`,
-                  ],
-                ])
-              );
-              dispatch(setShowBackImage(true));
-              dispatch(
-                setBackImage({
-                  image: chromeSync.storage.lcBackground.props.image,
-                  thumb: chromeSync.storage.lcBackground.props.thumb,
-                  regular: chromeSync.storage.lcBackground.props.regular,
-                  userName: chromeSync.storage.lcBackground.props.userName,
-                  userLink: chromeSync.storage.lcBackground.props.userLink,
-                })
-              );
+              selectBg();
             }}
             className="bg"
             style={styles}
