@@ -12,40 +12,57 @@ const unsplashSlice = createSlice({
     images: [],
 
     searchCriteria: '',
+
     backImage: {},
     showBackImage: false,
+
     perPage: 20,
     currentPage: 1,
     totalRows: 0,
+
     mode: null,
     selectedCollection: 0,
   },
   reducers: {
+    setBackImage: (state, action) => {
+      state.backImage = action.payload;
+    },
+
+    setShowBackImage: (state, action) => {
+      state.showBackImage = action.payload;
+    },
+
     startLoading: state => {
       state.loading = true;
     },
+
     hasError: (state, action) => {
       state.error = action.payload;
       state.loading = false;
     },
+
     randomImagesSuccess: (state, action) => {
       state.randomImages = action.payload;
       state.loading = false;
     },
+
     imagesSuccess: (state, action) => {
       console.log(action.payload);
       state.images = action.payload;
       state.loading = false;
     },
+
     collectionSuccess: (state, action) => {
       state.images = action.payload.data;
       state.totalRows = action.payload.totalRows;
       state.loading = false;
     },
+
     setSelectedCollection: (state, action) => {
       state.selectedCollection = action.payload;
       state.currentPage = 1;
     },
+
     setCurrentPage: (state, action) => {
       state.currentPage = action.payload;
     },
@@ -62,6 +79,8 @@ export const {
   hasError,
   setSelectedCollection,
   setCurrentPage,
+  setBackImage,
+  setShowBackImage,
 } = unsplashSlice.actions;
 
 export const fetchRandomImages = (perPage = 20) => async dispatch => {

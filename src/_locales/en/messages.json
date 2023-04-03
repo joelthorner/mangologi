@@ -185,5 +185,8 @@
   },
   "currentSelected": {
     "message": "Current selected"
+  },
+  "selectBgImage": {
+    "message": "Click to select"
   }
 }

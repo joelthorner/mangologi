@@ -268,13 +268,16 @@ main {
   flex-wrap: wrap;
   gap: 2rem;
 
+  .bg-item-selected-main {
+    margin-top: 0.5rem;
+  }
+
   .col {
     width: 20%;
     flex: 0 0 20%;
     display: flex;
     flex-direction: column;
     gap: 2rem 0;
-    // justify-content: space-between;
   }
   .col-content {
     width: calc(100% - 20% - 2rem);
@@ -296,6 +299,7 @@ main {
       justify-content: space-between;
       .btn {
         margin-right: calc(var(--bs-btn-padding-x) * -1);
+        padding-block: 0;
       }
     }
   }

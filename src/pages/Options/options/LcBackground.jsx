@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Form from 'react-bootstrap/Form';
-// import Spinner from 'react-bootstrap/Spinner';
 import Placeholder from 'react-bootstrap/Placeholder';
 import { PaginationControl } from 'react-bootstrap-pagination-control';
 import Content from '../components/Content';
@@ -32,7 +31,6 @@ const LcBackground = () => {
   const {
     images,
     randomImages,
-    loading,
     selectedCollection,
     currentPage,
     perPage,
@@ -60,6 +58,7 @@ const LcBackground = () => {
         userLink={image.user.links.html}
         userName={image.user.name}
         previewSrc={image.urls.regular}
+        unsplashData={image}
       />
     ));
 
@@ -70,13 +69,8 @@ const LcBackground = () => {
 
     const placeholderItems = Array.from(Array(placeholders).keys()).map(
       (pl, index) => (
-        <div className="bg-item">
-          <Placeholder
-            className="ratio ratio-16x9"
-            key={'bg-pl-' + index}
-            as="div"
-            animation="glow"
-          >
+        <div className="bg-item" key={'bg-pl-' + index}>
+          <Placeholder className="ratio ratio-16x9" as="div" animation="glow">
             <Placeholder xs={12} />
           </Placeholder>
         </div>
@@ -102,7 +96,7 @@ const LcBackground = () => {
               type="search"
               placeholder={chrome.i18n.getMessage(`searchPlaceholder`)}
             />
-            <SelectedBg keyData={KEY} data={data} />
+            <SelectedBg data={data} />
             <Collections />
           </div>
           <div className="col-content">

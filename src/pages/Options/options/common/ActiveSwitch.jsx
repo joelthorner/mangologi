@@ -5,6 +5,7 @@ import { modifyProp } from '../../../../slices/chromeSyncSlice';
 
 const ActiveSwitch = ({ keyData, data }) => {
   const dispatch = useDispatch();
+
   return (
     <Form.Check
       type="switch"
