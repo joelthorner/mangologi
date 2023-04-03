@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Form from 'react-bootstrap/Form';
-import Spinner from 'react-bootstrap/Spinner';
+// import Spinner from 'react-bootstrap/Spinner';
 import Placeholder from 'react-bootstrap/Placeholder';
 import { PaginationControl } from 'react-bootstrap-pagination-control';
 import Content from '../components/Content';
@@ -52,29 +52,7 @@ const LcBackground = () => {
   }, [currentPage, selectedCollection, dispatch]);
 
   const gridBgs = () => {
-    if (loading)
-      return (
-        <>
-          {Array.from(Array(perPage).keys()).map((pl, index) => (
-            <div className="bg-item">
-              <Placeholder
-                className="ratio ratio-16x9"
-                key={'bg-pl-empty-' + index}
-                as="div"
-                animation="glow"
-              >
-                <Placeholder xs={12} />
-              </Placeholder>
-            </div>
-          ))}
-        </>
-      );
-
     const imagesArr = getImagesSource(images, randomImages);
-    let placeholders = 0;
-    if (imagesArr.length < perPage) {
-      placeholders = perPage - imagesArr.length;
-    }
     const items = imagesArr.map((image) => (
       <Bg
         key={image.id}
@@ -84,6 +62,11 @@ const LcBackground = () => {
         previewSrc={image.urls.regular}
       />
     ));
+
+    let placeholders = 0;
+    if (imagesArr.length < perPage) {
+      placeholders = perPage - imagesArr.length;
+    }
 
     const placeholderItems = Array.from(Array(placeholders).keys()).map(
       (pl, index) => (
@@ -99,6 +82,7 @@ const LcBackground = () => {
         </div>
       )
     );
+
     return (
       <>
         {items}
@@ -122,11 +106,7 @@ const LcBackground = () => {
             <Collections />
           </div>
           <div className="col-content">
-            <div
-              className={'grid-background-items' + (loading ? ' loading' : '')}
-            >
-              {gridBgs()}
-            </div>
+            <div className="grid-background-items">{gridBgs()}</div>
             <PaginationControl
               page={currentPage}
               between={4}
