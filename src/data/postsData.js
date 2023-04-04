@@ -4,17 +4,20 @@ export const posts = [
     name: 'TLmanaGer 3.0.0 is out!',
     shortContent: 'Verge santa, ha passat molt temps desde les últimes updates, que nomes eren basicament petits...',
     content: `
-    Verge santa, ha passat molt temps desde les últimes updates, que nomes eren basicament petits bug fixes.<br><br>
-    Molt resumit, nova extensió al 100%.<br>
-    S'ha fet tot nou, sense cap plugin, js vanilla. El popup i la página d'opcions esta feta en Bootstrap 5 i vue.js.<br>
-    Hi han multitut de features i canvis, i també se n'han eliminat d'altres.<br>
-    Per veure una llista mes completa de tots els canvis aconsello mirar el changelog, on ja s'ha intentat resumir al maxim i deixar
-    la jerga tècnica.<br> Tambè a partir d'ara totes les noves features s'anunciaràn adicionalment aquí al blog.<br><br>
-    Salut!
+Verge santa, ha passat molt temps desde les últimes updates, que nomes eren basicament petits bug fixes.
+
+Molt resumit, nova extensió al 100%.
+S'ha fet tot nou, sense cap plugin, js vanilla. El popup i la página d'opcions esta feta en Bootstrap 5 i vue.js.
+Hi han multitut de features i canvis, i també se n'han eliminat d'altres.
+Per veure una llista mes completa de tots els canvis aconsello mirar el changelog, on ja s'ha intentat resumir al maxim i deixar
+la jerga tècnica.
+Tambè a partir d'ara totes les noves features s'anunciaràn adicionalment aquí al blog.
+
+Salut!
     `,
     date: '2021-01-30',
     image: 'post_new3x.png',
-    tags: ['releases', 'v3'],
+    tags: ['RELEASES', 'V3'],
   },
   {
     id: 7,
@@ -28,7 +31,7 @@ export const posts = [
     El sistema busca en tots els llocs on podem veure commits, les branques o les publicacións i els seus històrics.`,
     date: '2020-12-22',
     image: 'post_ticketRefLinks.png',
-    tags: ['features', 'v3'],
+    tags: ['FEATURES', 'V3'],
   },
   // {
   //   id: 6,
@@ -36,7 +39,7 @@ export const posts = [
   //   content: `El primer dels temes per al nou Logicommerce ja està disponible. Es pot canviar a la página d\'opcions/Logicommerce`,
   //   date: '2020-08-12',
   //   image: 'post_theme.png',
-  //   tags: ['features', 'v3'],
+  //   tags: ['FEATURES', 'V3'],
   // },
   {
     id: 5,
@@ -51,7 +54,7 @@ export const posts = [
     `,
     date: '2020-08-12',
     image: 'post_arch.png',
-    tags: ['features', 'v3'],
+    tags: ['FEATURES', 'V3'],
   },
   {
     id: 4,
@@ -71,9 +74,9 @@ export const posts = [
         <li>Auto scroll al primer dump de fluid</li>
         </ul>
         `,
-    date: '2019-15-04',
+    date: '2019-04-15',
     image: 'post_ver.png',
-    tags: ['features', 'releases', 'v2'],
+    tags: ['FEATURES', 'RELEASES', 'V2'],
   },
   {
     id: 3,
@@ -90,9 +93,9 @@ export const posts = [
     <li>Popup de confirmació al enviar un missatge desde Zendesk</li>
     </ul>
     `,
-    date: '2019-17-02',
+    date: '2019-02-17',
     image: 'post_optsred.png',
-    tags: ['features', 'releases', 'v2'],
+    tags: ['FEATURES', 'RELEASES', 'V2'],
   },
   {
     id: 2,
@@ -105,9 +108,9 @@ export const posts = [
     es farà login al botó clicat.<br><br>
       Això es tot, fin del comunicado.
       `,
-    date: '2019-08-02',
+    date: '2019-02-08',
     image: 'post_opsas.png',
-    tags: ['features', 'v2'],
+    tags: ['FEATURES', 'V2'],
   },
   {
     id: 1,
@@ -128,6 +131,6 @@ export const posts = [
     `,
     date: '2018-08-26',
     image: 'post_new2x.png',
-    tags: ['releases', 'v2'],
+    tags: ['RELEASES', 'V2'],
   },
 ];

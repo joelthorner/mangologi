@@ -4,6 +4,8 @@ import Card from 'react-bootstrap/Card';
 import ReactTimeAgo from 'react-time-ago';
 
 const PostCard = ({ post }) => {
+  const date = new Date(post.date);
+
   return (
     <Card>
       <Link to={`/post/${post.id}`}>
@@ -17,8 +19,11 @@ const PostCard = ({ post }) => {
       </Card.Body>
       <Card.Footer>
         <div className="date">
-          <ReactTimeAgo date={new Date(post.date)} locale="en-US" />
+          <ReactTimeAgo date={date} locale="en-US" />
         </div>
+        <Link to={`/post/${post.id}`}>
+          {chrome.i18n.getMessage(`readMorePost`)}
+        </Link>
       </Card.Footer>
     </Card>
   );

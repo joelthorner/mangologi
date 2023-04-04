@@ -126,6 +126,12 @@ main {
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
 
+@media (min-width: 1290px) and (max-width: 1629px) {
+  .grid-home .card:nth-child(4) {
+    display: none;
+  }
+}
+
 .content-header {
   padding: 2rem 4rem 2rem 2rem;
   position: relative;
@@ -521,5 +527,19 @@ main {
   .badge.bg-Home {
     background-color: rgb(139, 195, 74);
     color: #fff !important;
+  }
+}
+
+.blog-post-content {
+  display: flex;
+  gap: 2rem;
+
+  > img {
+    width: 455px;
+    flex: 0 0 455px;
+  }
+  .content-post {
+    width: calc(100% - 455px - 1rem);
+    flex: 0 0 calc(100% - 455px - 1rem);
   }
 }
