@@ -535,11 +535,28 @@ main {
   gap: 2rem;
 
   > img {
-    width: 455px;
-    flex: 0 0 455px;
+    height: 100%;
+  }
+  time {
+    text-align: right;
+    margin-top: 0.75rem;
+    display: block;
+    color: #6e7881;
   }
   .content-post {
-    width: calc(100% - 455px - 1rem);
-    flex: 0 0 calc(100% - 455px - 1rem);
+    // markdown
+    h2 {
+      font-size: 20px;
+    }
+    h3 {
+      font-size: 18px;
+    }
+    h4 {
+      font-size: 16px;
+    }
+    h5 {
+      font-size: 16px;
+      font-weight: normal;
+    }
   }
 }

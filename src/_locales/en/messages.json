@@ -227,5 +227,8 @@
   },
   "blog_filter_V2": {
     "message": "v2"
+  },
+  "blog_filter_V4": {
+    "message": "v4"
   }
 }

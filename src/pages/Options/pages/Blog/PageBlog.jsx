@@ -7,7 +7,7 @@ import { Nav } from 'react-bootstrap';
 
 const FILTER_ALL = 'ALL';
 
-const FILTERS = [FILTER_ALL, 'FEATURES', 'RELEASES', 'V2', 'V3', 'V4'];
+const FILTERS = [FILTER_ALL, 'FEATURES', 'RELEASES', 'V4', 'V3', 'V2'];
 
 const PageBlog = () => {
   const [filter, setFilter] = useState(FILTER_ALL);

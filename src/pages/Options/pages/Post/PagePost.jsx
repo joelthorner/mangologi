@@ -6,6 +6,7 @@ import Content from '../../components/Content';
 import ReactMarkdown from 'react-markdown';
 import { CloseButton } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import ReactTimeAgo from 'react-time-ago';
 
 const PagePost = () => {
   const { postId } = useParams();
@@ -23,6 +24,8 @@ const PagePost = () => {
 
   if (postData === null) return 'Error';
 
+  const date = new Date(postData.date);
+
   return (
     <>
       <ContentHeader title={postData.name}>
@@ -32,10 +35,13 @@ const PagePost = () => {
       </ContentHeader>
       <Content>
         <div className="blog-post-content">
-          <img
-            src={chrome.runtime.getURL(postData.image)}
-            alt={postData.name}
-          />
+          <div className="img">
+            <img
+              src={chrome.runtime.getURL(postData.image)}
+              alt={postData.name}
+            />
+            <ReactTimeAgo date={date} locale="en-US" />
+          </div>
           <div className="content-post">
             <ReactMarkdown children={postData.content}></ReactMarkdown>
           </div>
