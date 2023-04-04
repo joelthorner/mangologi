@@ -203,5 +203,32 @@
   },
   "selectBgImage": {
     "message": "Click to select"
+  },
+  "readMorePost": {
+    "message": "Read more"
+  },
+  "homeTitleNews": {
+    "message": "News"
+  },
+  "homeTitleFeatured": {
+    "message": "Featured"
+  },
+  "blog_filter_ALL": {
+    "message": "All"
+  },
+  "blog_filter_RELEASES": {
+    "message": "Releases"
+  },
+  "blog_filter_V3": {
+    "message": "v3"
+  },
+  "blog_filter_FEATURES": {
+    "message": "Features"
+  },
+  "blog_filter_V2": {
+    "message": "v2"
+  },
+  "blog_filter_V4": {
+    "message": "v4"
   }
 }

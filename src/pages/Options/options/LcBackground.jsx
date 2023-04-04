@@ -15,6 +15,7 @@ import {
   fetchCollection,
   fetchSearch,
   setCurrentPage,
+  // setIsValidSearchCriteria,
 } from '../../../slices/unsplashSlice';
 import debounce from 'lodash/debounce';
 
@@ -27,7 +28,6 @@ const getImagesSource = (images, randomImages) => {
 const LcBackground = () => {
   const dispatch = useDispatch();
   const chromeSync = useSelector((state) => state.chromeSync);
-  // const [isValidSearch, setIsValidSearch] = useState(null);
   const extraData = ExtraChromeSyncData.lcBackground;
   const data = chromeSync.storage.lcBackground;
 
@@ -38,13 +38,13 @@ const LcBackground = () => {
     currentPage,
     perPage,
     totalRows,
-    mode,
-    searchCriteria,
+    // isValidSearchCriteria,
+    // searchCriteria,
+    // mode,
     error,
   } = useSelector((state) => state.unsplash);
 
   const onChange = (event) => {
-    console.log(images);
     dispatch(fetchSearch(event.target.value, currentPage));
   };
   const debouncedOnChange = debounce(onChange, 500);
@@ -94,6 +94,16 @@ const LcBackground = () => {
       dispatch(fetchCollection(selectedCollection, currentPage));
   }, [currentPage, selectedCollection, dispatch]);
 
+  // useEffect(() => {
+  //   dispatch(
+  //     setIsValidSearchCriteria({
+  //       mode,
+  //       searchCriteria,
+  //       images,
+  //     })
+  //   );
+  // }, [mode, searchCriteria, images, dispatch]);
+
   return (
     <>
       <OptionContentHeader keyData={KEY} extraData={extraData} />
@@ -105,11 +115,7 @@ const LcBackground = () => {
               type="search"
               placeholder={chrome.i18n.getMessage(`searchPlaceholder`)}
               onChange={debouncedOnChange}
-              isInvalid={
-                mode !== 'search' &&
-                searchCriteria.length === 0 &&
-                images.length === 0
-              }
+              /* isValid={isValidSearchCriteria} */
             />
             <SelectedBg data={data} />
             <Collections />

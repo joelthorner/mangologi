@@ -14,6 +14,8 @@ import LcRichPages from './options/LcRichPages';
 import ForcedForceView from './options/ForcedForceView';
 import ScrollToDump from './options/ScrollToDump';
 import Notify from './components/Notify';
+import PageBlog from './pages/Blog/PageBlog';
+import PagePost from './pages/Post/PagePost';
 
 const AppOptions = () => {
   let routes = [
@@ -60,6 +62,14 @@ const AppOptions = () => {
     {
       path: '/options/scrollToDump',
       element: <ScrollToDump />,
+    },
+    {
+      path: '/blog',
+      element: <PageBlog />,
+    },
+    {
+      path: '/post/:postId',
+      element: <PagePost />,
     },
   ];
 

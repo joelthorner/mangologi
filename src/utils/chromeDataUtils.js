@@ -15,3 +15,8 @@ export const getOrderedKeys = (extraChromeSyncData) => {
 
   return Object.keys(sortable);
 }
+
+export const getRandomKeys = (extraChromeSyncData, nItems) =>
+  Object.keys(extraChromeSyncData)
+    .sort(() => .5 - Math.random())
+    .slice(0, nItems);

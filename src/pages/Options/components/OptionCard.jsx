@@ -34,11 +34,7 @@ const OptionCard = ({ keyData, data, extraData }) => {
                 <Tooltip>{chrome.i18n.getMessage(`tags_${tag}_desc`)}</Tooltip>
               }
             >
-              <Badge
-                key={keyData + tag + 'badge'}
-                pill
-                className={`tag-${tag}`}
-              >
+              <Badge key={keyData + tag + 'badge'} pill bg={tag}>
                 {chrome.i18n.getMessage(`tags_${tag}`)}
               </Badge>
             </OverlayTrigger>

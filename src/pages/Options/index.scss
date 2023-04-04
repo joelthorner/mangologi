@@ -126,12 +126,26 @@ main {
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
 
+@media (min-width: 1290px) and (max-width: 1629px) {
+  .grid-home .card:nth-child(4) {
+    display: none;
+  }
+}
+
 .content-header {
   padding: 2rem 4rem 2rem 2rem;
   position: relative;
 
+  .content + & {
+    padding-top: 1rem;
+  }
+
   &.option-content {
     background-color: #edeff4;
+
+    .tags :where(.bg-development, .bg-production) {
+      background-color: #fff !important;
+    }
   }
 
   .nav {
@@ -240,22 +254,22 @@ main {
     font-size: 12px;
     background-color: $gray-200 !important;
     color: $gray-900;
-    &.tag-logicommerce {
+    &.bg-logicommerce {
       display: none;
     }
-    &.tag-logicommerce8x {
+    &.bg-logicommerce8x {
       background-color: #d9e61a !important;
       color: $gray-900;
     }
-    &.tag-logicommerceBeyond {
+    &.bg-logicommerceBeyond {
       background-color: #003a3e !important;
       color: #fff;
     }
-    &.tag-fluid {
+    &.bg-fluid {
       background-color: #5f8dd3 !important;
       color: #fff;
     }
-    &.tag-php {
+    &.bg-php {
       background-color: #8993be !important;
       color: #fff;
     }
@@ -513,5 +527,36 @@ main {
   .badge.bg-Home {
     background-color: rgb(139, 195, 74);
     color: #fff !important;
+  }
+}
+
+.blog-post-content {
+  display: flex;
+  gap: 2rem;
+
+  > img {
+    height: 100%;
+  }
+  time {
+    text-align: right;
+    margin-top: 0.75rem;
+    display: block;
+    color: #6e7881;
+  }
+  .content-post {
+    // markdown
+    h2 {
+      font-size: 20px;
+    }
+    h3 {
+      font-size: 18px;
+    }
+    h4 {
+      font-size: 16px;
+    }
+    h5 {
+      font-size: 16px;
+      font-weight: normal;
+    }
   }
 }
