@@ -27,6 +27,7 @@ const LcRichPages = () => {
             {['gridView', 'betterGroupHeaders', 'betterTreeLevels'].map(
               (propKey) => (
                 <Form.Check
+                  key={`checks-grid-${propKey}`}
                   type="switch"
                   id={`active-switch-${propKey}`}
                   checked={data.props[propKey]}
