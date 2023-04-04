@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import secrets from 'secrets';
+import { useSelector, useDispatch } from 'react-redux';
 
 import Ratio from 'react-bootstrap/Ratio';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
@@ -6,14 +8,50 @@ import Tooltip from 'react-bootstrap/Tooltip';
 import Button from 'react-bootstrap/Button';
 import PreviewModal from './PreviewModal';
 
-const Bg = ({ className, bgUrl, userLink, userName, previewSrc }) => {
+import { modifyProps } from '../../../../slices/chromeSyncSlice';
+import {
+  setShowBackImage,
+  setBackImage,
+} from '../../../../slices/unsplashSlice';
+import { IconZoom } from '../../components/Icons';
+
+const Bg = (props) => {
+  const chromeSync = useSelector((state) => state.chromeSync);
   const [modalShow, setModalShow] = useState(false);
+  const dispatch = useDispatch();
+
   const styles = {
-    backgroundImage: `url(${bgUrl})`,
+    backgroundImage: `url(${props.bgUrl})`,
+  };
+  const selectBg = (event) => {
+    dispatch(
+      modifyProps([
+        ['lcBackground', 'image', props.unsplashData.urls.full],
+        ['lcBackground', 'thumb', props.unsplashData.urls.small],
+        ['lcBackground', 'regular', props.unsplashData.urls.regular],
+        ['lcBackground', 'userName', props.unsplashData.user.name],
+        ['lcBackground', 'userLink', props.unsplashData.user.links.html],
+        [
+          'lcBackground',
+          'downloadLocation',
+          `${props.unsplashData.links.download_location}?client_id=${secrets.UNSPLASH_ACCESS_KEY}`,
+        ],
+      ])
+    );
+    dispatch(setShowBackImage(true));
+    dispatch(
+      setBackImage({
+        image: chromeSync.storage.lcBackground.props.image,
+        thumb: chromeSync.storage.lcBackground.props.thumb,
+        regular: chromeSync.storage.lcBackground.props.regular,
+        userName: chromeSync.storage.lcBackground.props.userName,
+        userLink: chromeSync.storage.lcBackground.props.userLink,
+      })
+    );
   };
 
   return (
-    <div className={'bg-item' + (className ? ' ' + className : '')}>
+    <div className={'bg-item' + (props.className ? ' ' + props.className : '')}>
       <OverlayTrigger
         placement="top"
         overlay={<Tooltip>{chrome.i18n.getMessage(`previewZoomImg`)}</Tooltip>}
@@ -23,51 +61,40 @@ const Bg = ({ className, bgUrl, userLink, userName, previewSrc }) => {
           variant="link"
           onClick={() => setModalShow(true)}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="currentColor"
-            className="icon"
-            viewBox="0 0 16 16"
-          >
-            <path
-              fillRule="evenodd"
-              d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"
-            />
-            <path d="M10.344 11.742c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1 6.538 6.538 0 0 1-1.398 1.4z" />
-            <path
-              fillRule="evenodd"
-              d="M6.5 3a.5.5 0 0 1 .5.5V6h2.5a.5.5 0 0 1 0 1H7v2.5a.5.5 0 0 1-1 0V7H3.5a.5.5 0 0 1 0-1H6V3.5a.5.5 0 0 1 .5-.5z"
-            />
-          </svg>
+          <IconZoom />
         </Button>
       </OverlayTrigger>
 
       <Ratio aspectRatio="16x9">
-        <button
-          onClick={() => {
-            alert();
-          }}
-          className="bg"
-          style={styles}
-        ></button>
+        <OverlayTrigger
+          delay={{ show: 1000, hide: 0 }}
+          placement="top"
+          overlay={<Tooltip>{chrome.i18n.getMessage(`selectBgImage`)}</Tooltip>}
+        >
+          <button
+            onClick={() => {
+              selectBg();
+            }}
+            className="bg"
+            style={styles}
+          ></button>
+        </OverlayTrigger>
       </Ratio>
 
       <a
-        href={userLink}
+        href={props.userLink}
         target="_blank"
         rel="noopener noreferrer"
         className="author"
       >
-        {userName}
+        {props.userName}
       </a>
       <PreviewModal
         show={modalShow}
         onHide={() => setModalShow(false)}
-        imgSrc={previewSrc}
-        userName={userName}
-        userLink={userLink}
+        imgSrc={props.previewSrc}
+        userName={props.userName}
+        userLink={props.userLink}
       />
     </div>
   );

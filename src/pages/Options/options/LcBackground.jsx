@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Form from 'react-bootstrap/Form';
-import Spinner from 'react-bootstrap/Spinner';
 import Placeholder from 'react-bootstrap/Placeholder';
 import { PaginationControl } from 'react-bootstrap-pagination-control';
 import Content from '../components/Content';
@@ -14,8 +13,10 @@ import ExtraChromeSyncData from '../../../data/extraChromeSyncData.json';
 import {
   fetchRandomImages,
   fetchCollection,
+  fetchSearch,
   setCurrentPage,
 } from '../../../slices/unsplashSlice';
+import debounce from 'lodash/debounce';
 
 const KEY = 'lcBackground';
 
@@ -26,55 +27,30 @@ const getImagesSource = (images, randomImages) => {
 const LcBackground = () => {
   const dispatch = useDispatch();
   const chromeSync = useSelector((state) => state.chromeSync);
-  const extraData = ExtraChromeSyncData[KEY];
-  const data = chromeSync.storage[KEY];
+  // const [isValidSearch, setIsValidSearch] = useState(null);
+  const extraData = ExtraChromeSyncData.lcBackground;
+  const data = chromeSync.storage.lcBackground;
 
   const {
     images,
     randomImages,
-    loading,
     selectedCollection,
     currentPage,
     perPage,
     totalRows,
+    mode,
+    searchCriteria,
+    error,
   } = useSelector((state) => state.unsplash);
 
-  useEffect(() => {
-    if (randomImages.length === 0) {
-      dispatch(fetchRandomImages());
-    }
-  }, [randomImages, dispatch]);
-
-  useEffect(() => {
-    if (selectedCollection !== 0) {
-      dispatch(fetchCollection(selectedCollection, currentPage));
-    }
-  }, [currentPage, selectedCollection, dispatch]);
+  const onChange = (event) => {
+    console.log(images);
+    dispatch(fetchSearch(event.target.value, currentPage));
+  };
+  const debouncedOnChange = debounce(onChange, 500);
 
   const gridBgs = () => {
-    if (loading)
-      return (
-        <>
-          {Array.from(Array(perPage).keys()).map((pl, index) => (
-            <div className="bg-item">
-              <Placeholder
-                className="ratio ratio-16x9"
-                key={'bg-pl-empty-' + index}
-                as="div"
-                animation="glow"
-              >
-                <Placeholder xs={12} />
-              </Placeholder>
-            </div>
-          ))}
-        </>
-      );
-
     const imagesArr = getImagesSource(images, randomImages);
-    let placeholders = 0;
-    if (imagesArr.length < perPage) {
-      placeholders = perPage - imagesArr.length;
-    }
     const items = imagesArr.map((image) => (
       <Bg
         key={image.id}
@@ -82,23 +58,25 @@ const LcBackground = () => {
         userLink={image.user.links.html}
         userName={image.user.name}
         previewSrc={image.urls.regular}
+        unsplashData={image}
       />
     ));
 
+    let placeholders = 0;
+    if (imagesArr.length < perPage) {
+      placeholders = perPage - imagesArr.length;
+    }
+
     const placeholderItems = Array.from(Array(placeholders).keys()).map(
       (pl, index) => (
-        <div className="bg-item">
-          <Placeholder
-            className="ratio ratio-16x9"
-            key={'bg-pl-' + index}
-            as="div"
-            animation="glow"
-          >
+        <div className="bg-item" key={'bg-pl-' + index}>
+          <Placeholder className="ratio ratio-16x9" as="div" animation="glow">
             <Placeholder xs={12} />
           </Placeholder>
         </div>
       )
     );
+
     return (
       <>
         {items}
@@ -106,6 +84,15 @@ const LcBackground = () => {
       </>
     );
   };
+
+  useEffect(() => {
+    if (randomImages.length === 0) dispatch(fetchRandomImages());
+  }, [randomImages, dispatch]);
+
+  useEffect(() => {
+    if (selectedCollection !== 0)
+      dispatch(fetchCollection(selectedCollection, currentPage));
+  }, [currentPage, selectedCollection, dispatch]);
 
   return (
     <>
@@ -117,15 +104,23 @@ const LcBackground = () => {
             <Form.Control
               type="search"
               placeholder={chrome.i18n.getMessage(`searchPlaceholder`)}
+              onChange={debouncedOnChange}
+              isInvalid={
+                mode !== 'search' &&
+                searchCriteria.length === 0 &&
+                images.length === 0
+              }
             />
-            <SelectedBg keyData={KEY} data={data} />
+            <SelectedBg data={data} />
             <Collections />
           </div>
           <div className="col-content">
-            <div
-              className={'grid-background-items' + (loading ? ' loading' : '')}
-            >
-              {gridBgs()}
+            <div className="grid-background-items">
+              {!error ? (
+                gridBgs()
+              ) : (
+                <div className="unsplash-error-api">{error}</div>
+              )}
             </div>
             <PaginationControl
               page={currentPage}
