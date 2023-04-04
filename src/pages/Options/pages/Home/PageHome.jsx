@@ -1,51 +1,41 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { modifyProp } from '../../../../slices/chromeSyncSlice';
-
-import Card from 'react-bootstrap/Card';
+import { useSelector } from 'react-redux';
+import ExtraChromeSyncData from '../../../../data/extraChromeSyncData.json';
+import { posts } from '../../../../data/postsData';
 import Content from '../../components/Content';
+import OptionCard from '../../components/OptionCard';
+import ContentHeader from '../../components/ContentHeader';
+import PostCard from '../../components/PostCard';
 
 const PageHome = () => {
-  const dispatch = useDispatch();
   const chromeSync = useSelector((state) => state.chromeSync);
-  // const [autoDeployVersion, setAutoDeployVersion] = useState('2');
 
-  // const dispatch = useDispatch();
-  // const [incrementAmount, setIncrementAmount] = useState('2');
+  const cards = ['lcBackground', 'trackersCodeEditor', 'linkedGitIssues'].map(
+    (key) => {
+      const extraData = ExtraChromeSyncData[key];
+      const data = chromeSync.storage[key];
+
+      return (
+        <OptionCard key={key} keyData={key} data={data} extraData={extraData} />
+      );
+    }
+  );
+
+  const lastPosts = posts.slice(0, 3).map((post) => {
+    return <PostCard key={`home-post-${post.id}`} post={post} />;
+  });
 
   return (
-    <Content>
-      <div className="grid">
-        chromeSync.storage.autoDeployVersion.props.active:{' '}
-        {chromeSync.storage.autoDeployVersion.props.active ? '1' : '0'}
-        <button
-          onClick={() =>
-            dispatch(
-              modifyProp([
-                'autoDeployVersion',
-                'active',
-                !chromeSync.storage.autoDeployVersion.props.active,
-              ])
-            )
-          }
-        ></button>
-        <Card>
-          <Card.Body>This is some text within a card body.</Card.Body>
-        </Card>
-        <Card>
-          <Card.Body>This is some text within a card body.</Card.Body>
-        </Card>
-        <Card>
-          <Card.Body>This is some text within a card body.</Card.Body>
-        </Card>
-        <Card>
-          <Card.Body>This is some text within a card body.</Card.Body>
-        </Card>
-        <Card>
-          <Card.Body>This is some text within a card body.</Card.Body>
-        </Card>
-      </div>
-    </Content>
+    <>
+      <ContentHeader title="News"></ContentHeader>
+      <Content>
+        <div className="grid">{lastPosts}</div>
+      </Content>
+      <ContentHeader title="Featured"></ContentHeader>
+      <Content>
+        <div className="grid">{cards}</div>
+      </Content>
+    </>
   );
 };
 

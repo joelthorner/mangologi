@@ -15,6 +15,7 @@ const unsplashSlice = createSlice({
     images: [],
 
     searchCriteria: '',
+    // isValidSearchCriteria: true,
 
     backImage: {},
     showBackImage: false,
@@ -62,6 +63,7 @@ const unsplashSlice = createSlice({
     },
 
     searchSuccess: (state, action) => {
+      console.log(state);
       state.images = action.payload.data;
       state.totalRows = action.payload.totalRows;
       state.loading = false;
@@ -80,6 +82,13 @@ const unsplashSlice = createSlice({
     setSearchCriteria: (state, action) => {
       state.currentPage = action.payload;
     },
+
+    // setIsValidSearchCriteria: (state, action) => {
+    //   if (action.payload.mode !== MODE_SEARCH) {
+    //     state.isValidSearchCriteria = null;
+    //   }
+    //   state.isValidSearchCriteria = action.payload.searchCriteria.length > 0 && action.payload.images.length > 0;
+    // },
   },
 });
 
@@ -97,6 +106,7 @@ export const {
   setCurrentPage,
   setBackImage,
   setShowBackImage,
+  // setIsValidSearchCriteria,
 } = unsplashSlice.actions;
 
 export const fetchRandomImages = (perPage = 20) => async dispatch => {
@@ -137,14 +147,16 @@ export const fetchSearch = (searchCriteria, currentPage, perPage = 20) => async 
     const _searchCriteria = encodeURI(searchCriteria.trim());
     dispatch(setSearchCriteria(_searchCriteria));
 
-    await unsplashApi
-      .get(`/search/photos?query=${_searchCriteria}&page=${currentPage}&per_page=${perPage}&orientation=landscape&client_id=${secrets.UNSPLASH_ACCESS_KEY}`)
-      .then((response) => {
-        return dispatch(searchSuccess({
-          data: response.data.results,
-          totalRows: response.data.total,
-        }))
-      })
+    if (_searchCriteria.length) {
+      await unsplashApi
+        .get(`/search/photos?query=${_searchCriteria}&page=${currentPage}&per_page=${perPage}&orientation=landscape&client_id=${secrets.UNSPLASH_ACCESS_KEY}`)
+        .then((response) => {
+          return dispatch(searchSuccess({
+            data: response.data.results,
+            totalRows: response.data.total,
+          }))
+        })
+    }
   }
   catch (e) {
     dispatch(hasError(e.message))

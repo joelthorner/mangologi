@@ -22,11 +22,7 @@ const OptionContentHeader = ({ keyData, extraData }) => {
               <Tooltip>{chrome.i18n.getMessage(`tags_${tag}_desc`)}</Tooltip>
             }
           >
-            <Badge
-              key={keyData + tag + 'page-badge'}
-              pill
-              className={`tag-${tag}`}
-            >
+            <Badge key={keyData + tag + 'page-badge'} pill bg={tag}>
               {chrome.i18n.getMessage(`tags_${tag}`)}
             </Badge>
           </OverlayTrigger>

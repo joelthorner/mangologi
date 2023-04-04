@@ -130,8 +130,16 @@ main {
   padding: 2rem 4rem 2rem 2rem;
   position: relative;
 
+  .content + & {
+    padding-top: 1rem;
+  }
+
   &.option-content {
     background-color: #edeff4;
+
+    .tags :where(.bg-development, .bg-production) {
+      background-color: #fff !important;
+    }
   }
 
   .nav {
@@ -240,22 +248,22 @@ main {
     font-size: 12px;
     background-color: $gray-200 !important;
     color: $gray-900;
-    &.tag-logicommerce {
+    &.bg-logicommerce {
       display: none;
     }
-    &.tag-logicommerce8x {
+    &.bg-logicommerce8x {
       background-color: #d9e61a !important;
       color: $gray-900;
     }
-    &.tag-logicommerceBeyond {
+    &.bg-logicommerceBeyond {
       background-color: #003a3e !important;
       color: #fff;
     }
-    &.tag-fluid {
+    &.bg-fluid {
       background-color: #5f8dd3 !important;
       color: #fff;
     }
-    &.tag-php {
+    &.bg-php {
       background-color: #8993be !important;
       color: #fff;
     }
