@@ -119,13 +119,28 @@
     "message": "Grid view",
     "description": "Label"
   },
+  "lcRichPages_props_gridView_desc": {
+    "message": "Mostra els grups de págines en una graella"
+  },
   "lcRichPages_props_betterGroupHeaders": {
     "message": "Better group headers",
     "description": "Label"
   },
+  "lcRichPages_props_betterGroupHeaders_desc_1": {
+    "message": "Afegeix decoradors de colors als noms dels grups de págines."
+  },
+  "lcRichPages_props_betterGroupHeaders_desc_2": {
+    "message": "El format es entre brackets, per exemple: \"[Home] Pagines de la home\"."
+  },
+  "lcRichPages_props_betterGroupHeaders_desc_3": {
+    "message": "Els valors i colors predefinits són:"
+  },
   "lcRichPages_props_betterTreeLevels": {
     "message": "Better tree levels",
     "description": "Label"
+  },
+  "lcRichPages_props_betterTreeLevels_desc": {
+    "message": "Marca els nivells de págines i subpágines amb icones numériques"
   },
   "forcedForceView_language_name": {
     "message": "Fluid forced force view",

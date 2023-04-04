@@ -80,7 +80,7 @@
   },
   "scrollToDump": {
     "priority": 500,
-    "image": "options_background.jpg",
+    "image": "scrollToDump.jpg",
     "tags": [
       "development",
       "fluid",

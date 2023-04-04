@@ -468,3 +468,50 @@ main {
     }
   }
 }
+
+.default-option-content {
+  margin-top: 3rem;
+
+  hr {
+    margin: 2rem 0;
+    color: #6c757d;
+  }
+  .checks-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .form-check.form-switch {
+    label {
+      display: flex;
+      flex-direction: column;
+      span {
+        color: #6c757d;
+      }
+    }
+  }
+  .badges {
+    display: inline-flex;
+    gap: 0 0.5rem;
+    margin-left: 0.5em;
+  }
+  .badge {
+    font-weight: 400;
+  }
+  .badge.bg-Header {
+    background-color: rgb(233, 30, 99);
+    color: #fff !important;
+  }
+  .badge.bg-Menu {
+    background-color: rgb(3, 169, 244);
+    color: #fff !important;
+  }
+  .badge.bg-Footer {
+    background-color: rgb(255, 152, 0);
+    color: #fff !important;
+  }
+  .badge.bg-Home {
+    background-color: rgb(139, 195, 74);
+    color: #fff !important;
+  }
+}
