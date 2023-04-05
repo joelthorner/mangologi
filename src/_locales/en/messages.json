@@ -230,5 +230,8 @@
   },
   "blog_filter_V4": {
     "message": "v4"
+  },
+  "changelog_text": {
+    "message": "Release notes for mangologi"
   }
 }

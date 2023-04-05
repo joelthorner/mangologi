@@ -2,7 +2,7 @@ $primary: #f72085;
 $link-decoration: none;
 
 @import '~bootstrap/scss/bootstrap';
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&display=swap');
 
 // @import '~bootstrap-icons/font/bootstrap-icons.css';
 
@@ -204,7 +204,7 @@ main {
 }
 
 .nav-link {
-  &:not(.active) {
+  &:not(.active):not(:hover) {
     color: #6e7881;
   }
 }
@@ -543,20 +543,60 @@ main {
     display: block;
     color: #6e7881;
   }
-  .content-post {
-    // markdown
+}
+
+.markdown {
+  h2 {
+    font-size: 20px;
+  }
+  h3 {
+    font-size: 18px;
+  }
+  h4 {
+    font-size: 16px;
+  }
+  h5 {
+    font-size: 16px;
+    font-weight: normal;
+  }
+  hr {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+  * + hr {
+    margin-top: 4rem;
+  }
+}
+
+.changelog-content {
+  .markdown {
+    em {
+      color: #6c757d;
+    }
     h2 {
-      font-size: 20px;
+      font-size: 3rem;
+      font-weight: 100;
+      color: $primary;
+      margin-bottom: 0;
+      + p {
+        color: #6c757d;
+        margin-left: 2rem;
+        margin-top: 0.5em;
+      }
+      + h3 {
+        margin-top: 1.5rem;
+      }
     }
     h3 {
-      font-size: 18px;
+      font-weight: 400;
+      font-size: 1.25rem;
+      margin-left: 2rem;
+      + ul {
+        margin-left: 3.5rem;
+      }
     }
-    h4 {
-      font-size: 16px;
-    }
-    h5 {
-      font-size: 16px;
-      font-weight: normal;
+    ul + h3 {
+      margin-top: 1.75rem;
     }
   }
 }
