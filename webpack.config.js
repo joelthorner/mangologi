@@ -58,6 +58,15 @@ var options = {
   module: {
     rules: [
       {
+        test: /\.md$/,
+        use: [
+          {
+            loader: 'raw-loader',
+            options: {},
+          },
+        ],
+      },
+      {
         // look for .css or .scss files
         test: /\.(css|scss)$/,
         // in the `src` directory

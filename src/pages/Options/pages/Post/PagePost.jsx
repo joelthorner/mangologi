@@ -3,7 +3,7 @@ import { useParams } from 'react-router';
 import { posts } from '../../../../data/postsData';
 import ContentHeader from '../../components/ContentHeader';
 import Content from '../../components/Content';
-import ReactMarkdown from 'react-markdown';
+import Markdown from 'markdown-to-jsx';
 import { CloseButton } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import ReactTimeAgo from 'react-time-ago';
@@ -43,7 +43,7 @@ const PagePost = () => {
             <ReactTimeAgo date={date} locale="en-US" />
           </div>
           <div className="content-post">
-            <ReactMarkdown children={postData.content}></ReactMarkdown>
+            <Markdown children={postData.content}></Markdown>
           </div>
         </div>
       </Content>
