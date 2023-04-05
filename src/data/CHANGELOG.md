@@ -1,3 +1,1 @@
-- a
-- b
-- c
+C:/Users/joel.torner/Documents/Github/mangologi/CHANGELOG.md
