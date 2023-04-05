@@ -233,5 +233,20 @@
   },
   "changelog_text": {
     "message": "Release notes for mangologi"
+  },
+  "WEB_DEVELOPER": {
+    "message": "Web developer"
+  },
+  "MARKETING": {
+    "message": "Marketing dude"
+  },
+  "PROJECT_MANAGER": {
+    "message": "Project manager"
+  },
+  "IM_SCARED": {
+    "message": "I'm scared"
+  },
+  "userDataEdit": {
+    "message": "Editar"
   }
 }

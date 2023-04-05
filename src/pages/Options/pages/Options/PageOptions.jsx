@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import Nav from 'react-bootstrap/Nav';
 
 import ExtraChromeSyncData from '../../../../data/extraChromeSyncData.json';
-import { getOrderedKeys } from '../../../../utils/chromeDataUtils';
+import { getOptionsOrderedKeys } from '../../../../utils/chromeDataUtils';
 
 import Content from '../../components/Content';
 import ContentHeader from '../../components/ContentHeader';
@@ -18,7 +18,7 @@ const PageOptions = () => {
   const chromeSync = useSelector((state) => state.chromeSync);
   const [filter, setFilter] = useState(FILTER_ALL);
 
-  const cards = getOrderedKeys(ExtraChromeSyncData).map((key) => {
+  const cards = getOptionsOrderedKeys(ExtraChromeSyncData).map((key) => {
     const extraData = ExtraChromeSyncData[key];
     const data = chromeSync.storage[key];
     const showCard = filter === FILTER_ALL || filter === extraData.category;

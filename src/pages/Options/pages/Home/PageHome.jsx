@@ -6,12 +6,12 @@ import Content from '../../components/Content';
 import OptionCard from '../../components/OptionCard';
 import ContentHeader from '../../components/ContentHeader';
 import PostCard from '../../components/PostCard';
-import { getRandomKeys } from '../../../../utils/chromeDataUtils';
+import { getOptionsRandomKeys } from '../../../../utils/chromeDataUtils';
 
 const PageHome = () => {
   const chromeSync = useSelector((state) => state.chromeSync);
 
-  const cards = getRandomKeys(ExtraChromeSyncData, 4).map((key) => {
+  const cards = getOptionsRandomKeys(ExtraChromeSyncData, 4).map((key) => {
     const extraData = ExtraChromeSyncData[key];
     const data = chromeSync.storage[key];
 

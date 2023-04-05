@@ -11,7 +11,7 @@ New extension build with React 18 and migration to manifest v3
 
 ---
 
-_From TLmanager_
+_From TLmanaGer_
 
 ## 3.0.1
 

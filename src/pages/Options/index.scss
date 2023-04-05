@@ -17,13 +17,21 @@ body {
   // font-size: 14px;
 }
 
-.react-ripples s {
-  background-color: rgba($primary, 0.3) !important;
-}
-
 .layout-content {
   height: 100%;
   display: flex;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-outline-primary {
+  --bs-btn-hover-color: #fff;
+  --bs-btn-active-color: #fff;
 }
 
 .brand {
@@ -32,14 +40,10 @@ body {
   align-items: center;
   font-family: 'Montserrat', sans-serif;
 
-  .react-ripples {
+  a {
     width: 100%;
     padding: 1.5rem 0.8rem 1rem;
-  }
-
-  a {
     display: flex;
-    align-items: center;
     align-items: center;
     gap: 0.75rem;
     width: 100%;
@@ -48,6 +52,8 @@ body {
     background: linear-gradient(90deg, #{$primary}, #a9119c);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    position: relative;
+    overflow: hidden;
   }
 
   .logo-icon {
@@ -72,10 +78,6 @@ body {
     flex-direction: column;
     margin-top: 0;
 
-    .react-ripples {
-      width: 100%;
-      display: flex;
-    }
     a {
       &:not(:hover):not(.active) {
         color: #6e7881;
@@ -88,6 +90,8 @@ body {
       gap: 0.75em;
       width: 100%;
       font-size: small;
+      overflow: hidden;
+      position: relative;
     }
   }
 
@@ -543,6 +547,8 @@ main {
     display: block;
     color: #6e7881;
   }
+  .content-post {
+  }
 }
 
 .markdown {
@@ -598,5 +604,62 @@ main {
     ul + h3 {
       margin-top: 1.75rem;
     }
+  }
+}
+
+.profile-header {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+
+  .image {
+    position: relative;
+
+    .circle {
+      border-radius: 50%;
+      overflow: hidden;
+      position: relative;
+      border: 0;
+      display: flex;
+      padding: 0;
+      &:hover .icon-hover {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+    img {
+      display: block;
+    }
+    > svg {
+      position: absolute;
+      bottom: 0.5rem;
+      right: 0.5rem;
+      fill: var(--bs-blue);
+      z-index: 5;
+    }
+    .icon-hover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba($primary, 0.5);
+      border-radius: 50%;
+      color: #fff;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 350ms ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  .caption {
+    display: flex;
+    flex-direction: column;
+  }
+  .user-edit-btn {
+    border-radius: 2rem;
+    margin-left: auto;
   }
 }
