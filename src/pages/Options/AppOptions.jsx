@@ -16,6 +16,7 @@ import ScrollToDump from './options/ScrollToDump';
 import Notify from './components/Notify';
 import PageBlog from './pages/Blog/PageBlog';
 import PagePost from './pages/Post/PagePost';
+import PageChangelog from './pages/Changelog/PageChangelog';
 
 const AppOptions = () => {
   let routes = [
@@ -70,6 +71,10 @@ const AppOptions = () => {
     {
       path: '/post/:postId',
       element: <PagePost />,
+    },
+    {
+      path: '/changelog',
+      element: <PageChangelog />,
     },
   ];
 
