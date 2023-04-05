@@ -2,6 +2,8 @@ import React from 'react';
 import { avatars } from '../../../data/avatarsData';
 import { Nav, Tab, Tooltip, OverlayTrigger } from 'react-bootstrap';
 import Ripple from './Ripple/Ripple';
+import { useDispatch } from 'react-redux';
+import { modifyAvatar } from '../../../slices/chromeSyncSlice';
 
 const TabAvatar = () => {
   const avatarCats = ['ANIMATION', 'MEMES', 'MOVIES', 'OTHER', 'VIDEOGAMES'];
@@ -61,13 +63,19 @@ const TabAvatar = () => {
 };
 
 const Avatar = ({ avatar }) => {
+  const dispatch = useDispatch();
+
   return (
     <OverlayTrigger
       popperConfig={{ preventOverflow: true }}
       placement="top"
       overlay={<Tooltip>{avatar.name}</Tooltip>}
     >
-      <button>
+      <button
+        onClick={() => {
+          dispatch(modifyAvatar(avatar));
+        }}
+      >
         <img src={chrome.runtime.getURL(avatar.img)} alt={avatar.name} />
         <Ripple color={'var(--bs-primary)'} duration={500} />
       </button>

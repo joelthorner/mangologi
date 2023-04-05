@@ -70,7 +70,7 @@ const AppOptions = () => {
       element: <PageBlog />,
     },
     {
-      path: '/post/:postId',
+      path: '/blog/:postId',
       element: <PagePost />,
     },
     {

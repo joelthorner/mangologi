@@ -206,6 +206,7 @@ main {
   border: 0;
   color: #fff;
   margin-bottom: 0.75rem;
+  // text-align: center;
   --bs-toast-max-width: 300px;
 }
 
@@ -710,6 +711,8 @@ main {
     button {
       border: 0;
       padding: 0;
+      position: relative;
+      overflow: hidden;
 
       img {
         display: block;
