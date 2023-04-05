@@ -56,22 +56,18 @@
   },
   "profile": {
     "avatar": {
-      "actived": false,
       "value": "",
       "name": "Default",
       "description": "Nothing to say!"
     },
-    "shopTestingEmail": {
-      "actived": false,
+    "username": {
       "value": ""
     },
-    "shopTestingUsername": {
-      "actived": false,
+    "bio": {
       "value": ""
     },
-    "shopTestingPassword": {
-      "actived": false,
-      "value": ""
+    "job": {
+      "value": "WEB_DEVELOPER"
     }
   }
 }

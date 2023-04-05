@@ -24,7 +24,7 @@ Si hi ha algun bug, es una feature segurament. 😅
 Salut!
     `,
     date: '2023-05-01',
-    image: 'post_new4x.png',
+    image: 'posts/post_new4x.png',
     tags: ['RELEASES', 'V4'],
   },
   {
@@ -56,7 +56,7 @@ Tambè a partir d'ara totes les noves features s'anunciaràn adicionalment aquí
 Salut 💋!
     `,
     date: '2021-01-30',
-    image: 'post_new3x.png',
+    image: 'posts/post_new3x.png',
     tags: ['RELEASES', 'V3'],
   },
   {
@@ -71,7 +71,7 @@ i convertir-les en enllaços a pestanyes noves.
 Això permet anar més ràpid a consultar a què fa referència el commit, el merge o la publicació.
 El sistema busca en tots els llocs on podem veure commits, les branques o les publicacións i els seus històrics.`,
     date: '2020-12-22',
-    image: 'post_ticketRefLinks.png',
+    image: 'posts/post_ticketRefLinks.png',
     tags: ['FEATURES', 'V3'],
   },
   // {
@@ -79,7 +79,7 @@ El sistema busca en tots els llocs on podem veure commits, les branques o les pu
   //   name: 'New LC themes!',
   //   content: `El primer dels temes per al nou Logicommerce ja està disponible. Es pot canviar a la página d\'opcions/Logicommerce`,
   //   date: '2020-08-12',
-  //   image: 'post_theme.png',
+  //   image: 'posts/post_theme.png',
   //   tags: ['FEATURES', 'V3'],
   // },
   {
@@ -95,7 +95,7 @@ Per no perdre'ls mai al eliminar/reinstalar la extensió, pots sincronitzar el C
 que es guardin per sempre no sols els "logros" sino tambè totes les opcions que haguis modificat.
     `,
     date: '2020-08-12',
-    image: 'post_arch.png',
+    image: 'posts/post_arch.png',
     tags: ['FEATURES', 'V3'],
   },
   {
@@ -119,7 +119,7 @@ Altres funcions agregades recentment:
 
         `,
     date: '2019-04-15',
-    image: 'post_ver.png',
+    image: 'posts/post_ver.png',
     tags: ['FEATURES', 'RELEASES', 'V2'],
   },
   {
@@ -139,7 +139,7 @@ Tambe s'han implementat ultimament algunes funcions noves, algunes a destacar:
 
     `,
     date: '2019-02-17',
-    image: 'post_optsred.png',
+    image: 'posts/post_optsred.png',
     tags: ['FEATURES', 'RELEASES', 'V2'],
   },
   {
@@ -156,7 +156,7 @@ es farà login al botó clicat.
 Això es tot, fin del comunicado.
       `,
     date: '2019-02-08',
-    image: 'post_opsas.png',
+    image: 'posts/post_opsas.png',
     tags: ['FEATURES', 'V2'],
   },
   {
@@ -179,7 +179,7 @@ Hi han algunes funcions noves a destacar, com una acció per mostrar els moduls 
 es pot triar el background de LC i desactivar-lo si es vol, etc.
     `,
     date: '2018-08-26',
-    image: 'post_new2x.png',
+    image: 'posts/post_new2x.png',
     tags: ['RELEASES', 'V2'],
   },
 ];

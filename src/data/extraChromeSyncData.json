@@ -1,7 +1,7 @@
 {
   "autoDeployVersion": {
     "priority": 700,
-    "image": "autoDeployVersion.jpg",
+    "image": "options/autoDeployVersion.jpg",
     "tags": [
       "logicommerce",
       "logicommerce8x",
@@ -11,7 +11,7 @@
   },
   "linkedGitIssues": {
     "priority": 600,
-    "image": "linkedGitIssues.jpg",
+    "image": "options/linkedGitIssues.jpg",
     "tags": [
       "logicommerce",
       "logicommerce8x",
@@ -21,7 +21,7 @@
   },
   "trackersCodeEditor": {
     "priority": 900,
-    "image": "trackersCodeEditor.jpg",
+    "image": "options/trackersCodeEditor.jpg",
     "tags": [
       "logicommerce",
       "logicommerce8x",
@@ -31,7 +31,7 @@
   },
   "lcBackground": {
     "priority": 100,
-    "image": "lcBackground.jpg",
+    "image": "options/lcBackground.jpg",
     "tags": [
       "logicommerce",
       "logicommerce8x",
@@ -41,7 +41,7 @@
   },
   "lcDeveloperBar": {
     "priority": 200,
-    "image": "lcDeveloperBar.jpg",
+    "image": "options/lcDeveloperBar.jpg",
     "tags": [
       "logicommerce",
       "logicommerce8x",
@@ -51,7 +51,7 @@
   },
   "sandboxSelectorBtns": {
     "priority": 400,
-    "image": "sandboxSelectorBtns.jpg",
+    "image": "options/sandboxSelectorBtns.jpg",
     "tags": [
       "logicommerce",
       "logicommerce8x",
@@ -61,7 +61,7 @@
   },
   "lcRichPages": {
     "priority": 300,
-    "image": "lcRichPages.jpg",
+    "image": "options/lcRichPages.jpg",
     "tags": [
       "logicommerce",
       "logicommerce8x",
@@ -71,7 +71,7 @@
   },
   "forcedForceView": {
     "priority": 800,
-    "image": "forcedForceView.jpg",
+    "image": "options/forcedForceView.jpg",
     "tags": [
       "production",
       "fluid"
@@ -80,7 +80,7 @@
   },
   "scrollToDump": {
     "priority": 500,
-    "image": "scrollToDump.jpg",
+    "image": "options/scrollToDump.jpg",
     "tags": [
       "development",
       "fluid",

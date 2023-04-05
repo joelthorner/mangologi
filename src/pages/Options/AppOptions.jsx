@@ -17,6 +17,7 @@ import Notify from './components/Notify';
 import PageBlog from './pages/Blog/PageBlog';
 import PagePost from './pages/Post/PagePost';
 import PageChangelog from './pages/Changelog/PageChangelog';
+import PageProfile from './pages/Profile/PageProfile';
 
 const AppOptions = () => {
   let routes = [
@@ -69,12 +70,16 @@ const AppOptions = () => {
       element: <PageBlog />,
     },
     {
-      path: '/post/:postId',
+      path: '/blog/:postId',
       element: <PagePost />,
     },
     {
       path: '/changelog',
       element: <PageChangelog />,
+    },
+    {
+      path: '/profile',
+      element: <PageProfile />,
     },
   ];
 

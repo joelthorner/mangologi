@@ -230,5 +230,44 @@
   },
   "blog_filter_V4": {
     "message": "v4"
+  },
+  "changelog_text": {
+    "message": "Release notes for mangologi"
+  },
+  "WEB_DEVELOPER": {
+    "message": "Web developer"
+  },
+  "MARKETING": {
+    "message": "Marketing dude"
+  },
+  "PROJECT_MANAGER": {
+    "message": "Project manager"
+  },
+  "IM_SCARED": {
+    "message": "I'm scared"
+  },
+  "userDataEdit": {
+    "message": "Editar"
+  },
+  "userAvatarEdit": {
+    "message": "Editar avatar"
+  },
+  "avatarTab_ALL": {
+    "message": "All"
+  },
+  "avatarTab_ANIMATION": {
+    "message": "Animation"
+  },
+  "avatarTab_MEMES": {
+    "message": "Memes"
+  },
+  "avatarTab_MOVIES": {
+    "message": "Movies"
+  },
+  "avatarTab_OTHER": {
+    "message": "Other"
+  },
+  "avatarTab_VIDEOGAMES": {
+    "message": "Videogames"
   }
 }

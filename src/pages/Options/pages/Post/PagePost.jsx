@@ -43,7 +43,10 @@ const PagePost = () => {
             <ReactTimeAgo date={date} locale="en-US" />
           </div>
           <div className="content-post">
-            <Markdown children={postData.content}></Markdown>
+            <Markdown
+              className="markdown"
+              children={postData.content}
+            ></Markdown>
           </div>
         </div>
       </Content>

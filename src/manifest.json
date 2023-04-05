@@ -18,7 +18,9 @@
     "128": "icon-128.png"
   },
   "permissions": [
-    "storage"
+    "storage",
+    "identity",
+    "identity.email"
   ],
   "content_scripts": [
     {

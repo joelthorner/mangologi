@@ -206,7 +206,7 @@ var options = {
       patterns: [
         {
           from: 'src/assets/img/options',
-          to: path.join(__dirname, 'build'),
+          to: path.join(__dirname, 'build/options'),
           force: true,
         },
       ],
@@ -215,7 +215,16 @@ var options = {
       patterns: [
         {
           from: 'src/assets/img/posts',
-          to: path.join(__dirname, 'build'),
+          to: path.join(__dirname, 'build/posts'),
+          force: true,
+        },
+      ],
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: 'src/assets/img/avatar',
+          to: path.join(__dirname, 'build/avatar'),
           force: true,
         },
       ],
