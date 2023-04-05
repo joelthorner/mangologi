@@ -1,0 +1,1 @@
+C:/Users/joel.torner/Documents/Github/mangologi/src/data/CHANGELOG.md
