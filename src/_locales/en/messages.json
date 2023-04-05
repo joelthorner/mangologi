@@ -248,5 +248,26 @@
   },
   "userDataEdit": {
     "message": "Editar"
+  },
+  "userAvatarEdit": {
+    "message": "Editar avatar"
+  },
+  "avatarTab_ALL": {
+    "message": "All"
+  },
+  "avatarTab_ANIMATION": {
+    "message": "Animation"
+  },
+  "avatarTab_MEMES": {
+    "message": "Memes"
+  },
+  "avatarTab_MOVIES": {
+    "message": "Movies"
+  },
+  "avatarTab_OTHER": {
+    "message": "Other"
+  },
+  "avatarTab_VIDEOGAMES": {
+    "message": "Videogames"
   }
 }

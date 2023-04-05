@@ -17,6 +17,12 @@ body {
   // font-size: 14px;
 }
 
+.tooltip {
+  position: fixed;
+  top: -9999px;
+  left: -9999px;
+}
+
 .layout-content {
   height: 100%;
   display: flex;
@@ -630,12 +636,27 @@ main {
     img {
       display: block;
     }
-    > svg {
+    .icon-sync {
+      border-radius: 50%;
       position: absolute;
       bottom: 0.5rem;
       right: 0.5rem;
-      fill: var(--bs-blue);
       z-index: 5;
+      &::before {
+        content: '';
+        background-color: #fff;
+        width: 0.75rem;
+        height: 0.75rem;
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        z-index: -1;
+      }
+      svg {
+        fill: var(--bs-blue);
+        display: block;
+      }
     }
     .icon-hover {
       position: absolute;
@@ -661,5 +682,40 @@ main {
   .user-edit-btn {
     border-radius: 2rem;
     margin-left: auto;
+  }
+}
+
+.avatar-tabs-container {
+  margin-top: 3rem;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 220px 1fr;
+  align-items: flex-start;
+
+  .nav-link.active {
+    background-color: transparent;
+    color: $primary;
+  }
+
+  .flex-column {
+    position: sticky;
+    top: 2rem;
+  }
+
+  .grid-avatars {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+
+    button {
+      border: 0;
+      padding: 0;
+
+      img {
+        display: block;
+        height: auto;
+        width: 100%;
+      }
+    }
   }
 }

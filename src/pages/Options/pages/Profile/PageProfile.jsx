@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import ContentHeader from '../../components/ContentHeader';
 import Content from '../../components/Content';
 import ProfileHeader from '../../components/ProfileHeader';
+import TabAvatar from '../../components/TabAvatar';
 
 const PageProfile = () => {
   const chromeSync = useSelector((state) => state.chromeSync);
@@ -26,11 +27,7 @@ const PageProfile = () => {
   );
 };
 
-const TabAvatar = ({ tab }) => {
-  return <div>TabAvatar</div>;
-};
-
-const TabUserData = ({ tab }) => {
+const TabUserData = () => {
   return <div>TabUserData</div>;
 };
 
