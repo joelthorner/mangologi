@@ -52,10 +52,26 @@ export const chromeSyncSlice = createSlice({
       const newKeyData = JSON.parse(JSON.stringify(state.storage));
       chrome.storage.sync.set(newKeyData);
     },
+
+    modifyProfileData: (state, action) => {
+      if (action.payload.key === 'username') {
+        let { value } = action.payload.data;
+        state.storage.profile.username.value = value;
+      } else if (action.payload.key === 'bio') {
+        let { value } = action.payload.data;
+        state.storage.profile.bio.value = value;
+      } else if (action.payload.key === 'job') {
+        let { value } = action.payload.data;
+        state.storage.profile.job.value = value;
+      }
+
+      const newKeyData = JSON.parse(JSON.stringify(state.storage));
+      chrome.storage.sync.set(newKeyData);
+    },
   },
 })
 
-export const { setChromeSyncAsync, modifyProp, modifyProps, modifyAvatar } = chromeSyncSlice.actions
+export const { setChromeSyncAsync, modifyProp, modifyProps, modifyAvatar, modifyProfileData } = chromeSyncSlice.actions
 
 export const getChromeSyncDataAsync = () => (dispatch) => {
   chrome.storage.sync.get(initialChromeSyncData).then((result) => {

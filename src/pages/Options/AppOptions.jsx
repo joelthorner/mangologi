@@ -18,6 +18,8 @@ import PageBlog from './pages/Blog/PageBlog';
 import PagePost from './pages/Post/PagePost';
 import PageChangelog from './pages/Changelog/PageChangelog';
 import PageProfile from './pages/Profile/PageProfile';
+import PageAvatar from './pages/Avatar/PageAvatar';
+import PageUserData from './pages/UserData/PageUserData';
 
 const AppOptions = () => {
   let routes = [
@@ -80,6 +82,14 @@ const AppOptions = () => {
     {
       path: '/profile',
       element: <PageProfile />,
+    },
+    {
+      path: '/profile/avatar',
+      element: <PageAvatar />,
+    },
+    {
+      path: '/profile/userData',
+      element: <PageUserData />,
     },
   ];
 
