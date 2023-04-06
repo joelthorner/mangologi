@@ -12,6 +12,8 @@ New extension build with React 18 and migration to manifest v3
 - Profile bio and job
 - Full suport to Beyond Logicommerce
 - New commerce detection data (popup)
+- Removed achievements
+- Removed zendesk features _(temporally)_
 
 ### Fixes
 

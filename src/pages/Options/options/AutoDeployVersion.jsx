@@ -40,6 +40,9 @@ const AutoDeployVersion = () => {
               <option value="0.0.0">0.0.0</option>
               <option value="0.0.0.0">0.0.0.0</option>
               <option value="v0.0.0.0">v0.0.0.0</option>
+              <option disabled value="v.0.0.0">
+                v.0.0.0
+              </option>
             </Form.Select>
           </Form.Group>
         </div>

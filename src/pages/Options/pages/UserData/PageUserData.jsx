@@ -81,7 +81,9 @@ const PageUserData = () => {
                 'PROJECT_MANAGER',
                 'IM_SCARED',
               ].map((job) => (
-                <option value={job}>{chrome.i18n.getMessage(job)}</option>
+                <option key={`option-job-${job}`} value={job}>
+                  {chrome.i18n.getMessage(job)}
+                </option>
               ))}
             </Form.Select>
           </Form.Group>

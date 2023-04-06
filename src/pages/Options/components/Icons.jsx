@@ -7,7 +7,7 @@ export const IconZoom = ({ className = '' }) => {
       width="16"
       height="16"
       fill="currentColor"
-      className={className.length ?? 'icon'}
+      className={className.length ? className : 'icon'}
       viewBox="0 0 16 16"
     >
       <path
@@ -30,7 +30,7 @@ export const IconCheckCircleFill = ({ className = '' }) => {
       width="16"
       height="16"
       fill="currentColor"
-      className={className.length ?? 'icon'}
+      className={className.length ? className : 'icon'}
       viewBox="0 0 16 16"
     >
       <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
@@ -45,7 +45,7 @@ export const IconHouse = ({ className = '' }) => {
       width="16"
       height="16"
       fill="currentColor"
-      className={className.length ?? 'icon'}
+      className={className.length ? className : 'icon'}
       viewBox="0 0 16 16"
     >
       <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z" />
@@ -60,7 +60,7 @@ export const IconGear = ({ className = '' }) => {
       width="16"
       height="16"
       fill="currentColor"
-      className={className.length ?? 'icon'}
+      className={className.length ? className : 'icon'}
       viewBox="0 0 16 16"
     >
       <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z" />
@@ -76,7 +76,7 @@ export const IconPerson = ({ className = '' }) => {
       width="16"
       height="16"
       fill="currentColor"
-      className={className.length ?? 'icon'}
+      className={className.length ? className : 'icon'}
       viewBox="0 0 16 16"
     >
       <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
@@ -91,7 +91,7 @@ export const IconArchive = ({ className = '' }) => {
       width="16"
       height="16"
       fill="currentColor"
-      className={className.length ?? 'icon'}
+      className={className.length ? className : 'icon'}
       viewBox="0 0 16 16"
     >
       <path d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
@@ -106,13 +106,14 @@ export const IconChangelog = ({ className = '' }) => {
       width="16"
       height="16"
       fill="currentColor"
-      className={className.length ?? 'icon'}
+      className={className.length ? className : 'icon'}
       viewBox="0 0 384 512"
     >
       <path d="M384 144c0-44.2-35.8-80-80-80s-80 35.8-80 80c0 39.2 28.2 71.8 65.5 78.7-.8 17.2-5 30.4-12.7 40-17.5 21.8-53.1 25.2-90.7 28.7-28.2 2.6-57.4 5.4-80.4 16.9-3.4 1.7-6.7 3.6-9.7 5.7V158.4c36.5-7.4 64-39.7 64-78.4 0-44.2-35.8-80-80-80S0 35.8 0 80c0 38.7 27.5 71 64 78.4v195.2C27.5 361 0 393.3 0 432c0 44.2 35.8 80 80 80s80-35.8 80-80c0-36.9-24.9-67.9-58.9-77.2 5-9.6 12.3-14.6 19-18 17.5-8.8 42.5-11.2 68.9-13.7 42.6-4 86.7-8.1 112.7-40.5 12.4-15.5 19-35.5 19.8-60.7C357.3 214 384 182.1 384 144zM32 80c0-26.5 21.5-48 48-48s48 21.5 48 48-21.5 48-48 48-48-21.5-48-48zm96 352c0 26.5-21.5 48-48 48s-48-21.5-48-48c0-26.4 21.4-47.9 47.8-48h.6c26.3.2 47.6 21.7 47.6 48zm187.8-241.5L304 192c-26.5 0-48-21.5-48-48s21.5-48 48-48 48 21.5 48 48c0 22.4-15.4 41.2-36.2 46.5z"></path>
     </svg>
   );
 };
+
 export const IconEdit = ({ className = '' }) => {
   return (
     <svg
@@ -121,9 +122,25 @@ export const IconEdit = ({ className = '' }) => {
       height="16"
       fill="currentColor"
       viewBox="0 0 512 512"
-      className={className.length ?? 'icon'}
+      className={className.length ? className : 'icon'}
     >
       <path d="M493.25 56.26l-37.51-37.51C443.25 6.25 426.87 0 410.49 0s-32.76 6.25-45.26 18.74L12.85 371.12.15 485.34C-1.45 499.72 9.88 512 23.95 512c.89 0 1.78-.05 2.69-.15l114.14-12.61 352.48-352.48c24.99-24.99 24.99-65.51-.01-90.5zM126.09 468.68l-93.03 10.31 10.36-93.17 263.89-263.89 82.77 82.77-263.99 263.98zm344.54-344.54l-57.93 57.93-82.77-82.77 57.93-57.93c6.04-6.04 14.08-9.37 22.63-9.37 8.55 0 16.58 3.33 22.63 9.37l37.51 37.51c12.47 12.48 12.47 32.78 0 45.26z"></path>
+    </svg>
+  );
+};
+
+export const IconAlert = ({ className = '' }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      fill="currentColor"
+      className={className.length ? className : 'icon'}
+      viewBox="0 0 16 16"
+    >
+      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+      <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z" />
     </svg>
   );
 };

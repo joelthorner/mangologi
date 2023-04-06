@@ -7,6 +7,12 @@ export const chromeSyncSlice = createSlice({
     storage: initialChromeSyncData
   },
   reducers: {
+
+    reset: (state, action) => {
+      state.storage = initialChromeSyncData;
+      chrome.storage.sync.set(initialChromeSyncData);
+    },
+
     /**
      * Updateja una prop de una key de chrome storage
      * @param {*} state 
@@ -71,7 +77,14 @@ export const chromeSyncSlice = createSlice({
   },
 })
 
-export const { setChromeSyncAsync, modifyProp, modifyProps, modifyAvatar, modifyProfileData } = chromeSyncSlice.actions
+export const {
+  setChromeSyncAsync,
+  modifyProp,
+  modifyProps,
+  modifyAvatar,
+  modifyProfileData,
+  reset,
+} = chromeSyncSlice.actions
 
 export const getChromeSyncDataAsync = () => (dispatch) => {
   chrome.storage.sync.get(initialChromeSyncData).then((result) => {
