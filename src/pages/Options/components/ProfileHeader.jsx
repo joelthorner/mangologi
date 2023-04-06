@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { IconCheckCircleFill, IconEdit } from './Icons';
 import Ripple from '../components/Ripple/Ripple';
-import { Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
-const ProfileHeader = ({ data, onChangeTab }) => {
+const ProfileHeader = ({ data }) => {
   const [syncAccount, setSyncAccount] = useState(false);
 
   chrome.identity.getProfileUserInfo((data) => {
@@ -20,7 +21,7 @@ const ProfileHeader = ({ data, onChangeTab }) => {
             <Tooltip>{chrome.i18n.getMessage('userAvatarEdit')}</Tooltip>
           }
         >
-          <button onClick={() => onChangeTab('AVATAR')} className="circle">
+          <Link to="/profile/avatar" className="circle">
             <img
               src={chrome.runtime.getURL(
                 data.avatar.value.length ? data.avatar.value : 'avatar/user.svg'
@@ -33,7 +34,7 @@ const ProfileHeader = ({ data, onChangeTab }) => {
               <IconEdit />
             </span>
             <Ripple color={'var(--bs-primary)'} duration={500} />
-          </button>
+          </Link>
         </OverlayTrigger>
         {syncAccount ? (
           <OverlayTrigger
@@ -51,20 +52,19 @@ const ProfileHeader = ({ data, onChangeTab }) => {
         <b className="name">
           {data.username.value.length ? data.username.value : 'John Doe'}
         </b>
+        <span className="job">{chrome.i18n.getMessage(data.job.value)}</span>
         {data.bio.value.length ? (
           <span className="bio">{data.bio.value}</span>
         ) : null}
-        <span className="job">{chrome.i18n.getMessage(data.job.value)}</span>
       </div>
 
-      <Button
-        className="user-edit-btn"
-        variant="outline-primary"
-        onClick={() => onChangeTab('USER_DATA')}
+      <Link
+        to="/profile/userData"
+        className="user-edit-btn btn btn-outline-primary"
       >
         <IconEdit />
         {chrome.i18n.getMessage('userDataEdit')}
-      </Button>
+      </Link>
     </div>
   );
 };

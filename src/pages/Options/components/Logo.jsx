@@ -19,10 +19,10 @@ const DefaultLogo = () => {
           gradientUnits="userSpaceOnUse"
         >
           <stop offset="0" stopColor="#fd2d64" />
-          <stop offset=".26" stopColor="#f72085" />
-          <stop offset=".52" stopColor="#cb0188" />
-          <stop offset=".74" stopColor="#9807a0" />
-          <stop offset=".98" stopColor="#a9119c" />
+          <stop offset=".35" stopColor="#f72085" />
+          <stop offset=".60" stopColor="#cb0188" />
+          <stop offset=".80" stopColor="#9807a0" />
+          <stop offset="100" stopColor="#a9119c" />
         </radialGradient>
       </defs>
       <path fill="url(#a)" d="M0 0h512v512H0z" />

@@ -8,6 +8,16 @@ New extension build with React 18 and migration to manifest v3
 
 - New name and design
 - New logo. Thanks @Unoriginal02
+- "Linked git issues", "Auto deploy version" and "Trackers code editor" actibable options
+- Profile bio and job
+- Full suport to Beyond Logicommerce
+- New commerce detection data (popup)
+- Removed achievements
+- Removed zendesk features _(temporally)_
+
+### Fixes
+
+- Removed all bugs
 
 ---
 
