@@ -30,4 +30,7 @@
     <img src="https://img.shields.io/chrome-web-store/stars/jaimlomiojjmdhipacahmpnfefpbbeig.svg?label=Rating"
       alt="Chrome Web Store">
   </a>
+  <br>
+  <br>
+  Based on <a href="https://github.com/lxieyang/chrome-extension-boilerplate-react" target="_blank">lxieyang/chrome-extension-boilerplate-react</a>
 </p>
