@@ -5,7 +5,7 @@
   "default_locale": "en",
   "options_page": "options.html",
   "background": {
-    "service_worker": "background.bundle.js"
+    "service_worker": "background/index.js"
   },
   "action": {
     "default_popup": "popup.html",
@@ -25,15 +25,15 @@
   "content_scripts": [
     {
       "matches": [
-        "http://*/*",
-        "https://*/*",
         "<all_urls>"
       ],
       "js": [
-        "contentScript.bundle.js"
+        "contentScripts/EcommerceData.js",
+        "contentScripts/actions/containerLinesGuide/index.js",
+        "contentScripts/actions/containerLinesGuide/load.js"
       ],
       "css": [
-        "content.styles.css"
+        "contentScripts/actions/containerLinesGuide/index.css"
       ]
     }
   ],

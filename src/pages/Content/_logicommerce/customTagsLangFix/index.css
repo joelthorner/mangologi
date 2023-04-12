@@ -1,0 +1,26 @@
+[ls="customTags.customTagsWizardGeneralText"]+.mainTab [ls="customTags.singlelanguage"],
+[ls="customTags.customTagsWizardGeneralText"]+.mainTab [ls="customTags.multilanguage"] {
+  color: transparent;
+  font-size: 0;
+  line-height: 0;
+}
+
+[ls="customTags.customTagsWizardGeneralText"]+.mainTab [ls="customTags.singlelanguage"]::before {
+  content: "Value by language";
+  color: #747474;
+  font-size: 12px;
+}
+
+[ls="customTags.customTagsWizardGeneralText"]+.mainTab [ls="customTags.multilanguage"]::before {
+  content: "Unique value";
+  color: #747474;
+  font-size: 12px;
+}
+
+.customTagsLangFix-es [ls="customTags.customTagsWizardGeneralText"]+.mainTab [ls="customTags.singlelanguage"]::before {
+  content: "Valor por idioma";
+}
+
+.customTagsLangFix-es [ls="customTags.customTagsWizardGeneralText"]+.mainTab [ls="customTags.multilanguage"]::before {
+  content: "Valor único";
+}

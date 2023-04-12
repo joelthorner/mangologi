@@ -1,0 +1,41 @@
+html.lcBackground body {
+  background-color: #fff;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-clip: border-box;
+  background-origin: padding-box;
+  background-attachment: fixed;
+}
+
+html.lcBackground .lastposts {
+  display: none !important;
+}
+
+html.lcBackground:not(.lcBackgroundBeyond) #desktop .search img {
+  filter: brightness(3);
+}
+
+html.lcBackground:not(.lcBackgroundBeyond) #desktop .search input::placeholder {
+  color: #fff;
+}
+
+html.lcBackground:not(.lcBackgroundBeyond) #desktop .search input,
+html.lcBackground:not(.lcBackgroundBeyond) #desktop .shortcut {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 0;
+  color: #fff;
+}
+
+html.lcBackground:not(.lcBackgroundBeyond) #desktop .shortcut:not(:hover) img {
+  filter: brightness(2);
+}
+
+html.lcBackground:not(.lcBackgroundBeyond) #desktop .shortcut div {
+  text-transform: none;
+  color: #fff;
+}
+
+html.lcBackground:not(.lcBackgroundBeyond) #desktop .logo img {
+  display: none;
+}
