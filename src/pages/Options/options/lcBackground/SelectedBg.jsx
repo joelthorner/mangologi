@@ -9,7 +9,7 @@ import {
 import { modifyProps } from '../../../../slices/chromeSyncSlice';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import PreviewModal from './PreviewModal';
-import { IconZoom } from '../../components/Icons';
+import { IconZoom } from '../../../../components/Icons';
 
 const SelectedBg = () => {
   const dispatch = useDispatch();

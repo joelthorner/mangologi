@@ -1,5 +1,5 @@
 import React from 'react';
-import Ripple from '../components/Ripple/Ripple';
+import Ripple from '../../../components/Ripple/Ripple';
 import { NavLink } from 'react-router-dom';
 import Logo from './Logo';
 import {
@@ -8,7 +8,7 @@ import {
   IconGear,
   IconHouse,
   IconPerson,
-} from './Icons';
+} from '../../../components/Icons';
 
 const Sidebar = () => {
   return (
