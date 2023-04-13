@@ -15,8 +15,9 @@ if (typeof SHOP !== 'undefined' && SHOP?.version) {
 }
 
 if (version) {
+  // Format: mangologi-data/key:value,key:value
   const comment = document.createComment(
-    `mangologi-data/version:${version}`
+    `mangologi-data/templateVersion:${version}`
   );
   document.body.appendChild(comment);
 }

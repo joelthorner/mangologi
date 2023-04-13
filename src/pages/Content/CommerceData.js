@@ -1,5 +1,5 @@
 /**
- * @file Define the ecommerceData object and send to popup requester
+ * @file Define the commerceData object and send to popup requester
  * @author joelthorner
  */
 
@@ -8,19 +8,43 @@ var TYPE_COLD_FUSION = 'cold-fusion';
 var TYPE_BEYOND = 'beyond';
 var TYPE_PRESTASHOP = 'prestashop';
 
+var ENV_SANDBOX = 'sandbox';
+var ENV_IGD = 'igd';
+var ENV_IGD_PRE = 'igd.pre';
+var ENV_STUDIO = 'studio';
+var ENV_PROD = 'prod';
+
+var TEMPLATE_MODULAR_2018 = 'modular-2018';
+var TEMPLATE_BASE_BEYOND = 'base-beyond';
+
 /**
- * @typedef ecommerceDataObject
+ * @typedef commerceData
  * @type {Object}
- * @property {Number} commerceId
- * @property {String} type
- * @property {String} environment
- * @property {String} template
- * @property {String} templateVersion
- * @property {String} bootstrap
+ * @property {Number|null} commerceId
+ * @property {String|null} type
+ * @property {String|null} environment
+ * @property {templateData} template
  * @property {Boolean} fluidCache
  */
 
-var ecommerceData = {
+/**
+ * @typedef templateData
+ * @type {Object}
+ * @property {String|null} version
+ * @property {String|null} type
+ */
+
+/**
+ * @typedef mangologiCommentData
+ * @type {Object}
+ * @property {String} key
+ * @property {String} value
+ */
+
+var CommerceData = {
+
+  mangologiCommentData: null,
+
   /**
    * Returns commerce id
    * @returns {Number|null}
@@ -52,22 +76,24 @@ var ecommerceData = {
     if (commerceId !== null) return commerceId;
 
     // Test productions by cdn assets
-    const cssAssetsEls = document.querySelectorAll('link[type="text/css"][href]');
-    if (cssAssetsEls) {
-      cssAssetsEls.forEach((item) => {
+    const cssAssetsNodes = document.querySelectorAll('link[type="text/css"][href]');
+    if (cssAssetsNodes) {
+      for (let i = 0; i < cssAssetsNodes.length; i++) {
+        const item = cssAssetsNodes[i];
+
         // Test production fluid-cf
         let cloudfrontCommerceId = this._extractShopId(item.getAttribute('href'), /cloudfront.net\/([0-9]{1,5})/);
         if (cloudfrontCommerceId !== null) {
           commerceId = cloudfrontCommerceId;
-          return;
+          break;
         }
         // Test production beyond
         let beyondCommerceId = this._extractShopId(item.getAttribute('href'), /assets\.logicommerce\.cloud\/([0-9]{1,5})/);
         if (beyondCommerceId !== null) {
           commerceId = beyondCommerceId;
-          return;
+          break;
         }
-      });
+      }
       if (commerceId !== null) return commerceId;
     }
 
@@ -100,38 +126,88 @@ var ecommerceData = {
    * @returns {String|null}
    */
   getEnvironment() {
-    if ((/[0-9]+\.sandbox\.logicommerce\.net/).test(location))
-      return 'sandbox';
+    if ((/[0-9]+\.sandbox\.logicommerce\.net/).test(location)) {
+      return ENV_SANDBOX;
+    }
 
-    if ((/[0-9]+\.igd\.production/).test(location))
-      return 'igd';
+    if ((/[0-9]+\.igd\.production/).test(location)) {
+      return ENV_IGD;
+    }
 
-    if ((/[0-9]+\.igd\.pre\.production/).test(location))
-      return 'igd.pre';
+    if ((/[0-9]+\.igd\.pre\.production/).test(location)) {
+      return ENV_IGD_PRE;
+    }
+
+    if ((/[0-9]+\.studio\.logicommerce\.cloud/).test(location)) {
+      return ENV_STUDIO;
+    }
 
     if (
       (/[0-9]+\.logicommerce\.net/).test(location) ||
       (/[0-9]+\.site\.logicommerce\.cloud/).test(location) ||
       document.querySelector('meta[name="robots"][content="index, follow"]') != null
-    )
-      return 'prod';
+    ) {
+      return ENV_PROD;
+    }
 
     return null;
   },
 
-  getTemplateVersion() {
+  /**
+   * Returns template data
+   * @returns {templateData}
+   */
+  getTemplate() {
+    let data = {
+      version: null,
+      type: null,
+    }
+    if (document.querySelector('[data-module]') && document.body.classList.value.includes('fluidContent') && document.getElementById('shop-data')) {
+      data.type = TEMPLATE_MODULAR_2018;
+    } else if (document.querySelector('[data-module]') && document.body.classList.value.includes('lcContent')) {
+      data.type = TEMPLATE_BASE_BEYOND;
+    }
 
+    if (this.mangologiCommentData) {
+      for (let i = 0; i < this.mangologiCommentData.length; i++) {
+        const { key, value } = this.mangologiCommentData[i];
+        if (key === 'templateVersion') {
+          data.version = value;
+        }
+      }
+    }
+
+    return data;
   },
 
   /**
-   * Return template
-   * @returns {String|null}
+   * Return if web has fluid cache by html comments
+   * @returns {Boolean}
    */
-  getTemplate() {
-    // if (document.querySelector('[data-module]') || this._isTemplateModular2018())
-    //   return TEMPLATE_MODULAR_2018;
+  getFluidCache() {
+    const comments = this._getComments(document.body);
+    const isCacheComment = (comment) => (/lcdb_[0-9]{1,5}_[a-zA-Z_0-9]*:/).test(comment.nodeValue);
+    return comments.some(isCacheComment);
+  },
 
-    // return null;
+  /**
+   * Returns data from mangologi-data comment
+   * @returns {mangologiCommentData[]}
+   */
+  _getMangologiCommentData() {
+    const comments = this._getComments(document.body);
+    for (let i = 0; i < comments.length; i++) {
+      const comment = comments[i].nodeValue;
+      if ((/mangologi-data/).test(comment)) {
+        return comment.replace('mangologi-data/', '').split(',').map((item) => {
+          const [key, value] = item.split(':')
+          return {
+            key,
+            value,
+          }
+        });
+      }
+    }
   },
 
   /**
@@ -151,25 +227,45 @@ var ecommerceData = {
   },
 
   /**
+   * Get html comments texts
+   * @returns {Array}
+   */
+  _getComments(context) {
+    let foundComments = [], elementPath = [context];
+
+    while (elementPath.length > 0) {
+      let el = elementPath.pop();
+      for (let i = 0; i < el.childNodes.length; i++) {
+        let node = el.childNodes[i];
+        if (node.nodeType === Node.COMMENT_NODE) {
+          foundComments.push(node);
+        } else {
+          elementPath.push(node);
+        }
+      }
+    }
+
+    return foundComments;
+  },
+
+  /**
    * Return all data object
-   * @returns {ecommerceDataObject}
+   * @returns {commerceData}
    */
   getData() {
+    this.mangologiCommentData = this._getMangologiCommentData();
+
     return {
       commerceId: this.getCommerceId(),
       type: this.getType(),
       environment: this.getEnvironment(),
-      templateVersion: this.getTemplateVersion(),
-      // template: this.getTemplate(),
-      // // $.fn.tooltip.Constructor.VERSION
-      // bootstrap: this.getBootstrap(),
-      // fluidCache: this.getFluidCache(),
+      template: this.getTemplate(),
+      fluidCache: this.getFluidCache(),
     }
   },
 };
 
-var data = ecommerceData.getData();
-console.log(data);
+var data = CommerceData.getData();
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   if (request.directive === "getCommerceData") {
