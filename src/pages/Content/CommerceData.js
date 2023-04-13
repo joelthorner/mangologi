@@ -10,12 +10,12 @@ var TYPE_PRESTASHOP = 'prestashop';
 
 var ENV_SANDBOX = 'sandbox';
 var ENV_IGD = 'igd';
-var ENV_IGD_PRE = 'igd.pre';
+var ENV_IGD_PRE = 'igd-pre';
 var ENV_STUDIO = 'studio';
-var ENV_PROD = 'prod';
+var ENV_PROD = 'production';
 
 var TEMPLATE_MODULAR_2018 = 'modular-2018';
-var TEMPLATE_BASE_BEYOND = 'base-beyond';
+var TEMPLATE_BASE_BEYOND = 'template-base';
 
 /**
  * @typedef commerceData
@@ -105,15 +105,15 @@ var CommerceData = {
    * @returns {String|null}
    */
   getType() {
-    if (document.body && document.body.classList.value.includes('fluidContent'))
+    if (document.body && document.body.classList.value.includes('fluidContent')) {
       return TYPE_FLUID;
-
-    if (document && document.querySelector('[href*=".cfm"]'))
-      return TYPE_COLD_FUSION;
-
-    if (document.body && document.body.classList.value.includes('lcContent'))
+    }
+    if (document.body && document.body.classList.value.includes('lcContent')) {
       return TYPE_BEYOND;
-
+    }
+    if (document && document.querySelector('[href*=".cfm"]')) {
+      return TYPE_COLD_FUSION;
+    }
     if (document && document.querySelector('link[href*="prestashop"]')) {
       return TYPE_PRESTASHOP;
     }
@@ -266,7 +266,7 @@ var CommerceData = {
 };
 
 var data = CommerceData.getData();
-
+console.log(data);
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   if (request.directive === "getCommerceData") {
     sendResponse({ commerceData: data });

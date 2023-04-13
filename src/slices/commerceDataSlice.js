@@ -6,7 +6,10 @@ export const commerceDataSlice = createSlice({
     commerceId: null,
     type: null,
     environment: null,
-    template: null,
+    template: {
+      version: null,
+      type: null,
+    },
     fluidCache: null,
   },
   reducers: {
@@ -15,7 +18,8 @@ export const commerceDataSlice = createSlice({
       state.commerceId = commerceId;
       state.type = type;
       state.environment = environment;
-      state.template = template;
+      state.template.version = template.version;
+      state.template.type = template.type;
       state.fluidCache = fluidCache;
     },
   },
