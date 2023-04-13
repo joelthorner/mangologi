@@ -41,13 +41,13 @@ var options = {
     // newtab: path.join(__dirname, 'src', 'pages', 'Newtab', 'index.jsx'),
     options: path.join(__dirname, 'src', 'pages', 'Options', 'index.jsx'),
     popup: path.join(__dirname, 'src', 'pages', 'Popup', 'index.jsx'),
-    // background: path.join(__dirname, 'src', 'pages', 'Background', 'index.js'),
+    background: path.join(__dirname, 'src', 'pages', 'Background', 'index.js'),
     // contentScript: path.join(__dirname, 'src', 'pages', 'Content', 'index.js'),
     // devtools: path.join(__dirname, 'src', 'pages', 'Devtools', 'index.js'),
     // panel: path.join(__dirname, 'src', 'pages', 'Panel', 'index.jsx'),
   },
   chromeExtensionBoilerplate: {
-    notHotReload: [/* 'background', */ /* 'contentScript', */ 'devtools'],
+    notHotReload: ['background', /* 'contentScript', */ 'devtools'],
   },
   output: {
     filename: '[name].bundle.js',
@@ -238,15 +238,15 @@ var options = {
         },
       ],
     }),
-    new CopyWebpackPlugin({
-      patterns: [
-        {
-          from: 'src/pages/Background',
-          to: path.join(__dirname, 'build/background'),
-          force: true,
-        },
-      ],
-    }),
+    // new CopyWebpackPlugin({
+    //   patterns: [
+    //     {
+    //       from: 'src/pages/Background',
+    //       to: path.join(__dirname, 'build/background'),
+    //       force: true,
+    //     },
+    //   ],
+    // }),
     // new HtmlWebpackPlugin({
     //   template: path.join(__dirname, 'src', 'pages', 'Newtab', 'index.html'),
     //   filename: 'newtab.html',

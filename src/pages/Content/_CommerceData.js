@@ -213,7 +213,7 @@ var ecommerceData = {
         var auxShopId = this._extractShopId(item.getAttribute('href'), /assets.logicommerce.cloud\/([0-9]{1,5})/);
         if (auxShopId) shopId = auxShopId;
       });
-      
+
       if (this.getEnvironment() == ENV_PRODUCTION && shopId == null) {
         shopId = this._extractShopId(location.href, /([0-9]+)\.studio\.logicommerce\.cloud/);
       }
