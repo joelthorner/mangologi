@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { IconCheckCircleFill, IconEdit } from './Icons';
-import Ripple from '../components/Ripple/Ripple';
+import { IconCheckCircleFill, IconEdit } from '../../../components/Icons';
+import Ripple from '../../../components/Ripple/Ripple';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 

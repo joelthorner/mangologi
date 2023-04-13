@@ -2,7 +2,7 @@ import React from 'react';
 import { Nav, Tab, Tooltip, OverlayTrigger } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { modifyAvatar } from '../../../../slices/chromeSyncSlice';
-import Ripple from '../../components/Ripple/Ripple';
+import Ripple from '../../../../components/Ripple/Ripple';
 import { avatars } from '../../../../data/avatarsData';
 import ProfileHeader from '../../components/ProfileHeader';
 import ContentHeader from '../../components/ContentHeader';

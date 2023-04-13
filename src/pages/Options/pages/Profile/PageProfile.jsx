@@ -6,7 +6,7 @@ import ProfileHeader from '../../components/ProfileHeader';
 import { useState } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import { reset } from '../../../../slices/chromeSyncSlice';
-import { IconAlert } from '../../components/Icons';
+import { IconAlert } from '../../../../components/Icons';
 
 const PageProfile = () => {
   const chromeSync = useSelector((state) => state.chromeSync);

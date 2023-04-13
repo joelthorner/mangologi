@@ -13,7 +13,7 @@ import {
   setShowBackImage,
   setBackImage,
 } from '../../../../slices/unsplashSlice';
-import { IconZoom } from '../../components/Icons';
+import { IconZoom } from '../../../../components/Icons';
 
 const Bg = (props) => {
   const chromeSync = useSelector((state) => state.chromeSync);
