@@ -1,0 +1,63 @@
+.showTemplateModules_module.showTemplateModules_module-static {
+  position: relative !important;
+}
+
+.showTemplateModules_module .showTemplateModules_module_line,
+.showTemplateModules_module .showTemplateModules_module_name {
+  position: absolute;
+  z-index: var(--zIndex);
+  background-color: rgb(255, 0, 46);
+}
+
+.showTemplateModules_module .showTemplateModules_module_name {
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 12px;
+  line-height: 1;
+  padding: 5px;
+  margin: 0;
+  color: #FFF;
+}
+
+.showTemplateModules_module .showTemplateModules_module_line-top,
+.showTemplateModules_module .showTemplateModules_module_line-bottom {
+  height: 1px;
+}
+
+.showTemplateModules_module .showTemplateModules_module_line-left,
+.showTemplateModules_module .showTemplateModules_module_line-right {
+  width: 1px;
+}
+
+.showTemplateModules_module .showTemplateModules_module_line-top {
+  top: var(--top);
+  left: var(--left);
+  right: var(--right);
+}
+
+.showTemplateModules_module .showTemplateModules_module_line-left {
+  left: var(--left);
+  top: var(--top);
+  bottom: var(--bottom);
+}
+
+.showTemplateModules_module .showTemplateModules_module_line-bottom {
+  bottom: var(--bottom);
+  left: var(--left);
+  right: var(--right);
+}
+
+.showTemplateModules_module .showTemplateModules_module_line-right {
+  right: var(--right);
+  top: var(--top);
+  bottom: var(--bottom);
+}
+
+.showTemplateModules_module .showTemplateModules_module_name-top-left {
+  top: var(--top);
+  left: var(--left);
+}
+
+.showTemplateModules_module .showTemplateModules_module_name-top-right {
+  top: var(--top);
+  right: var(--right);
+}

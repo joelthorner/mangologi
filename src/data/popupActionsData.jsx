@@ -63,16 +63,15 @@ const actions = {
     },
     {
       activedByCookie: null,
-      disabled: () => false, // TODO:
-      // this.existsEcommerceData() &&
-      // !this.isFluid() &&
-      // !this.isModular2018(),
-      key: 'showModulesTemplate2018',
+      disabled: (commerceData) =>
+        commerceData.template.type === 'modular-2018' &&
+        commerceData.template.type === 'template-base',
+      key: 'showTemplateModules',
       directive: [
-        'contentScripts/actions/showModulesTemplate2018/index.js',
-        'contentScripts/actions/showModulesTemplate2018/index.css',
+        'contentScripts/actions/showTemplateModules/index.js',
+        'contentScripts/actions/showTemplateModules/index.css',
       ],
-      text: "Show '18 template modules",
+      text: 'Show template modules',
       icon: <IconJournal />,
     },
     {

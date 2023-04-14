@@ -72,10 +72,11 @@ var containerLinesGuide = {
 
     const containerWidth = this._getContainerWidth();
     const containerOuterWidth = this._getContainerOuterWidth();
-    const containerPadding = this._getContainerPadding();
+    let containerPadding = this._getContainerPadding();
 
-    if (containerPadding % remValue === 0) {
+    if (remValue >= 12 && (containerPadding / remValue) % 0.25 === 0) {
       paddingUnit = 'rem';
+      containerPadding = containerPadding / remValue;
     }
 
     if (containerLinesGuide_width_inner) {
