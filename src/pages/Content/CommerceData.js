@@ -266,7 +266,6 @@ var CommerceData = {
 };
 
 var data = CommerceData.getData();
-console.log(data);
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   if (request.directive === "getCommerceData") {
     sendResponse({ commerceData: data });

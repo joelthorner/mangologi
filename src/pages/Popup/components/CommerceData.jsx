@@ -1,83 +1,11 @@
-import { capitalize } from 'lodash';
 import React from 'react';
-import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
-
-const CommerceId = ({ commerceId }) => {
-  return commerceId !== null ? (
-    <OverlayTrigger placement="top" overlay={<Tooltip>Commerce id</Tooltip>}>
-      <div className="item item-commerceId">
-        <span className={`icon icon-commerceId icon-${commerceId}`}></span>
-        {commerceId}
-      </div>
-    </OverlayTrigger>
-  ) : null;
-};
-
-const Type = ({ type }) => {
-  return type !== null ? (
-    <OverlayTrigger placement="top" overlay={<Tooltip>Commerce type</Tooltip>}>
-      <div className="item item-type">
-        <span className={`icon icon-type icon-${type}`}></span>
-        {capitalize(type)}
-      </div>
-    </OverlayTrigger>
-  ) : null;
-};
-
-const Environment = ({ environment }) => {
-  return environment !== null ? (
-    <OverlayTrigger placement="top" overlay={<Tooltip>Environment</Tooltip>}>
-      <div className="item item-environment">
-        <span className={`icon icon-environment icon-${environment}`}></span>
-        {environment}
-      </div>
-    </OverlayTrigger>
-  ) : null;
-};
-
-const TemplateVersion = ({ template }) => {
-  return template.version !== null ? (
-    <OverlayTrigger
-      placement="top"
-      overlay={<Tooltip>Template version</Tooltip>}
-    >
-      <div className="item item-template-version">
-        <span
-          className={`icon icon-template-version icon-${template.version}`}
-        ></span>
-        {template.version}
-      </div>
-    </OverlayTrigger>
-  ) : null;
-};
-
-const TemplateType = ({ template }) => {
-  return template.type !== null ? (
-    <OverlayTrigger placement="top" overlay={<Tooltip>Template</Tooltip>}>
-      <div className="item item-template-type">
-        <span
-          className={`icon icon-template-type icon-${template.type}`}
-        ></span>
-        {template.type}
-      </div>
-    </OverlayTrigger>
-  ) : null;
-};
-
-const FluidCache = ({ type, fluidCache }) => {
-  return type === 'fluid' && fluidCache !== null ? (
-    <OverlayTrigger
-      placement="top"
-      overlay={<Tooltip>Has fluid cache?</Tooltip>}
-    >
-      <div className="item item-fluidCache">
-        <span className={`icon icon-fluidCache icon-${fluidCache}`}></span>
-        {fluidCache ? 'Fluid cache' : 'No fluid cache'}
-      </div>
-    </OverlayTrigger>
-  ) : null;
-};
+import CommerceId from './commerceData/CommerceId';
+import Environment from './commerceData/Environment';
+import Type from './commerceData/Type';
+import TemplateVersion from './commerceData/TemplateVersion';
+import TemplateType from './commerceData/TemplateType';
+import FluidCache from './commerceData/FluidCache';
 
 const CommerceData = () => {
   const commerceData = useSelector((state) => state.commerceData),
@@ -88,7 +16,6 @@ const CommerceData = () => {
       commerceData.commerceId !== null ||
       commerceData.environment !== null ||
       commerceData.type !== null ||
-      commerceData.fluidCache !== null ||
       showTemplate;
 
   return showAll ? (

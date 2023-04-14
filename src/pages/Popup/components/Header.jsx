@@ -37,7 +37,7 @@ const Header = () => {
         </span>
       </div>
       <a
-        href={chrome.runtime.getURL('options.html')}
+        href={chrome.runtime.getURL('options.html') + '#/options'}
         className="options-btn"
         title="Open settings"
         target="_blank"

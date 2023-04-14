@@ -2,16 +2,16 @@ $primary: #f72085;
 $link-decoration: none;
 
 @import '~bootstrap/scss/bootstrap';
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400&display=swap');
 
 body {
-  width: 350px;
+  width: 325px;
   min-height: 400px;
   background-color: #f6f7fb;
 }
 
 .header {
-  padding: 1rem;
+  padding: 0.75rem;
   display: flex;
   gap: 0.75rem;
   align-items: center;
@@ -64,6 +64,7 @@ body {
     font-weight: 400;
     font-family: 'Montserrat', sans-serif;
     color: $primary;
+    font-size: 18px;
     background: linear-gradient(90deg, #{$primary}, #a9119c);
     background-clip: text;
     -webkit-background-clip: text;
@@ -104,6 +105,8 @@ body {
 }
 
 .commerce-data {
+  margin-top: 0.75rem;
+
   .title {
     height: 2.5rem;
     background-color: #fff;
@@ -112,6 +115,7 @@ body {
     justify-content: center;
     font-size: 14px;
     line-height: 1;
+    color: #6e7881;
   }
   .info {
     padding: 0.75rem;
@@ -170,6 +174,114 @@ body {
           background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%237952b3' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M8.646 5.646a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1 0 .708l-2 2a.5.5 0 0 1-.708-.708L10.293 8 8.646 6.354a.5.5 0 0 1 0-.708zm-1.292 0a.5.5 0 0 0-.708 0l-2 2a.5.5 0 0 0 0 .708l2 2a.5.5 0 0 0 .708-.708L5.707 8l1.647-1.646a.5.5 0 0 0 0-.708z'/%3E%3Cpath d='M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z'/%3E%3Cpath d='M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z'/%3E%3C/svg%3E");
         }
       }
+    }
+  }
+}
+
+.nav-tabs-actions {
+  .nav-tabs {
+    background-color: #fff;
+    border-bottom: 0;
+
+    > .nav-item {
+      flex: 1 1 33.333%;
+      > .nav-link {
+        border: 0;
+        position: relative;
+        height: 2.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background-color: transparent;
+        border-radius: 0;
+        font-size: 14px;
+        line-height: 1;
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        &.active {
+          color: $primary;
+        }
+        &:not(.active):not(:hover) {
+          color: #6e7881;
+        }
+      }
+    }
+  }
+  .tab-content {
+    .tab-pane {
+      .grid {
+        padding: 0.75rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-auto-rows: 6.75rem;
+        grid-gap: 0.75rem;
+      }
+    }
+  }
+}
+
+.btn.disabled,
+.btn:disabled {
+  opacity: 0.65;
+  border: 1px solid #e7e7e7;
+  cursor: not-allowed;
+}
+
+.btn-action {
+  position: relative;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 10px;
+  border: 1px solid #e7e7e7;
+  font-size: 12px;
+  line-height: 1.25;
+  gap: 0.75rem;
+  // color: $logo-blue-end;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.35s ease-in-out, box-shadow 0.15s ease-in-out;
+
+  &.actived {
+    border-color: $primary;
+
+    .name {
+      color: $primary;
+    }
+    svg {
+      fill: $primary;
+    }
+  }
+
+  .name {
+    color: #596671;
+    transition: color 0.15s ease-in-out;
+  }
+
+  .icon {
+    width: 1rem;
+    height: 1rem;
+    display: flex;
+    fill: #515365;
+    transition: fill 0.15s ease-in-out;
+  }
+  &:not(:disabled):hover,
+  &:not(:disabled):focus,
+  &:not(:disabled):active {
+    color: #fff;
+    background-color: $primary;
+    border-color: $primary;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+      border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+    .name {
+      color: #fff;
+    }
+    svg {
+      fill: #fff;
     }
   }
 }

@@ -3,5 +3,5 @@
   "globals": {
     "chrome": "readonly"
   },
-  "ignorePatterns": ["src/pages/Content/*.js"]
+  "ignorePatterns": ["src/pages/Content/**/*.js"]
 }
