@@ -11,11 +11,32 @@ import {
   IconVr,
 } from '../components/Icons';
 
+const containerLinesGuide_activedByCookie = (commerceData) => {
+  return new Promise((resolve, reject) => {
+    if (commerceData.tabId === null || !commerceData.tabUrl.includes('http')) {
+      resolve(false);
+    }
+
+    chrome.cookies.get(
+      {
+        url: commerceData.tabUrl,
+        name: 'containerLinesGuideCookie',
+      },
+      (cookie) => {
+        if (cookie && cookie.value === '1') {
+          resolve(true);
+        }
+        resolve(false);
+      }
+    );
+  });
+};
+
 const actions = {
   utils: [
     {
-      activedByCookie: () => false, // TODO
-      disabled: false,
+      activedByCookie: containerLinesGuide_activedByCookie,
+      disabled: (commerceData) => false,
       key: 'containerLinesGuide',
       directive: [
         'contentScripts/actions/containerLinesGuide/index.js',
@@ -26,7 +47,7 @@ const actions = {
     },
     {
       activedByCookie: null,
-      disabled: false,
+      disabled: (commerceData) => false,
       key: 'GETRefreshImg',
       directive: ['contentScripts/actions/GETRefreshImg/index.js'],
       text: 'GET Refresh img',
@@ -34,7 +55,7 @@ const actions = {
     },
     {
       activedByCookie: null,
-      disabled: false,
+      disabled: (commerceData) => false,
       key: 'emilioGenerator',
       directive: 'https://joelthorner.github.io/emilio-generator/',
       text: 'Emilio Generator',
@@ -56,7 +77,7 @@ const actions = {
     },
     {
       activedByCookie: null,
-      disabled: false,
+      disabled: (commerceData) => false,
       key: 'swiperCssGenerator',
       directive: 'https://joelthorner.github.io/swiper-css-generator/',
       text: 'Swiper css generator',
@@ -64,7 +85,7 @@ const actions = {
     },
     {
       activedByCookie: null,
-      disabled: false,
+      disabled: (commerceData) => false,
       key: 'showSvgIcons',
       directive: [
         'inject/log.js',
@@ -80,7 +101,7 @@ const actions = {
     {
       activedByCookie: null,
       disabled: (commerceData) =>
-        commerceData.type === 'fluid' || commerceData.type === 'beyond',
+        commerceData.type !== 'fluid' && commerceData.type !== 'beyond',
       key: 'testingNotifies',
       directive: ['contentScripts/actions/testingNotifies/index.js'],
       text: 'Testing notifies',
@@ -89,8 +110,7 @@ const actions = {
     {
       activedByCookie: null,
       key: 'fluidAutoSignup',
-      disabled: () => false, // TODO:
-      // this.existsEcommerceData() && !this.isFluid(),
+      disabled: (commerceData) => commerceData.type !== 'fluid',
       directive: [
         'data/chromeSync.js', // TODO fixme
         'contentScripts/actions/fluidAutoSignup/index.js',

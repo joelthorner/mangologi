@@ -12,6 +12,7 @@ export const commerceDataSlice = createSlice({
     },
     fluidCache: null,
     tabUrl: '',
+    tabId: null,
   },
   reducers: {
     setData: (state, action) => {
@@ -27,7 +28,9 @@ export const commerceDataSlice = createSlice({
     },
 
     setTab: (state, action) => {
-      state.tabUrl = action.payload;
+      const { tabUrl, tabId } = action.payload;
+      state.tabUrl = tabUrl;
+      state.tabId = tabId;
     },
   },
 })
@@ -40,9 +43,14 @@ export const requestCommerceData = () => async dispatch => {
       active: true,
       lastFocusedWindow: true,
     });
-    chrome.tabs.sendMessage(tab.id, { directive: "getCommerceData" }, (response) => {
+    chrome.tabs.sendMessage(tab.id, {
+      directive: "getCommerceData"
+    }, (response) => {
       dispatch(setData(response));
-      dispatch(setTab(tab.url));
+      dispatch(setTab({
+        tabUrl: tab.url,
+        tabId: tab.id,
+      }));
     });
   } catch (error) {
     console.log(error);
