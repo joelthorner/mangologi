@@ -20,7 +20,8 @@
     "identity.email",
     "scripting",
     "activeTab",
-    "tabs"
+    "tabs",
+    "cookies"
   ],
   "host_permissions": [
     "<all_urls>"
@@ -40,7 +41,12 @@
         "<all_urls>"
       ],
       "js": [
-        "contentScripts/CommerceData.js"
+        "contentScripts/CommerceData.js",
+        "contentScripts/actions/containerLinesGuide/index.js",
+        "contentScripts/actions/containerLinesGuide/load.js"
+      ],
+      "css": [
+        "contentScripts/actions/containerLinesGuide/index.css"
       ]
     }
   ],

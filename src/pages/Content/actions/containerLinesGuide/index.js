@@ -1,6 +1,7 @@
 /**
  * @file Define containerLinesGuide
  * @author joelthorner
+ * @version 1.0.1
  */
 'use strict';
 
@@ -66,9 +67,27 @@ var containerLinesGuide = {
     let containerLinesGuide_width_outer = document.getElementById('containerLinesGuide_width_outer');
     let containerLinesGuide_paddings_val = document.getElementById('containerLinesGuide_paddings_val');
 
-    if (containerLinesGuide_width_inner) containerLinesGuide_width_inner.innerHTML = this._getContainerWidth() + 'px';
-    if (containerLinesGuide_width_outer) containerLinesGuide_width_outer.innerHTML = this._getContainerOuterWidth() + 'px';
-    if (containerLinesGuide_paddings_val) containerLinesGuide_paddings_val.innerHTML = this._getContainerPadding() + 'px';
+    let paddingUnit = 'px';
+    const remValue = parseFloat(getComputedStyle(document.documentElement).fontSize);
+
+    const containerWidth = this._getContainerWidth();
+    const containerOuterWidth = this._getContainerOuterWidth();
+    let containerPadding = this._getContainerPadding();
+
+    if (remValue >= 12 && (containerPadding / remValue) % 0.25 === 0) {
+      paddingUnit = 'rem';
+      containerPadding = containerPadding / remValue;
+    }
+
+    if (containerLinesGuide_width_inner) {
+      containerLinesGuide_width_inner.innerHTML = containerWidth + 'px';
+    }
+    if (containerLinesGuide_width_outer) {
+      containerLinesGuide_width_outer.innerHTML = containerOuterWidth + 'px';
+    }
+    if (containerLinesGuide_paddings_val) {
+      containerLinesGuide_paddings_val.innerHTML = containerPadding + paddingUnit;
+    }
   },
 
   /**

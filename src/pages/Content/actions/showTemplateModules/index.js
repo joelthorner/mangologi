@@ -1,15 +1,15 @@
 /**
- * @file Define ShowModulesTemplate2018 class and execute script
+ * @file Define showTemplateModules class and execute script
  * @author joelthorner
  */
 'use strict';
 
 /**
- * Creates a new ShowModulesTemplate2018
+ * Creates a new showTemplateModules
  * @class
  * @classdesc Display all template modules with borders and name of module.
  */
-var ShowModulesTemplate2018 = {
+var showTemplateModules = {
 
   /**
    * HTML nodes to iterate
@@ -24,17 +24,17 @@ var ShowModulesTemplate2018 = {
   zIndex: 100000,
 
   /**
-   * Indicates if ShowModulesTemplate2018 system is already initialized
+   * Indicates if showTemplateModules system is already initialized
    * @type {HTMLElement|null}
    */
   alreadyShowing: null,
 
   /**
-   * Create a showModulesTemplate2018.
+   * Create a showTemplateModules.
    */
   constructor(elements) {
     this.elements = elements;
-    this.alreadyShowing = document.querySelectorAll('.showModulesTemplate2018_module');
+    this.alreadyShowing = document.querySelectorAll('.showTemplateModules_module');
 
     if (this.elements && !this.alreadyShowing.length) {
       this._initElements();
@@ -73,7 +73,7 @@ var ShowModulesTemplate2018 = {
     const elementClass = this.generateUidClass();
     const positionClass = this.getModuloPositionClass(element);
 
-    element.classList.add('showModulesTemplate2018_module');
+    element.classList.add('showTemplateModules_module');
     element.classList.add(elementClass);
     element.classList.add(positionClass);
 
@@ -98,7 +98,7 @@ var ShowModulesTemplate2018 = {
    */
   getModuloPositionClass(element) {
     const styles = document.defaultView.getComputedStyle(element);
-    return `showModulesTemplate2018_module-${styles.position}`
+    return `showTemplateModules_module-${styles.position}`
   },
 
   /**
@@ -108,7 +108,7 @@ var ShowModulesTemplate2018 = {
    */
   _insertMarkupStyles(className, positions) {
     let style = `
-      <style class="showModulesTemplate2018_module_style">
+      <style class="showTemplateModules_module_style">
         .${className} {
           --top: ${positions.top}px;
           --left: ${positions.left}px;
@@ -210,7 +210,7 @@ var ShowModulesTemplate2018 = {
    * @returns {object[]}
    */
   _getMarkupElementsObj(element) {
-    const prefix = 'showModulesTemplate2018_module_';
+    const prefix = 'showTemplateModules_module_';
 
     return [{
       classList: [prefix + 'line', prefix + 'line-top'],
@@ -238,17 +238,17 @@ var ShowModulesTemplate2018 = {
    * @returns {string}
    */
   generateUidClass() {
-    return 'showModulesTemplate2018_module_' + Math.floor(Math.random() * 100000000);
+    return 'showTemplateModules_module_' + Math.floor(Math.random() * 100000000);
   },
 
   /**
-   * Clean all ShowModulesTemplate2018 system of module
+   * Clean all showTemplateModules system of module
    * @param {object} element 
    */
   _clean(element) {
     let elements = element
       .querySelectorAll(
-        '.showModulesTemplate2018_module_line, .showModulesTemplate2018_module_name, .showModulesTemplate2018_module_style'
+        '.showTemplateModules_module_line, .showTemplateModules_module_name, .showTemplateModules_module_style'
       );
 
     if (elements) {
@@ -258,8 +258,8 @@ var ShowModulesTemplate2018 = {
       }
     }
 
-    element.className = element.className.replace(/(?:^|\s)showModulesTemplate2018_module(_[0-9]{1,}|\-[a-z]{3,})?/, '');
+    element.className = element.className.replace(/(?:^|\s)showTemplateModules_module(_[0-9]{1,}|\-[a-z]{3,})?/, '');
   },
 }
 
-ShowModulesTemplate2018.constructor(document.querySelectorAll('[data-module]'));
+showTemplateModules.constructor(document.querySelectorAll('[data-module]'));
