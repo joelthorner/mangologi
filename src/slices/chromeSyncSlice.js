@@ -69,6 +69,12 @@ export const chromeSyncSlice = createSlice({
       } else if (action.payload.key === 'job') {
         let { value } = action.payload.data;
         state.storage.profile.job.value = value;
+      } else if (action.payload.key === 'email') {
+        let { value } = action.payload.data;
+        state.storage.profile.email.value = value;
+      } else if (action.payload.key === 'password') {
+        let { value } = action.payload.data;
+        state.storage.profile.password.value = value;
       }
 
       const newKeyData = JSON.parse(JSON.stringify(state.storage));

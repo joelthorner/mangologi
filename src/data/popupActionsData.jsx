@@ -87,7 +87,7 @@ const actions = {
       disabled: (commerceData) => false,
       key: 'showSvgIcons',
       directive: [
-        'inject/log.js',
+        'contentScripts/log.js',
         'contentScripts/actions/showSvgIcons/index.js',
         'contentScripts/actions/showSvgIcons/index.css',
       ],
@@ -110,10 +110,7 @@ const actions = {
       activedByCookie: null,
       key: 'fluidAutoSignup',
       disabled: (commerceData) => commerceData.type !== 'fluid',
-      directive: [
-        'data/chromeSync.js', // TODO fixme
-        'contentScripts/actions/fluidAutoSignup/index.js',
-      ],
+      directive: 'fluidAutoSignupInit',
       text: 'Fluid auto signup',
       icon: <IconPersonBadge />,
     },

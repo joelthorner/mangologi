@@ -1,3 +1,9 @@
+import fluidAutoSignupInit from '../Content/actions/fluidAutoSignup/index';
+
+const profileDataResult = () => {
+  chrome.storage.sync.get(['profile'], (result) => {
+  });
+}
 
 async function getTabId() {
   const [tab] = await chrome.tabs.query({
@@ -9,7 +15,7 @@ async function getTabId() {
 
 // Popup actions listener
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (typeof request.directive !== 'undefined') {
+  if (typeof request.directive !== 'undefined' && Array.isArray(request.directive)) {
     const files = request.directive.split(','),
       jsFiles = files.filter(file => file.includes('.js')),
       cssFiles = files.filter(file => file.includes('.css'));
@@ -31,5 +37,13 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         // .then(() => console.log("script injected"));
       }
     });
+  } else if (typeof request.directive === 'string') {
+    // fluidAutoSignupInit
+    chrome.scripting
+      .executeScript({
+        target: { tabId: getTabId() },
+        func: fluidAutoSignupInit(profileDataResult()),
+      })
+      .then(() => console.log("injected a function"));
   }
 });
