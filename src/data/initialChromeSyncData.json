@@ -63,6 +63,12 @@
     "username": {
       "value": ""
     },
+    "email": {
+      "value": ""
+    },
+    "password": {
+      "value": ""
+    },
     "bio": {
       "value": ""
     },

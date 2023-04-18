@@ -11,10 +11,10 @@ const PageUserData = () => {
   const chromeSync = useSelector((state) => state.chromeSync);
   const dispatch = useDispatch();
 
-  const onChangeUsername = (event) => {
+  const onChange = (event, key) => {
     dispatch(
       modifyProfileData({
-        key: 'username',
+        key,
         data: {
           value: event.target.value,
         },
@@ -31,8 +31,7 @@ const PageUserData = () => {
       })
     );
   };
-  const d_OnChangeUsername = debounce(onChangeUsername, 1000);
-  const d_OnChangeBio = debounce(onChangeBio, 1000);
+  const d_OnChange = debounce(onChange, 1000);
 
   return (
     <>
@@ -46,7 +45,7 @@ const PageUserData = () => {
               type="text"
               placeholder="Username"
               defaultValue={chromeSync.storage.profile.username.value}
-              onChange={d_OnChangeUsername}
+              onChange={(event) => d_OnChange(event, 'username')}
               maxLength={40}
             />
           </Form.Group>
@@ -55,9 +54,29 @@ const PageUserData = () => {
             <Form.Control
               as="textarea"
               defaultValue={chromeSync.storage.profile.bio.value}
-              onChange={d_OnChangeBio}
+              onChange={(event) => d_OnChange(event, 'bio')}
               rows={4}
               maxLength={150}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="profile.email">
+            <Form.Label>Email for testing</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Email for testing"
+              defaultValue={chromeSync.storage.profile.email.value}
+              onChange={(event) => d_OnChange(event, 'email')}
+              maxLength={40}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="profile.password">
+            <Form.Label>Password for testing</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Password for testing"
+              defaultValue={chromeSync.storage.profile.password.value}
+              onChange={(event) => d_OnChange(event, 'password')}
+              maxLength={40}
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="profile.job">

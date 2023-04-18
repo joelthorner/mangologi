@@ -1,6 +1,7 @@
 /**
  * @file Run a script that fill signup form fields of Fluid development websites
  * @author joelthorner
+ * @version 1.0.1
  */
 'use strict';
 
@@ -11,16 +12,18 @@ function showErrorUserDataNotify() {
   var url = chrome.extension.getURL("options/options.html") + "#/user/info",
     link = `<a href="${url}" target="_blank">user settings</a>`;
 
-  var script = document.createElement("script");
-  script.innerHTML = `
-    Fluid.notify('You need to add a testing email and password. Go to ${link}', {
-      title: 'Error!',
-      type: 'danger',
-      sticky: false,
-      deelay: 5000
-    });
-  `;
-  document.head.appendChild(script);
+  var Notify = Fluid;
+
+  if (typeof LC !== 'undefined') {
+    Notify = LC;
+  }
+
+  Notify.notify(`You need to add a testing email and password. Go to ${link}`, {
+    title: 'Error!',
+    type: 'danger',
+    sticky: false,
+    deelay: 5000
+  });
 }
 
 /**
@@ -172,14 +175,16 @@ function mutationObserver(divField, mutationSelector) {
   }
 }
 
-chrome.storage.sync.get(defaults, (result) => {
+function fluidAutoSignupInit(result) {
+  // chrome.storage.sync.get(['profile'], (result) => {
+  // console.log(result);
   // Check if defined testing user data (email and pasword)
-  if (!result.profile.shopTestingEmail.actived || !result.profile.shopTestingPassword.actived) {
+  if (!result.profile.email.value.length || !result.profile.password.value.length) {
     showErrorUserDataNotify();
     return;
   }
 
-  var userName = getFirstAndLastName(result.profile.shopTestingUsername.value),
+  var userName = getFirstAndLastName(result.profile.username.value),
     divFields = document.querySelectorAll('#userFormFieldsContainer > .userFormFields > div, #signInFormFieldsContainer > .userField');
 
   for (let i = 0; i < divFields.length; i++) {
@@ -195,7 +200,7 @@ chrome.storage.sync.get(defaults, (result) => {
         break;
 
       case 'userFieldEmailContainer':
-        fillInputVal(result.profile.shopTestingEmail.value, divField);
+        fillInputVal(result.profile.email.value, divField);
         break;
 
       case 'userFieldMobileContainer':
@@ -270,14 +275,14 @@ chrome.storage.sync.get(defaults, (result) => {
       case 'userFieldPasswordContainer':
         var passwd = document.getElementById('userPasswordField');
         if (passwd) {
-          passwd.value = result.profile.shopTestingPassword.value;
+          passwd.value = result.profile.password.value;
         }
         break;
 
       case 'userFieldRetypePasswordContainer':
         var rePasswd = document.getElementById('userRetypePasswordField');
         if (rePasswd) {
-          rePasswd.value = result.profile.shopTestingPassword.value;
+          rePasswd.value = result.profile.password.value;
         }
         break;
     }
@@ -288,4 +293,7 @@ chrome.storage.sync.get(defaults, (result) => {
 
   // Submit
   formSubmit();
-});
+  // });
+}
+
+export default fluidAutoSignupInit;
