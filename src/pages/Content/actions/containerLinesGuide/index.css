@@ -1,70 +1,82 @@
-#containerLinesGuide_left,
-#containerLinesGuide_middle,
-#containerLinesGuide_right,
-#containerLinesGuide_data {
-  position: fixed;
-  z-index: 9999999;
-  left: 0;
-  right: 0;
+.containerLinesGuide_rel {
+  position: relative;
 }
 
-#containerLinesGuide_left::after,
-#containerLinesGuide_left::before,
-#containerLinesGuide_right::after,
-#containerLinesGuide_right::before,
-#containerLinesGuide_middle::before {
-  content: "";
-  position: absolute;
-  height: 100000px;
+.containerLinesGuide_left {
+  z-index: 9999999;
   width: 1px;
   background-color: red;
-  top: -5000px;
-  z-index: 9999999;
-}
-
-#containerLinesGuide_left::before,
-#containerLinesGuide_right::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
   left: 0;
 }
 
-#containerLinesGuide_right::after,
-#containerLinesGuide_left::after {
+.containerLinesGuide_left2 {
+  z-index: 9999999;
+  width: 1px;
+  background-color: red;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+
+.containerLinesGuide_right {
+  z-index: 9999999;
+  width: 1px;
+  background-color: red;
+  position: absolute;
+  top: 0;
+  bottom: 0;
   right: 0;
 }
 
-#containerLinesGuide_middle::before {
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: blue;
+.containerLinesGuide_right2 {
+  z-index: 9999999;
+  width: 1px;
+  background-color: red;
+  position: absolute;
+  top: 0;
+  bottom: 0;
 }
 
-#containerLinesGuide_data>span {
-  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  padding: 3px 0;
-  font-size: 12px;
+.containerLinesGuide_middle {
+  z-index: 9999999;
+  width: 1px;
+  background-color: blue;
+  opacity: .5;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.containerLinesGuide_paddings_val {
+  position: sticky;
+  top: 50%;
+  font-size: 9px;
+  background-color: red;
+  color: #FFF;
   line-height: 1;
-  margin: 0;
-  width: 100%;
+  padding: 2px 3px;
   display: block;
+  width: 50px;
   text-align: center;
 }
 
-#containerLinesGuide_data>span:nth-child(1) {
-  color: blueviolet;
-  border-bottom: 1px solid blueviolet;
+.containerLinesGuide_right2 .containerLinesGuide_paddings_val {
+  transform: translateX(-50px);
 }
 
-#containerLinesGuide_data>span:nth-child(2) {
-  color: blue;
-  border-bottom: 1px solid blue;
-}
-
-#containerLinesGuide_data>span:nth-child(3) {
-  color: #000;
-}
-
-#containerLinesGuide_data {
+.containerLinesGuide_middle_general {
+  position: fixed;
+  z-index: 99999991;
+  width: 1px;
+  background-color: purple;
+  opacity: .5;
+  top: 0;
   bottom: 0;
-  background-color: rgba(255, 255, 255, 0.6);
-  z-index: 9999999;
+  left: 50%;
+  transform: translate(-50%);
 }
