@@ -34,67 +34,48 @@ var containerLinesGuide = {
   create() {
     this._setCookie(this.cookieName, '1', { path: '/' });
 
-    document.body.insertAdjacentHTML('afterbegin', `
-      <div id="containerLinesGuide_wrap">
-        <div id="containerLinesGuide_left" class="container"></div>
-        <div id="containerLinesGuide_middle" class="container"></div>
-        <div id="containerLinesGuide_right" class="container"></div>
-        <div id="containerLinesGuide_data" class="container">
-          <span>Inner width: <span id="containerLinesGuide_width_inner"></span></span>
-          <span>Outer Width: <span id="containerLinesGuide_width_outer"></span></span>
-          <span class="containerLinesGuide_paddings">
-            Lateral paddings: 
-            <span id="containerLinesGuide_paddings_val"></span>
-          </span>
-        </div>
-      </div>
-    `);
+    var containers = document.querySelectorAll('.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl');
+    if (containers) {
+      containers.forEach(el => {
+        var classContainer = el.className.match(/container(-(fluid|lg|md|sm|xl|xxl))?/);
+        if (classContainer.length) {
+          var paddingLeft = window.getComputedStyle(el, null).getPropertyValue('padding-left');
+          var paddingRight = window.getComputedStyle(el, null).getPropertyValue('padding-right');
 
-    document.body.insertAdjacentHTML('afterbegin', `
-      <style id="containerLinesGuide_css">${this._getStyle()}</style>
-    `);
+          var paddingLeftText = paddingLeft;
+          var paddingRightText = paddingRight;
 
-    this._setSizeValues();
-    // window.onresize = this._windowResizeListener;
-    window.addEventListener('resize', this._windowResizeListener);
-  },
+          var paddingUnitLeft = ''; // default px
+          var paddingUnitRight = ''; // default px
 
-  /**
-   * Set container and padding data values on window resize
-   */
-  _setSizeValues() {
-    let containerLinesGuide_width_inner = document.getElementById('containerLinesGuide_width_inner');
-    let containerLinesGuide_width_outer = document.getElementById('containerLinesGuide_width_outer');
-    let containerLinesGuide_paddings_val = document.getElementById('containerLinesGuide_paddings_val');
+          var remValue = parseFloat(getComputedStyle(document.documentElement).fontSize);
 
-    let paddingUnit = 'px';
-    const remValue = parseFloat(getComputedStyle(document.documentElement).fontSize);
+          if (remValue >= 12 && (parseFloat(paddingLeft) / remValue) % 0.25 === 0) {
+            paddingUnitLeft = 'rem';
+            paddingLeftText = parseFloat(paddingLeft) / remValue;
+          }
+          if (remValue >= 12 && (parseFloat(paddingRight) / remValue) % 0.25 === 0) {
+            paddingUnitRight = 'rem';
+            paddingRightText = parseFloat(paddingRight) / remValue;
+          }
 
-    const containerWidth = this._getContainerWidth();
-    const containerOuterWidth = this._getContainerOuterWidth();
-    let containerPadding = this._getContainerPadding();
+          el.classList.add('containerLinesGuide_rel');
 
-    if (remValue >= 12 && (containerPadding / remValue) % 0.25 === 0) {
-      paddingUnit = 'rem';
-      containerPadding = containerPadding / remValue;
+          var str = `
+            <div class="containerLinesGuide containerLinesGuide_left"></div>
+            <div class="containerLinesGuide containerLinesGuide_left2" style="left: ${paddingLeft}">
+              <span class="containerLinesGuide containerLinesGuide_paddings_val" title="Container padding left">${paddingLeftText + paddingUnitLeft}</span>
+            </div>
+            <div class="containerLinesGuide containerLinesGuide_middle" title="Container middle"></div>
+            <div class="containerLinesGuide containerLinesGuide_right"></div>
+            <div class="containerLinesGuide containerLinesGuide_right2" style="right: ${paddingRight}">
+              <span class="containerLinesGuide containerLinesGuide_paddings_val" title="Container padding right">${paddingRightText + paddingUnitRight}</span>
+            </div>`;
+          el.insertAdjacentHTML('beforeend', str);
+        }
+      })
     }
-
-    if (containerLinesGuide_width_inner) {
-      containerLinesGuide_width_inner.innerHTML = containerWidth + 'px';
-    }
-    if (containerLinesGuide_width_outer) {
-      containerLinesGuide_width_outer.innerHTML = containerOuterWidth + 'px';
-    }
-    if (containerLinesGuide_paddings_val) {
-      containerLinesGuide_paddings_val.innerHTML = containerPadding + paddingUnit;
-    }
-  },
-
-  /**
-   * Update container and padding data values on window resize
-   */
-  _windowResizeListener(event) {
-    containerLinesGuide._setSizeValues();
+    document.body.insertAdjacentHTML('beforeend', `<div class="containerLinesGuide containerLinesGuide_middle_general" title="Web middle"></div>`);
   },
 
   /**
@@ -102,60 +83,20 @@ var containerLinesGuide = {
    */
   destroy() {
     this._deleteCookie(this.cookieName, '/');
-    let containerLinesGuide_wrap = document.getElementById('containerLinesGuide_wrap');
-    let containerLinesGuide_css = document.getElementById('containerLinesGuide_css');
-
-    if (containerLinesGuide_wrap) containerLinesGuide_wrap.remove();
-    if (containerLinesGuide_css) containerLinesGuide_css.remove();
-
-    // window.onresize = null;
-    window.removeEventListener('resize', this._windowResizeListener);
-  },
-
-  /**
-   * Return js calculated css, static css located into ./index.css
-   * @returns {String}
-   */
-  _getStyle() {
-    var cp = this._getContainerPadding() + 'px';
-
-    return `
-      #containerLinesGuide_right::before {
-        left: ${cp};
-      }
-      #containerLinesGuide_right::after {
-        right: ${cp};
-      }
-      #containerLinesGuide_data > span:nth-child(2) {
-        width: calc(100% + ${cp} + ${cp});
-        margin-left: -${cp};
-        margin-right: -${cp};
-      }
-    `;
-  },
-
-  /**
-   * Return width without paddings of #containerLinesGuide_left Element
-   * @returns {Number}
-   */
-  _getContainerWidth() {
-    return document.getElementById('containerLinesGuide_left').offsetWidth;
-  },
-
-  /**
-   * Return width included paddings of #containerLinesGuide_left Element
-   * @returns {Number}
-   */
-  _getContainerOuterWidth() {
-    return this._getContainerWidth() + (this._getContainerPadding() * 2);
-  },
-
-  /**
-   * Return padding left value of #containerLinesGuide_left Element
-   * @returns {Number}
-   */
-  _getContainerPadding() {
-    return parseInt(window.getComputedStyle(document.getElementById('containerLinesGuide_left')).paddingLeft);
+    var containers = document.querySelectorAll('.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl');
+    if (containers) {
+      containers.forEach(el => {
+        el.classList.remove('containerLinesGuide_rel');
+        var toRemove = el.querySelectorAll('.containerLinesGuide');
+        if (toRemove) {
+          toRemove.forEach(el => el.remove())
+        }
+      })
+    }
+    var middle = document.querySelector('.containerLinesGuide_middle_general');
+    if (middle) {
+      middle.remove();
+    }
   },
 
   /**
@@ -176,11 +117,11 @@ var containerLinesGuide = {
   },
 
   /**
-  * Set a cookie
-  * @param {String} name - The name of the cookie to be set
-  * @param {String|Number} value - The value of the cookie
-  * @param {Object} [options] - supports any cookie option like path, expires, maxAge and domain. [MDN Cookie Reference](https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie)
-  */
+   * Set a cookie
+   * @param {String} name - The name of the cookie to be set
+   * @param {String|Number} value - The value of the cookie
+   * @param {Object} [options] - supports any cookie option like path, expires, maxAge and domain. [MDN Cookie Reference](https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie)
+   */
   _setCookie(name, value, options = {}) {
     document.cookie = `${name}=${encodeURIComponent(value)}${Object.keys(options)
       .reduce((acc, key) => {
@@ -190,11 +131,11 @@ var containerLinesGuide = {
   },
 
   /**
-  * Delete a cookie by name
-  * @param {String} name - The name of the cookie to be deleted
-  * @param {String} [path] - The value of the path
-  * @param {String} [domain] - The domain value
-  */
+   * Delete a cookie by name
+   * @param {String} name - The name of the cookie to be deleted
+   * @param {String} [path] - The value of the path
+   * @param {String} [domain] - The domain value
+   */
   _deleteCookie(name, path, domain) {
     if (this._getCookie(name).length) {
       document.cookie = name + "=" +
