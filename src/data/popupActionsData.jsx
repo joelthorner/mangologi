@@ -49,7 +49,7 @@ const actions = {
       activedByCookie: null,
       disabled: (commerceData) => false,
       key: 'GETRefreshImg',
-      directive: ['contentScripts/actions/GETRefreshImg/index.js'],
+      directive: 'GETRefreshImg',
       text: 'GET Refresh img',
       icon: <IconImages />,
     },

@@ -4,68 +4,67 @@
  */
 'use strict';
 
-var GETRefreshImg = {
+var GETRefreshImg = () => {
 
   /**
    * Refresh get param string
    * @type {string}
    */
-  refreshValue: 'refresh=' + new Date().getUTCMilliseconds(),
+  var refreshValue = 'refresh=' + new Date().getUTCMilliseconds();
 
   /**
    * Initialize GETRefreshImg
    */
-  init() {
-    this.initCssBackgrounds();
-    this.initImgs();
-  },
+  var init = () => {
+    initCssBackgrounds();
+    initImgs();
+  };
 
   /**
    * Initialize refresh css image backgrounds
    */
-  initCssBackgrounds() {
-    let backgrounds = this._getBgImgs(document);
+  var initCssBackgrounds = () => {
+    let backgrounds = _getBgImgs(document);
 
     if (backgrounds.length) {
       for (let i = 0; i < backgrounds.length; i++) {
         const background = backgrounds[i];
-        this._initCssBackground(background);
+        _initCssBackground(background);
       }
     }
-  },
+  };
 
   /**
    *  Initialize refresh css image background
    * @param {object} background 
    */
-  _initCssBackground(background) {
+  var _initCssBackground = (background) => {
     let symbol = background.img.includes('?') ? '&' : '?';
 
     if (!background.img.includes('base64') && !background.img.includes('svg+xml')) {
-      background.node.style.backgroundImage = `url('${background.img}${symbol}${this.refreshValue}')`;
+      background.node.style.backgroundImage = `url('${background.img}${symbol}${refreshValue}')`;
     }
-  },
+  };
 
   /**
    * Initialize refresh image and picture tags
    */
-  initImgs() {
+  var initImgs = () => {
     let imgs = document.querySelectorAll('img[src], img[srcset], source[srcset]');
-
     if (imgs) {
       for (let i = 0; i < imgs.length; i++) {
         const img = imgs[i];
-        this._initImg(img);
+        _initImg(img);
       }
     }
-  },
+  };
 
   /**
    * Initialize refresh image and picture tag
    * @param {object} img 
    */
-  _initImg(img) {
-    let attrName = this._getElementAttrName(img),
+  var _initImg = (img) => {
+    let attrName = _getElementAttrName(img),
       symbol = '?';
 
     if (attrName) {
@@ -73,24 +72,24 @@ var GETRefreshImg = {
         symbol = '&';
       }
 
-      let imageSrc = `${img.getAttribute(attrName)}${symbol}${this.refreshValue}`;
+      let imageSrc = `${img.getAttribute(attrName)}${symbol}${refreshValue}`;
       img.setAttribute(attrName, imageSrc);
     }
-  },
+  };
 
   /**
    * Of img or picture HTML node returns src attribute name to refresh
    * @param {object} element 
    * @returns {string|null}
    */
-  _getElementAttrName(element) {
+  var _getElementAttrName = (element) => {
     if (element.hasAttribute('src'))
       return 'src';
     if (element.hasAttribute('srcset'))
       return 'srcset';
 
     return null;
-  },
+  };
 
   /**
    * Find all elements inside container and return array of objects
@@ -98,7 +97,7 @@ var GETRefreshImg = {
    * @param {object} container - HTML node
    * @returns {object[]}
    */
-  _getBgImgs(container) {
+  var _getBgImgs = (container) => {
     const srcChecker = /url\(\s*?['"]?\s*?(\S+?)\s*?["']?\s*?\)/i
 
     return Array.from(
@@ -114,7 +113,9 @@ var GETRefreshImg = {
           return collection
         }, new Set())
     )
-  }
+  };
+
+  init();
 };
 
 export default GETRefreshImg;

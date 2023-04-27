@@ -107,19 +107,12 @@ var showTemplateModules = {
    * @param {object} positions 
    */
   _insertMarkupStyles(className, positions) {
-    let style = `
-      <style class="showTemplateModules_module_style">
-        .${className} {
-          --top: ${positions.top}px;
-          --left: ${positions.left}px;
-          --right: ${positions.right}px;
-          --bottom: ${positions.bottom}px;
-          --zIndex: ${this.zIndex};
-        }
-      </style>
-    `;
-
-    document.body.insertAdjacentHTML('beforeend', style);
+    document.querySelector(`.${className}`).style.cssText += `
+      --shteMo-top: ${positions.top}px;
+      --shteMo-left: ${positions.left}px;
+      --shteMo-right: ${positions.right}px;
+      --shteMo-bottom: ${positions.bottom}px;
+      --shteMo-zIndex: ${this.zIndex};`;
   },
 
   /**
@@ -248,8 +241,14 @@ var showTemplateModules = {
   _clean(element) {
     let elements = element
       .querySelectorAll(
-        '.showTemplateModules_module_line, .showTemplateModules_module_name, .showTemplateModules_module_style'
+        '.showTemplateModules_module_line, .showTemplateModules_module_name'
       );
+
+    element.style.removeProperty('--shteMo-top');
+    element.style.removeProperty('--shteMo-left');
+    element.style.removeProperty('--shteMo-right');
+    element.style.removeProperty('--shteMo-bottom');
+    element.style.removeProperty('--shteMo-zIndex');
 
     if (elements) {
       for (let index = 0; index < elements.length; index++) {

@@ -5,7 +5,7 @@
 .showTemplateModules_module .showTemplateModules_module_line,
 .showTemplateModules_module .showTemplateModules_module_name {
   position: absolute;
-  z-index: var(--zIndex);
+  z-index: var(--shteMo-zIndex);
   background-color: rgb(255, 0, 46);
 }
 
@@ -29,35 +29,35 @@
 }
 
 .showTemplateModules_module .showTemplateModules_module_line-top {
-  top: var(--top);
-  left: var(--left);
-  right: var(--right);
+  top: var(--shteMo-top);
+  left: var(--shteMo-left);
+  right: var(--shteMo-right);
 }
 
 .showTemplateModules_module .showTemplateModules_module_line-left {
-  left: var(--left);
-  top: var(--top);
-  bottom: var(--bottom);
+  left: var(--shteMo-left);
+  top: var(--shteMo-top);
+  bottom: var(--shteMo-bottom);
 }
 
 .showTemplateModules_module .showTemplateModules_module_line-bottom {
-  bottom: var(--bottom);
-  left: var(--left);
-  right: var(--right);
+  bottom: var(--shteMo-bottom);
+  left: var(--shteMo-left);
+  right: var(--shteMo-right);
 }
 
 .showTemplateModules_module .showTemplateModules_module_line-right {
-  right: var(--right);
-  top: var(--top);
-  bottom: var(--bottom);
+  right: var(--shteMo-right);
+  top: var(--shteMo-top);
+  bottom: var(--shteMo-bottom);
 }
 
 .showTemplateModules_module .showTemplateModules_module_name-top-left {
-  top: var(--top);
-  left: var(--left);
+  top: var(--shteMo-top);
+  left: var(--shteMo-left);
 }
 
 .showTemplateModules_module .showTemplateModules_module_name-top-right {
-  top: var(--top);
-  right: var(--right);
+  top: var(--shteMo-top);
+  right: var(--shteMo-right);
 }
