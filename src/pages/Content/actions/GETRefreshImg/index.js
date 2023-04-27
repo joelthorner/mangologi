@@ -117,4 +117,4 @@ var GETRefreshImg = {
   }
 };
 
-GETRefreshImg.init();
+export default GETRefreshImg;

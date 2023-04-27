@@ -1,183 +1,186 @@
 /**
  * @file Run a script that fill signup form fields of Fluid development websites
  * @author joelthorner
- * @version 1.0.1
+ * @version 1.0.2
  */
 'use strict';
 
 /**
- * Inject script with small error notify with Fluid.notify plugin
+ * Initialize fluid auto signup script
+ * @param {object} result
+ * @returns 
  */
-function showErrorUserDataNotify() {
-  var url = chrome.extension.getURL("options/options.html") + "#/user/info",
-    link = `<a href="${url}" target="_blank">user settings</a>`;
+function fluidAutoSignupInit(result,) {
+  /**
+   * Inject script with small error notify with Fluid.notify plugin
+   */
+  function showErrorUserDataNotify(optionsUrl) {
+    var Notify = null;
 
-  var Notify = Fluid;
+    if (typeof Fluid !== 'undefined') {
+      Notify = Fluid;
+    } else if (typeof LC !== 'undefined') {
+      Notify = LC;
+    }
 
-  if (typeof LC !== 'undefined') {
-    Notify = LC;
+    if (Notify)
+      Notify.notify(`You need to add a testing email and password in extension profile options.`, {
+        title: 'Error!',
+        type: 'danger',
+        sticky: false,
+        deelay: 5000
+      });
   }
 
-  Notify.notify(`You need to add a testing email and password. Go to ${link}`, {
-    title: 'Error!',
-    type: 'danger',
-    sticky: false,
-    deelay: 5000
-  });
-}
+  /**
+   * Form user saved username define first and last names field values.
+   * @param {string} _username 
+   * @returns {object}
+   */
+  function getFirstAndLastName(_username) {
+    var username = _username ? _username : 'Joel Doe',
+      userNameArr = username.split(' ');
 
-/**
- * Form user saved username define first and last names field values.
- * @param {string} _username 
- * @returns {object}
- */
-function getFirstAndLastName(_username) {
-  var username = _username ? _username : 'Joel Doe',
-    userNameArr = username.split(' ');
+    if (userNameArr.length > 1) {
+      return {
+        firstName: userNameArr[0],
+        lastName: userNameArr[1],
+      };
+    }
 
-  if (userNameArr.length > 1) {
     return {
-      firstName: userNameArr[0],
-      lastName: userNameArr[1],
+      firstName: username,
+      lastName: username,
     };
   }
 
-  return {
-    firstName: username,
-    lastName: username,
-  };
-}
-
-/**
- * Fill input with string value
- * @param {string} value 
- * @param {object} node 
- */
-function fillInputVal(value, node) {
-  var nodes = node.querySelectorAll(':scope > input');
-  if (nodes) {
-    for (let i = 0; i < nodes.length; i++) {
-      const node = nodes[i];
-      node.value = value;
-    }
-  }
-}
-
-/**
- * Simulate native event change
- * @param {object} element 
- * @param {string} type - Event type 
- */
-function simulateEvent(element, type) {
-  var event = new MouseEvent(type, {
-    'view': window,
-    'bubbles': true,
-    'cancelable': true
-  });
-  element.dispatchEvent(event);
-}
-
-/**
- * Simulate click event over check if checked param and already check state is different
- * @param {object} input 
- * @param {boolean} checked 
- */
-function checkCheckbox(input, checked) {
-  if (input) {
-    if ((checked && input[0].checked == false) || (!checked && input[0].checked == true)) {
-      simulateEvent(input[0], 'click');
-    }
-  }
-}
-
-/**
- * Submit the form by button (force)
- */
-function formSubmit() {
-  var submit = document.getElementById('saveUserButton');
-  if (submit) {
-    var interval = setInterval(() => {
-      simulateEvent(submit, 'click')
-    }, 750);
-
-    setTimeout(() => {
-      clearInterval(interval);
-    }, 4000);
-  }
-}
-
-/**
- * Fill country block
- * @param {object} divField 
- * @param {string} mutationSelector
- */
-function fillCountry(divField, mutationSelector) {
-  var countryField = divField.querySelector('#userCountryField');
-
-  if (countryField) {
-    var ES = countryField.querySelector('[data-country-initials="ES"]'),
-      firstOption = countryField.querySelector('option:nth-child(2)');
-
-    if (ES) {
-      ES.selected = true;
-    }
-    if (firstOption) {
-      firstOption.selected = true;
-    }
-
-    if (ES || firstOption) {
-      simulateEvent(countryField, 'change');
-      mutationObserver(divField, mutationSelector);
-    }
-  }
-}
-
-/**
- * Create MutationObserver for fillCountry()
- * @param {object} divField
- * @param {string} mutationSelector
- */
-function mutationObserver(divField, mutationSelector) {
-  var configCS = {
-    attributes: false,
-    childList: true,
-    characterData: false,
-    subtree: true,
-    attributeOldValue: false,
-    characterDataOldValue: false,
-  };
-
-  var observerCS = new MutationObserver(function (mutations) {
-    mutations.forEach(function (mutation) {
-      if (mutation.addedNodes.length != 0) {
-        var select = mutation.target.querySelector('select');
-        if (select) {
-          var optionNth2 = select.querySelector('option:nth-child(2)');
-          if (optionNth2) {
-            optionNth2.selected = true;
-          } else {
-            select.querySelector('option:nth-child(1)').selected = true;
-          }
-          simulateEvent(select, 'change');
-        }
-
-        var inputs = mutation.target.querySelector('input:not(.subcountrySearchField)');
-        if (inputs) {
-          inputs.value = 'Wakanda';
-        }
+  /**
+   * Fill input with string value
+   * @param {string} value 
+   * @param {object} node 
+   */
+  function fillInputVal(value, node) {
+    var nodes = node.querySelectorAll(':scope > input');
+    if (nodes) {
+      for (let i = 0; i < nodes.length; i++) {
+        const node = nodes[i];
+        node.value = value;
       }
-    });
-  });
-
-  var targetCS = divField.querySelectorAll(mutationSelector);
-  for (var i = targetCS.length - 1; i >= 0; i--) {
-    if (targetCS[i]) observerCS.observe(targetCS[i], configCS);
+    }
   }
-}
 
-function fluidAutoSignupInit(result) {
-  // chrome.storage.sync.get(['profile'], (result) => {
-  // console.log(result);
+  /**
+   * Simulate native event change
+   * @param {object} element 
+   * @param {string} type - Event type 
+   */
+  function simulateEvent(element, type) {
+    var event = new MouseEvent(type, {
+      'view': window,
+      'bubbles': true,
+      'cancelable': true
+    });
+    element.dispatchEvent(event);
+  }
+
+  /**
+   * Simulate click event over check if checked param and already check state is different
+   * @param {object} input 
+   * @param {boolean} checked 
+   */
+  function checkCheckbox(input, checked) {
+    if (input) {
+      if ((checked && input[0].checked == false) || (!checked && input[0].checked == true)) {
+        simulateEvent(input[0], 'click');
+      }
+    }
+  }
+
+  /**
+   * Submit the form by button (force)
+   */
+  function formSubmit() {
+    var submit = document.getElementById('saveUserButton');
+    if (submit) {
+      var interval = setInterval(() => {
+        simulateEvent(submit, 'click')
+      }, 750);
+
+      setTimeout(() => {
+        clearInterval(interval);
+      }, 4000);
+    }
+  }
+
+  /**
+   * Fill country block
+   * @param {object} divField 
+   * @param {string} mutationSelector
+   */
+  function fillCountry(divField, mutationSelector) {
+    var countryField = divField.querySelector('#userCountryField');
+
+    if (countryField) {
+      var ES = countryField.querySelector('[data-country-initials="ES"]'),
+        firstOption = countryField.querySelector('option:nth-child(2)');
+
+      if (ES) {
+        ES.selected = true;
+      }
+      if (firstOption) {
+        firstOption.selected = true;
+      }
+
+      if (ES || firstOption) {
+        simulateEvent(countryField, 'change');
+        mutationObserver(divField, mutationSelector);
+      }
+    }
+  }
+
+  /**
+   * Create MutationObserver for fillCountry()
+   * @param {object} divField
+   * @param {string} mutationSelector
+   */
+  function mutationObserver(divField, mutationSelector) {
+    var configCS = {
+      attributes: false,
+      childList: true,
+      characterData: false,
+      subtree: true,
+      attributeOldValue: false,
+      characterDataOldValue: false,
+    };
+
+    var observerCS = new MutationObserver(function (mutations) {
+      mutations.forEach(function (mutation) {
+        if (mutation.addedNodes.length != 0) {
+          var select = mutation.target.querySelector('select');
+          if (select) {
+            var optionNth2 = select.querySelector('option:nth-child(2)');
+            if (optionNth2) {
+              optionNth2.selected = true;
+            } else {
+              select.querySelector('option:nth-child(1)').selected = true;
+            }
+            simulateEvent(select, 'change');
+          }
+
+          var inputs = mutation.target.querySelector('input:not(.subcountrySearchField)');
+          if (inputs) {
+            inputs.value = 'Wakanda';
+          }
+        }
+      });
+    });
+
+    var targetCS = divField.querySelectorAll(mutationSelector);
+    for (var i = targetCS.length - 1; i >= 0; i--) {
+      if (targetCS[i]) observerCS.observe(targetCS[i], configCS);
+    }
+  }
+
   // Check if defined testing user data (email and pasword)
   if (!result.profile.email.value.length || !result.profile.password.value.length) {
     showErrorUserDataNotify();
@@ -293,7 +296,6 @@ function fluidAutoSignupInit(result) {
 
   // Submit
   formSubmit();
-  // });
 }
 
 export default fluidAutoSignupInit;

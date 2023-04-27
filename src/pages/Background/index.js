@@ -1,53 +1,53 @@
 import fluidAutoSignupInit from '../Content/actions/fluidAutoSignup/index';
-
-// TODO
-// const profileDataResult = () => {
-//   chrome.storage.sync.get(['profile'], (result) => {
-//   });
-// }
-
-async function getTabId() {
-  const [tab] = await chrome.tabs.query({
-    active: true,
-    lastFocusedWindow: true,
-  });
-  return tab.id;
-}
+import GETRefreshImg from '../Content/actions/GETRefreshImg/index';
 
 // Popup actions listener
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  console.log(request.directive);
-  if (typeof request.directive !== 'undefined' && request.directive.includes(',')) {
+  if (typeof request.directive === 'undefined') return false;
+
+  const profileDataResult = chrome.storage.sync.get(['profile']);
+  const getTabId = chrome.tabs.query({ active: true, lastFocusedWindow: true });
+
+  if (request.directive.includes(',')) {
     const files = request.directive.split(','),
       jsFiles = files.filter(file => file.includes('.js')),
       cssFiles = files.filter(file => file.includes('.css'));
 
-    getTabId().then((tabId) => {
-      if (jsFiles) {
+    Promise.all([getTabId, profileDataResult]).then(([tabs]) => {
+      const [tab] = tabs;
+
+      if (jsFiles)
         chrome.scripting.executeScript({
-          target: { tabId: tabId },
+          target: { tabId: tab.id },
           world: 'MAIN',
           files: jsFiles,
         })
-        // .then(() => console.log("script injected"));
-      }
-      if (cssFiles) {
+
+      if (cssFiles)
         chrome.scripting.insertCSS({
-          target: { tabId: tabId },
+          target: { tabId: tab.id },
           files: cssFiles,
         })
-        // .then(() => console.log("script injected"));
-      }
     });
-    console.log('a');
-  } else if (typeof request.directive === 'string') {
-    // fluidAutoSignupInit
-    // TODO
-    // chrome.scripting
-    //   .executeScript({
-    //     target: { tabId: getTabId() },
-    //     func: fluidAutoSignupInit(profileDataResult()),
-    //   })
-    //   .then(() => console.log("injected a function"));
+
+  } else if (request.directive === 'fluidAutoSignupInit') {
+    Promise.all([getTabId, profileDataResult]).then(([tabs, profileData]) => {
+      const [tab] = tabs;
+      chrome.scripting.executeScript({
+        target: { tabId: tab.id },
+        func: fluidAutoSignupInit,
+        args: [profileData],
+        world: 'MAIN',
+      });
+    });
+  } else if (request.directive === 'GETRefreshImg') {
+    Promise.all([getTabId]).then(([tabs, profileData]) => {
+      const [tab] = tabs;
+      chrome.scripting.executeScript({
+        target: { tabId: tab.id },
+        func: GETRefreshImg,
+        world: 'MAIN',
+      });
+    });
   }
 });
