@@ -179,7 +179,7 @@ html.lcDeveloperBar #lcDeveloperBar_btn-sec {
 }
 
 html.lcDeveloperBar #lcDeveloperBar_btn-ftp {
-  background-image: url("data:image/svg+xml,%3Csvg id='icon-folder-upload' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cg%3E%3Cpath d='M464,127.08H272l-64-64H48a48,48,0,0,0-48,48v288a48,48,0,0,0,48,48H464a48,48,0,0,0,48-48v-224A48,48,0,0,0,464,127.08Zm-110.81,192H288v48a16,16,0,0,1-16,16H240a16,16,0,0,1-16-16v-48H158.83a16,16,0,0,1-11.27-27.34L244,196a17.05,17.05,0,0,1,24,0l96.42,95.7A16,16,0,0,1,353.19,319.08Z' fill='%23fff'%3E%3C/path%3E%3Cpath d='M353.19,319.08H288v48a16,16,0,0,1-16,16H240a16,16,0,0,1-16-16v-48H158.83a16,16,0,0,1-11.27-27.34L244,196a17.05,17.05,0,0,1,24,0l96.42,95.7A16,16,0,0,1,353.19,319.08Z' fill='rgba(255,255,255,0.5)'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cg%3E%3Cpath d='M464,127.08H272l-64-64H48a48,48,0,0,0-48,48v288a48,48,0,0,0,48,48H464a48,48,0,0,0,48-48v-224A48,48,0,0,0,464,127.08Zm-110.81,192H288v48a16,16,0,0,1-16,16H240a16,16,0,0,1-16-16v-48H158.83a16,16,0,0,1-11.27-27.34L244,196a17.05,17.05,0,0,1,24,0l96.42,95.7A16,16,0,0,1,353.19,319.08Z' fill='%23fff'%3E%3C/path%3E%3Cpath d='M353.19,319.08H288v48a16,16,0,0,1-16,16H240a16,16,0,0,1-16-16v-48H158.83a16,16,0,0,1-11.27-27.34L244,196a17.05,17.05,0,0,1,24,0l96.42,95.7A16,16,0,0,1,353.19,319.08Z' fill='rgba(255,255,255,0.5)'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
 }
 
 html.lcDeveloperBar .lcDeveloperBar_extra {
@@ -196,4 +196,71 @@ html.lcDeveloperBar .lcDeveloperBar_extra {
   html.lcDeveloperBar .lcDeveloperBar_nav #lcDeveloperBar_buttons input.green.__reloadApps__ {
     display: none;
   }
+}
+
+html.lcDeveloperBar .lcDeveloperBar_beyond .lcDeveloperBar_nav #lcDeveloperBar_buttons input.green {
+  padding: 0;
+  font-weight: 400;
+}
+
+html.lcDeveloperBar .lcDeveloperBar_beyond .lcDeveloperBar_nav {
+  background-color: transparent;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0px 7px -1px;
+  backdrop-filter: blur(4px);
+}
+
+html.lcDeveloperBar .lcDeveloperBar_beyond #lcDeveloperBar_search-input {
+  background-color: transparent;
+}
+
+html.lcDeveloperBar .lcDeveloperBar_beyond :is(#lcDeveloperBar_btn-ftp, #lcDeveloperBar_btn-ban, #lcDeveloperBar_btn-tag, #lcDeveloperBar_btn-sec, #lcDeveloperBar_btn-ftp) {
+  background-image: none !important;
+}
+
+html.lcDeveloperBar .lcDeveloperBar_beyond .lcDeveloperBar_btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+html.lcDeveloperBar .lcDeveloperBar_beyond .lcDeveloperBar_btn:hover,
+html.lcDeveloperBar .lcDeveloperBar_beyond .lcDeveloperBar_nav #lcDeveloperBar_buttons input.green:hover {
+  background-color: #fff;
+}
+
+html.lcDeveloperBar .lcDeveloperBar_beyond .lcDeveloperBar_btn:active,
+html.lcDeveloperBar .lcDeveloperBar_beyond .lcDeveloperBar_nav #lcDeveloperBar_buttons input.green:active {
+  background-color: #f2f2f2;
+}
+
+html.lcDeveloperBar .lcDeveloperBar_beyond .lcDeveloperBar_btn div {
+  width: 24px;
+  height: 24px;
+  background-size: 24px;
+  background-repeat: no-repeat;
+  background-position: center top;
+}
+
+html.lcDeveloperBar .lcDeveloperBar_beyond #lcDeveloperBar_btn-ftp div {
+  background-image: url(https://studio.logicommerce.cloud/interface/css/main/img/icons/menu/fileManager.png);
+}
+
+html.lcDeveloperBar .lcDeveloperBar_beyond #lcDeveloperBar_btn-pag div {
+  background-image: url(https://studio.logicommerce.cloud/interface/css/main/img/icons/menu/pages.png);
+}
+
+html.lcDeveloperBar .lcDeveloperBar_beyond #lcDeveloperBar_btn-ban div {
+  background-image: url(https://studio.logicommerce.cloud/interface/css/main/img/icons/menu/banners.png);
+}
+
+html.lcDeveloperBar .lcDeveloperBar_beyond #lcDeveloperBar_btn-tag div {
+  background-image: url(https://studio.logicommerce.cloud/interface/css/main/img/icons/windows/labels.png);
+}
+
+html.lcDeveloperBar .lcDeveloperBar_beyond #lcDeveloperBar_btn-sec div {
+  background-image: url(https://studio.logicommerce.cloud/interface/css/main/img/icons/windows/sections.png);
+}
+
+html.lcDeveloperBar .lcDeveloperBar_beyond #lcDeveloperBar_search-input {
+  color: #000000;
 }

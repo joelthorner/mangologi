@@ -48,6 +48,18 @@ class LogiInfo {
   prod8xRealCn = /https?:\/\/8x\.logicommerce\.cn/.test(location);
 
   /**
+   * Beyond dev lc (studio.logicommerce.cloud)
+   * @type {boolean}
+   */
+  beyondStudio = /https?:\/\/studio\.logicommerce\.cloud/.test(location);
+
+  /**
+   * Beyond prod lc (admin.logicommerce.cloud)
+   * @type {boolean}
+   */
+  beyondReal = /https?:\/\/admin\.logicommerce\.cloud/.test(location);
+
+  /**
    * Lc is production open saas
    * @type {boolean}
    */

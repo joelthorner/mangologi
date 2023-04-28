@@ -39,11 +39,11 @@ class DeveloperBar {
         <div id="lcDeveloperBar_buttons"></div>
         <div id="lcDeveloperBar_search"></div>
         <div class="lcDeveloperBar_extra">
-          <button title="Pages" type="button" class="lcDeveloperBar_btn" id="lcDeveloperBar_btn-pag" onclick="openPages()"></button>
-          <button title="Banners" type="button" class="lcDeveloperBar_btn" id="lcDeveloperBar_btn-ban" onclick="openBanners()"></button>
-          <button title="CustomTags" type="button" class="lcDeveloperBar_btn" id="lcDeveloperBar_btn-tag" onclick="openCustomTagsGroups()"></button>
-          <button title="Related sections" type="button" class="lcDeveloperBar_btn" id="lcDeveloperBar_btn-sec" onclick="openRelatedDefinitions()"></button>
-          <button title="FTP" type="button" class="lcDeveloperBar_btn" id="lcDeveloperBar_btn-ftp" onclick="openFileManager()"></button>
+          <button title="Pages" type="button" class="lcDeveloperBar_btn" id="lcDeveloperBar_btn-pag" onclick="openPages()"><div></div></button>
+          <button title="Banners" type="button" class="lcDeveloperBar_btn" id="lcDeveloperBar_btn-ban" onclick="openBanners()"><div></div></button>
+          <button title="CustomTags" type="button" class="lcDeveloperBar_btn" id="lcDeveloperBar_btn-tag" onclick="${this.logiInfo.beyondStudio || this.logiInfo.beyondReal ? 'openCustomTagGroups()' : 'openCustomTagsGroups()'}"><div></div></button>
+          <button title="Related sections" type="button" class="lcDeveloperBar_btn" id="lcDeveloperBar_btn-sec" onclick="openRelatedDefinitions()"><div></div></button>
+          <button title="FTP" type="button" class="lcDeveloperBar_btn" id="lcDeveloperBar_btn-ftp" onclick="openFileManager()"><div></div></button>
         </div>
       </nav>`);
   }
@@ -92,6 +92,8 @@ class DeveloperBar {
         this._initDevOpenSaas();
       } else if (this.logiInfo.proOpenSaas) {
         this._initProOpenSaas();
+      } else if (this.logiInfo.beyondStudio) {
+        this._initBeyondStudio();
       }
     }
   }
@@ -149,6 +151,17 @@ class DeveloperBar {
   }
 
   /**
+   * Initialize bar if LC is dev beyond
+   */
+  _initBeyondStudio() {
+    document.body.classList.add('lcDeveloperBar_beyond');
+    document.getElementById('lcDeveloperBar_buttons').innerHTML = `
+      <input type="button" class="green" value="GIT" onclick="openStudioGit()">
+      <input type="button" class="green" value="Repositories" onclick="openStudioRepo()">
+      <input type="button" class="green" value="Publish" onclick="openStudioPublish()">`;
+  }
+
+  /**
    * Change dev open saas buttons text
    */
   _devOSButtonsWindow() {
@@ -201,8 +214,8 @@ class DeveloperBar {
   }
 }
 
-chrome.storage.sync.get(defaults, (result) => {
-  if (result.options.developerBar.actived) {
+chrome.storage.sync.get(['lcDeveloperBar'], (result) => {
+  if (result.lcDeveloperBar.props.active) {
     const logi = new LogiInfo();
     new DeveloperBar(logi);
   }

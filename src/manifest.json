@@ -49,6 +49,24 @@
       "css": [
         "contentScripts/actions/containerLinesGuide/index.css"
       ]
+    },
+    {
+      "matches": [
+        "*://8x-hk.logicommerce.net/*",
+        "*://8x-os.logicommerce.net/*",
+        "*://8x.logicommerce.net/*",
+        "*://8x.logicommerce.cn/*",
+        "*://adm.igd.production/*",
+        "*://adm.igd.pre.production/*",
+        "*://studio.logicommerce.cloud/*"
+      ],
+      "js": [
+        "contentScripts/LogiInfo.js",
+        "contentScripts/lcDeveloperBar/index.js"
+      ],
+      "css": [
+        "contentScripts/lcDeveloperBar/index.css"
+      ]
     }
   ],
   "web_accessible_resources": [
